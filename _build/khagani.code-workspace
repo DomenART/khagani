@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "Build",
+			"path": "."
+		},
+		{
+			"name": "Assets",
+			"path": "/home/kundius/Projects/docker/www/khagani/assets/components/app"
+		},
+		{
+			"name": "Core",
+			"path": "/home/kundius/Projects/docker/www/khagani/core/components/app"
+		}
+	],
+	"settings": {}
+}
