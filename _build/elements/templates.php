@@ -38,7 +38,8 @@ return [
             'tmplvars' => [
                 'seo.title',
                 'seo.keywords',
-                'seo.description'
+                'seo.description',
+                'image'
             ]
         ]
     ],
@@ -53,6 +54,26 @@ return [
                 'image',
                 'table_sizes',
                 'stylist_choice'
+            ]
+        ]
+    ],
+    'Product' => [
+        'file' => 'product',
+        'properties' => [
+            'tmplvars' => [
+                'seo.title',
+                'seo.keywords',
+                'seo.description',
+            ]
+        ]
+    ],
+    'Article' => [
+        'file' => 'article',
+        'properties' => [
+            'tmplvars' => [
+                'seo.title',
+                'seo.keywords',
+                'seo.description',
             ]
         ]
     ],

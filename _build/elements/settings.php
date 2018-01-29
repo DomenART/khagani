@@ -29,6 +29,13 @@ return [
         'area' => 'furls',
         'namespace' => 'core',
     ],
+    'friendly_alias_translit' => [
+        'key' => 'friendly_alias_translit',
+        'xtype' => 'textfield',
+        'value' => 'russian',
+        'area' => 'furls',
+        'namespace' => 'core',
+    ],
     'link_tag_scheme' => [
         'key' => 'link_tag_scheme',
         'xtype' => 'textfield',

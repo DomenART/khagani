@@ -5,12 +5,12 @@
 			"path": "."
 		},
 		{
-			"name": "Assets",
-			"path": "/home/kundius/Projects/docker/www/khagani/assets/components/app"
+			"name": "Core",
+			"path": "/home/projects/sites/khagani/Extras/App/core/components/app"
 		},
 		{
-			"name": "Core",
-			"path": "/home/kundius/Projects/docker/www/khagani/core/components/app"
+			"name": "Assets",
+			"path": "/home/projects/sites/khagani/Extras/App/assets/components/app"
 		}
 	],
 	"settings": {}

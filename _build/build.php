@@ -168,13 +168,20 @@ class AppPackage
      *
      * @return array
      */
-    protected function _addResource(array $data, $uri, $parent = 0)
+    protected function _addResource(array $data, $uri, $parent = false)
     {
         $file = $data['context_key'] . '/' . $uri;
+        if($parent) {
+            $data['properties']['parent'] = $parent;
+        }
         /** @var modResource $resource */
-        $resource = $this->modx->newObject('modResource');
+        if($resource = $this->modx->getObject('modResource', [ 'uri' => $data['uri']?$data['uri']:$uri ])) {
+            $data['id'] = $resource->id;
+        } else {
+            $resource = $this->modx->newObject('modResource');
+        }
         $resource->fromArray(array_merge([
-            'parent' => $parent,
+            'parent' => 0,
             'published' => true,
             'deleted' => false,
             'hidemenu' => false,
@@ -200,13 +207,13 @@ class AppPackage
         if (!empty($data['resources'])) {
             $menuindex = 0;
             foreach ($data['resources'] as $alias => $item) {
-                $item['id'] = $this->_idx++;
+                // $item['id'] = $this->_idx++;
                 $item['alias'] = $alias;
                 $item['context_key'] = $data['context_key'];
                 $item['menuindex'] = $menuindex++;
                 $resources = array_merge(
                     $resources,
-                    $this->_addResource($item, $uri . '/' . $alias, $data['id'])
+                    $this->_addResource($item, $uri . '/' . $alias, $uri)
                 );
 
 
@@ -240,7 +247,7 @@ class AppPackage
         foreach ($resources as $context => $items) {
             $menuindex = 0;
             foreach ($items as $alias => $item) {
-                $item['id'] = $this->_idx++;
+                // $item['id'] = $this->_idx++;
                 $item['alias'] = $alias;
                 $item['context_key'] = $context;
                 $item['menuindex'] = $menuindex++;
