@@ -5,45 +5,45 @@ return [
         'type' => 'textfield',
         'caption' => 'Заголовок',
         'rank' => 10,
-        'category' => 'SEO'
+        '_category' => 'SEO'
     ),
     'seo.keywords' => array(
         'type' => 'textfield',
         'caption' => 'Ключевые слова',
         'rank' => 20,
-        'category' => 'SEO'
+        '_category' => 'SEO'
     ),
     'seo.description' => array(
         'type' => 'textarea',
         'caption' => 'Описание',
         'rank' => 30,
-        'category' => 'SEO'
+        '_category' => 'SEO'
     ),
     'category_type' => array(
         'type' => 'option',
         'caption' => 'Тип категории',
         'elements' => 'Обычная==||Популярное==1||Распродажа==2',
         'rank' => 10,
-        'category' => 'Параметры'
+        '_category' => 'Параметры'
     ),
     'category_type' => array(
         'type' => 'option',
         'caption' => 'Тип категории',
         'elements' => 'Обычная==||Популярное==1||Распродажа==2',
         'rank' => 10,
-        'category' => 'Параметры'
+        '_category' => 'Параметры'
     ),
     'table_sizes' => array(
         'type' => 'textfield',
         'caption' => 'Таблица размеров',
         'rank' => 30,
-        'category' => 'Параметры'
+        '_category' => 'Параметры'
     ),
     'stylist_choice' => array(
         'type' => 'textfield',
         'caption' => 'Выбор стилиста',
         'rank' => 40,
-        'category' => 'Параметры'
+        '_category' => 'Параметры'
     ),
     'image' => array(
         'type' => 'fastuploadtv',
@@ -57,7 +57,7 @@ return [
             'prefixFilename' => 'Нет',
         ],
         'rank' => 20,
-        'category' => 'Параметры'
+        '_category' => 'Параметры'
     ),
     'migx_test' => array(
         'type' => 'migx',
@@ -97,6 +97,6 @@ return [
             'autoResourceFolders' => 'false',
         ],
         'rank' => 20,
-        'category' => 'Параметры'
+        '_category' => 'Параметры'
     ),
 ];

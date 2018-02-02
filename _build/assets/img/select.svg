@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+    <symbol id="bg" viewBox="0 0 23 23">
+        <path d="M23 2v19a2 2 0 0 1-2 2h-19a2 2 0 0 1-2-2v-19c0-1.1.9-2 2-2h19a2 2 0 0 1 2 2z" />
+    </symbol>
+    <symbol id="arrow" viewBox="0 0 23 23">
+        <path d="M6 9.83c0 .22.08.43.25.6L11 15l4.75-4.58a.82.82 0 0 0 0-1.17.88.88 0 0 0-1.21 0l-3.54 3.4-3.54-3.4a.88.88 0 0 0-1.21 0 .82.82 0 0 0-.25.58z" />
+    </symbol>
+
+    <view id="active" viewBox="0 0 25 25" />
+    <g>
+            <use href="#bg" 
+            fill="#f8f8f8" 
+            width="23"
+            height="23"
+            y="1" 
+            x="1" 
+            clip-path="url(#border)"
+            stroke-width="1" 
+            stroke="#d3d3d3"/>
+
+            <use href="#arrow" 
+            x="1" 
+            y="1" 
+            fill="#666" />
+    </g>
+
+    <view id="inactive" viewBox="0 25 25 25" />
+    <g>
+            <use href="#bg" 
+            fill="#f8f8f8" 
+            width="23"
+            height="23"
+            y="26" 
+            x="1" 
+            clip-path="url(#border)"
+            stroke-width="1" 
+            stroke="#d3d3d3"/>
+
+            <use href="#arrow" 
+            x="1" 
+            y="26" 
+            fill="#999" />
+    </g>
+</svg>
