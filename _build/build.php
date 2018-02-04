@@ -11,12 +11,10 @@ class AppPackage
 
     protected $_elements = [];
     protected $_resources = [];
-    protected $_tmplvars = [];
-    protected $_categories = [];
 
     const name = 'App';
     const name_lower = 'app';
-    const version = '1.0.0';
+    const version = '1.0.2';
     const release = 'pl';
 
 
@@ -369,23 +367,7 @@ class AppPackage
         $attributes = [
             xPDOTransport::UNIQUE_KEY => 'templatename',
             xPDOTransport::PRESERVE_KEYS => false,
-            xPDOTransport::UPDATE_OBJECT => true,
-            // xPDOTransport::RELATED_OBJECTS => true,
-            // xPDOTransport::RELATED_OBJECT_ATTRIBUTES => [
-            //     'modTemplateVarTemplate' => [
-            //         xPDOTransport::UNIQUE_KEY => array('tmplvarid', 'templateid'),
-            //         xPDOTransport::PRESERVE_KEYS => false,
-            //         xPDOTransport::UPDATE_OBJECT => true,
-            //         xPDOTransport::RELATED_OBJECTS => true,
-            //         xPDOTransport::RELATED_OBJECT_ATTRIBUTES => [
-            //             'TemplateVar' => [
-            //                 xPDOTransport::UNIQUE_KEY => 'name',
-            //                 xPDOTransport::PRESERVE_KEYS => false,
-            //                 xPDOTransport::UPDATE_OBJECT => true,
-            //             ],
-            //         ],
-            //     ]
-            // ]
+            xPDOTransport::UPDATE_OBJECT => true
         ];
 
         $output = [];
@@ -423,14 +405,6 @@ class AppPackage
             xPDOTransport::UNIQUE_KEY => 'category',
             xPDOTransport::PRESERVE_KEYS => false,
             xPDOTransport::UPDATE_OBJECT => true,
-            // xPDOTransport::RELATED_OBJECTS => true,
-            // xPDOTransport::RELATED_OBJECT_ATTRIBUTES => [
-            //     'TemplateVar' => [
-            //         xPDOTransport::UNIQUE_KEY => 'name',
-            //         xPDOTransport::PRESERVE_KEYS => false,
-            //         xPDOTransport::UPDATE_OBJECT => true,
-            //     ],
-            // ],
         ];
         $output = [];
         foreach ($categories as $name => $data) {
@@ -439,7 +413,6 @@ class AppPackage
             $category->fromArray(array_merge([
                 'category' => $name
             ], $data), '', true, true);
-            // $this->_categories[$name] = $category;
             $output[$name] = [
                 'object' => $category,
                 'attributes' => $attributes
@@ -489,7 +462,6 @@ class AppPackage
                 $tv->addOne($category);
             }
 
-            // $this->_tmplvars[$name] = $tv;
             $output[$name] = [
                 'object' => $tv,
                 'attributes' => $attributes
@@ -589,7 +561,6 @@ class AppPackage
                         xPDOTransport::UNIQUE_KEY => 'name',
                         xPDOTransport::PRESERVE_KEYS => false,
                         xPDOTransport::UPDATE_OBJECT => false,
-                        xPDOTransport::RELATED_OBJECTS => false,
                         xPDOTransport::RELATED_OBJECTS => true,
                         xPDOTransport::RELATED_OBJECT_ATTRIBUTES => [
                             'Category' => [
@@ -608,7 +579,6 @@ class AppPackage
                 ],
             ];
             
-            // $tmplvartemplates = [];
             foreach ($template['object']->_tmplvars as $tmplvar) {
                 if(empty($this->_elements['tmplvars'][$tmplvar]['object'])) continue;
 
@@ -620,7 +590,6 @@ class AppPackage
                     'attributes' => $attributes
                 ];
             }
-            // $template['object']->addMany($tmplvartemplates);
         }
         $this->_elements['tmplvartemplates'] = $tmplvartemplates;
 
@@ -684,8 +653,10 @@ if (!file_exists($core)) {
 require $core;
 $install = new AppPackage(MODX_CORE_PATH);
 $builder = $install->process(true);
+$signature = $builder->getSignature();
+
+$install->modx->log(modX::LOG_LEVEL_INFO, 'Download archive: ' . $install->modx->getOption('site_url') . 'core/packages/' . $signature . '.transport.zip');
 
 if (!empty($_GET['download'])) {
-    $signature = $builder->getSignature();
     echo '<script>document.location.href = "/core/packages/' . $signature . '.transport.zip' . '";</script>';
 }
