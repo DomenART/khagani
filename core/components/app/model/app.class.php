@@ -18,18 +18,20 @@ class App
     function __construct(modX &$modx, array $config = [])
     {
         $this->modx =& $modx;
-        $corePath = MODX_CORE_PATH . 'components/app/';
-        $assetsUrl = MODX_ASSETS_URL . 'components/app/';
+        $corePath = $this->modx->getOption('app_core_path', $config, $this->modx->getOption('core_path') . 'components/app/');
+        $assetsUrl = $this->modx->getOption('app_assets_url', $config, $this->modx->getOption('assets_url') . 'components/app/');
 
         $this->config = array_merge([
             'corePath' => $corePath,
             'modelPath' => $corePath . 'model/',
             'processorsPath' => $corePath . 'processors/',
 
+            'connectorUrl' => $assetsUrl . 'connector.php',
             'assetsUrl' => $assetsUrl,
-            'cssUrl' => $assetsUrl . 'css/',
-            'jsUrl' => $assetsUrl . 'js/',
         ], $config);
+        
+        $this->modx->addPackage('app', $this->config['modelPath']);
+        $this->modx->lexicon->load('app:default');
     }
 
 
@@ -146,9 +148,24 @@ class App
                 break;
             case 'OnPageNotFound':
                 break;
-            case 'OnWebPagePrerender':
+            case 'OnDocFormPrerender':
                 // Compress output html for Google
                 $this->modx->resource->_output = preg_replace('#\s+#', ' ', $this->modx->resource->_output);
+
+                $data_js = preg_replace(array('/^\n/', '/\t{6}/'), '', '
+                    App.config.connector_url = "' . $this->config['connectorUrl'] . '";
+                    App.product_id = ' . $id . ';
+                ');
+                $this->modx->regClientStartupScript("<script type=\"text/javascript\">\n" . $data_js . "\n</script>", true);
+                $this->modx->controller->addJavascript($this->config['assetsUrl'] . 'mgr/js/app.js');
+                $this->modx->controller->addJavascript($this->config['assetsUrl'] . 'mgr/vendor/jscolor.min.js');
+                $this->modx->controller->addJavascript($this->config['assetsUrl'] . 'mgr/js/product/misc/utils.js');
+                $this->modx->controller->addJavascript($this->config['assetsUrl'] . 'mgr/js/product/misc/combo.js');
+                $this->modx->controller->addJavascript($this->config['assetsUrl'] . 'mgr/js/product/widgets/images.panel.js');
+                $this->modx->controller->addJavascript($this->config['assetsUrl'] . 'mgr/js/product/widgets/colors.windows.js');
+                $this->modx->controller->addJavascript($this->config['assetsUrl'] . 'mgr/js/product/widgets/colors.grid.js');
+                $this->modx->controller->addJavascript($this->config['assetsUrl'] . 'mgr/js/product/widgets/colors.tab.js');
+                $this->modx->regClientCSS($this->config['assetsUrl'] . 'mgr/css/main.css');
                 break;
         }
     }

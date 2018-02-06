@@ -1,7 +1,5 @@
 --------------------
-App
+KhaganiMAN
 --------------------
-Author: Vasily Naumkin <bezumkin@yandex.ru>
+Author: Kundius Ruslan <ruslan@kundius.ru>
 --------------------
-
-A main app for MODX Revolution site.

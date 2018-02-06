@@ -1,18 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model package="app" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" phpdoc-package="app" version="1.1">
-    <!--
-    <object class="AppItem" table="app_item" extends="xPDOSimpleObject">
-        <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
-        <field key="description" dbtype="text" phptype="text" null="true" default=""/>
-        <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
 
-        <index alias="name" name="name" primary="false" unique="false" type="BTREE">
-            <column key="name" length="" collation="A" null="false"/>
+    <object class="AppColor" table="app_color" extends="xPDOSimpleObject">
+        <field key="label" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="color" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+
+        <index alias="label" name="label" primary="false" unique="false" type="BTREE">
+            <column key="label" length="" collation="A" null="false"/>
         </index>
-        <index alias="active" name="active" primary="false" unique="false" type="BTREE">
-            <column key="active" length="" collation="A" null="false"/>
+        <index alias="color" name="color" primary="false" unique="false" type="BTREE">
+            <column key="color" length="" collation="A" null="false"/>
         </index>
     </object>
-    -->
+
+    <object class="AppProductColor" table="app_product_color" extends="xPDOSimpleObject">
+        <field key="product_id" dbtype="int" precision="10" phptype="integer" null="false" index="index" />
+        <field key="color_id" dbtype="int" precision="10" phptype="integer" null="false" index="index" />
+        <field key="product_file_id" dbtype="int" precision="10" phptype="integer" null="true" index="index" />
+
+        <index alias="product_id" name="product_id" primary="false" unique="false" type="BTREE">
+            <column key="product_id" length="" collation="A" null="false" />
+        </index>
+        <index alias="color_id" name="color_id" primary="false" unique="false" type="BTREE">
+            <column key="color_id" length="" collation="A" null="false" />
+        </index>
+        <index alias="product_file_id" name="product_file_id" primary="false" unique="false" type="BTREE">
+            <column key="product_file_id" length="" collation="A" null="false" />
+        </index>
+    </object>
 
 </model>
