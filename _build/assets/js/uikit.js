@@ -4,7 +4,7 @@ import mixin from 'uikit/src/js/mixin/index';
 import boot from 'uikit/src/js/api/boot';
 
 /* import core components */
-// import Accordion from 'uikit/src/js/core/accordion';
+import Accordion from 'uikit/src/js/core/accordion';
 import Alert from 'uikit/src/js/core/alert';
 import Core from 'uikit/src/js/core/core';
 import Cover from 'uikit/src/js/core/cover';

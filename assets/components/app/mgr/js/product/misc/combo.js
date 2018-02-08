@@ -17,7 +17,7 @@ App.combo.ColorAutocomplete = function (config) {
         editable: true,
         allowBlank: true,
         baseParams: {
-            action: 'mgr/color/autocomplete',
+            action: 'color/autocomplete',
             name: config.name,
             combo: true,
             limit: 0

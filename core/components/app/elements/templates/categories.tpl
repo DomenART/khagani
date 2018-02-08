@@ -11,7 +11,7 @@
         <h1>{$_modx->resource.longtitle ?: $_modx->resource.pagetitle}</h1>
 
         <div class="uk-grid" uk-grid>
-            <div class="uk-width-1-4">
+            <div class="uk-width-2-5@s uk-width-1-4@m">
                 {'pdoMenu' | snippet : [
                     'level' => 1,
                     'outerClass' => 'menu-left',
@@ -19,7 +19,7 @@
                     'tpl' => '@FILE chunks/resources/menu.left.tpl'
                 ]}
             </div>
-            <div class="uk-width-3-4">
+            <div class="uk-width-3-5@s uk-width-3-4@m">
                 <div class="categories">
                     {'!pdoResources' | snippet : [
                         'depth' => 0,

@@ -4,7 +4,7 @@ const env = process.env.WEBPACK_ENV;
 
 const PATHS = {
     source: path.join(__dirname, 'assets/'),
-    build: path.join(__dirname, '../../../assets/components/app/web/')
+    build: path.join(__dirname, '../assets/components/app/web/')
 }
 
 // Main Settings config

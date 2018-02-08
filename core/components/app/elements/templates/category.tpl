@@ -15,14 +15,23 @@
             'element' => 'msProducts',
             'parents' => $_modx->resource.id,
             'limit' => 21,
+
             'filters' => '
                 msoption|size:default,
-                parent:categories,
+                resource|parent:categories,
                 ms|price:number,
                 mscolor|color_id:color
             ',
-            'tplFilter.outer.ms|price' => 'tpl.mFilter2.filter.slider',
-            'tplFilter.row.ms|price' => 'tpl.mFilter2.filter.number',
+
+            'tplFilter.outer.msoption|size' => '@FILE chunks/filter/filter.size.tpl',
+            'tplFilter.row.msoption|size' => '@FILE chunks/filter/filter.checkbox.tpl',
+            'tplFilter.outer.resource|parent' => '@FILE chunks/filter/filter.categories.tpl',
+            'tplFilter.row.resource|parent' => '@FILE chunks/filter/filter.checkbox.tpl',
+            'tplFilter.outer.ms|price' => '@FILE chunks/filter/filter.slider.tpl',
+            'tplFilter.row.ms|price' => '@FILE chunks/filter/filter.number.tpl',
+            'tplFilter.outer.mscolor|color_id' => '@FILE chunks/filter/filter.colors.tpl',
+            'tplFilter.row.mscolor|color_id' => '@FILE chunks/filter/filter.color.tpl',
+
             'tplOuter' => '@FILE chunks/filter/outer.tpl',
             'tplPageWrapper' => '@INLINE <div class="products-pagination"><ul class="pagination">[[+first]][[+pages]][[+last]]</ul></div>',
             'tplPageFirst' => '@INLINE <li class="control"><a href="[[+href]]"><i uk-icon="icon: chevron-left; ratio: .6"></i>[[%pdopage_first]]</a></li>',

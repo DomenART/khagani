@@ -25,8 +25,6 @@ class App
             'corePath' => $corePath,
             'modelPath' => $corePath . 'model/',
             'processorsPath' => $corePath . 'processors/',
-
-            'connectorUrl' => $assetsUrl . 'connector.php',
             'assetsUrl' => $assetsUrl,
         ], $config);
         
@@ -102,6 +100,10 @@ class App
                     return $this->modx->findResource($input);
                 });
 
+                $fenom->addModifier('getColors', function ($input) {
+                    return $this->getColors($input);
+                });
+
                 $fenom->addModifier('productsCount', function ($input) {
                     return $input;
                 });
@@ -153,7 +155,7 @@ class App
                 $this->modx->resource->_output = preg_replace('#\s+#', ' ', $this->modx->resource->_output);
 
                 $data_js = preg_replace(array('/^\n/', '/\t{6}/'), '', '
-                    App.config.connector_url = "' . $this->config['connectorUrl'] . '";
+                    App.config.connector_url = "' . $this->config['assetsUrl'] . 'mgr/connector.php";
                     App.product_id = ' . $id . ';
                 ');
                 $this->modx->regClientStartupScript("<script type=\"text/javascript\">\n" . $data_js . "\n</script>", true);
@@ -170,4 +172,20 @@ class App
         }
     }
 
+    public function getColors($id)
+    {
+        $q = $this->modx->newQuery('AppProductColor');
+        $q->innerJoin('AppColor','AppColor', 'AppColor.id = AppProductColor.color_id'); 
+        $q->leftJoin('msProductFile','Image', 'Image.id = AppProductColor.product_file_id'); 
+        $q->leftJoin('msProductFile','Thumb', 'Thumb.parent = Image.id'); 
+        $q->where(array(
+            'AppProductColor.product_id' => $id
+        ));
+        $q->select('AppProductColor.id,AppColor.label,AppColor.color,Image.url as image,Thumb.url as thumb');
+        $colors = $this->modx->getCollection('AppProductColor', $q);
+        if ($q->prepare() && $q->stmt->execute()) {
+            $colors = $q->stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $colors;
+        }
+    }
 }

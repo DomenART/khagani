@@ -1,21 +1,39 @@
-<div class="uk-grid" uk-grid id="mse2_mfilter">
-    <div class="uk-width-1-4">
-        <div id="mse2_selected_wrapper">
-            <div id="mse2_selected">[[%mse2_selected]]:
-                <span></span>
+<div class="uk-grid uk-grid-small" uk-grid id="mse2_mfilter">
+    <div class="uk-width-2-5@s uk-width-1-4@m">
+        <form action="[[~[[*id]]]]" method="post" id="mse2_filters" class="filters">
+            <div class="filters__head">
+                <button type="reset" class="uk-button filters__reset hidden">
+                    {'mse2_reset' | lexicon}
+                    <svg width="15" height="15">
+                        <use href="{$.assets_url}web/img/svg-sprite.svg#close" />
+                    </svg>
+                </button>
+
+                <div id="mse2_selected_wrapper" class="filters__selected">
+                    <div id="mse2_selected">
+                        {'mse2_selected' | lexicon}:
+                        <span></span>
+                    </div>
+                </div>
             </div>
-        </div>
-        
-        <form action="[[~[[*id]]]]" method="post" id="mse2_filters">
-            [[+filters]]
-            <br/> [[+filters:isnot=``:then=`
-            <button type="reset" class="btn btn-default hidden">[[%mse2_reset]]</button>
-            <button type="submit" class="btn btn-success pull-right hidden">[[%mse2_submit]]</button>
-            <div class="clearfix"></div>
-            `]]
+            
+            <div uk-accordion="multiple: true">
+                {$filters}
+            </div>
+
+            <div class="filters__foot">
+                <button type="submit" class="uk-button button-blue filters__submit">Применить</button>
+                <button type="reset" class="uk-button filters__reset hidden">
+                    {'mse2_reset' | lexicon}
+                    <svg width="15" height="15">
+                        <use href="{$.assets_url}web/img/svg-sprite.svg#close" />
+                    </svg>
+                </button>
+            </div>
         </form>
     </div>
-    <div class="uk-width-3-4">
+    
+    <div class="uk-width-3-5@s uk-width-3-4@m">
         <div class="filterBar">
             <div class="filterBar__total">
                 Товары {$limit} из <span id="mse2_total">{$total}</span>
