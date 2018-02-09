@@ -8,7 +8,7 @@ App.window.CreateColor = function (config) {
         width: 620,
         autoHeight: true,
         url: App.config.connector_url,
-        action: 'productcolor/create',
+        action: 'mgr/productcolor/create',
         fields: this.getFields(config),
         keys: [{
             key: Ext.EventObject.ENTER, shift: true, fn: function () {
@@ -111,7 +111,7 @@ App.window.UpdateColor = function (config) {
         width: 620,
         autoHeight: true,
         url: App.config.connector_url,
-        action: 'productcolor/update',
+        action: 'mgr/productcolor/update',
         fields: this.getFields(config),
         keys: [{
             key: Ext.EventObject.ENTER, shift: true, fn: function () {

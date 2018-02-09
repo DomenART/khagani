@@ -115,29 +115,29 @@
         <div class="uk-slider-container products-slider-container">
             <ul class="uk-grid uk-grid-medium uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m">
                 <li>
-                    <div class="products-item products-item--new">
+                    <div class="offers-item offers-item--new">
                         <a href="#">
-                            <img src="{$.assets_url}web/img/product-1.jpg" alt="" class="products-item__image">
+                            <img src="{$.assets_url}web/img/product-1.jpg" alt="" class="offers-item__image">
                         </a>
-                        <div class="products-item__docket">
-                            <div class="products-item__prices">
-                                <div class="products-item__price-old">
+                        <div class="offers-item__docket">
+                            <div class="offers-item__prices">
+                                <div class="offers-item__price-old">
                                     18 500
                                     <svg width="10" height="10">
                                         <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                                     </svg>
                                 </div>
-                                <div class="products-item__price-new">
+                                <div class="offers-item__price-new">
                                     16 000
                                     <svg width="14" height="16">
                                         <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                                     </svg>
                                 </div>
                             </div>
-                            <button class="products-item__buy uk-button button-bordered">
+                            <button class="offers-item__buy uk-button button-bordered">
                                 Купить
                             </button>
-                            <a href="#" class="products-item__info">
+                            <a href="#" class="offers-item__info">
                                 <svg width="10" height="20">
                                     <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
                                 </svg>
@@ -146,29 +146,29 @@
                     </div>
                 </li>
                 <li>
-                    <div class="products-item products-item--hit">
+                    <div class="offers-item offers-item--hit">
                         <a href="#">
-                            <img src="{$.assets_url}web/img/product-2.jpg" alt="" class="products-item__image">
+                            <img src="{$.assets_url}web/img/product-2.jpg" alt="" class="offers-item__image">
                         </a>
-                        <div class="products-item__docket">
-                            <div class="products-item__prices">
-                                <div class="products-item__price-old">
+                        <div class="offers-item__docket">
+                            <div class="offers-item__prices">
+                                <div class="offers-item__price-old">
                                     18 500
                                     <svg width="10" height="10">
                                         <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                                     </svg>
                                 </div>
-                                <div class="products-item__price-new">
+                                <div class="offers-item__price-new">
                                     16 000
                                     <svg width="14" height="16">
                                         <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                                     </svg>
                                 </div>
                             </div>
-                            <button class="products-item__buy uk-button button-bordered">
+                            <button class="offers-item__buy uk-button button-bordered">
                                 Купить
                             </button>
-                            <a href="#" class="products-item__info">
+                            <a href="#" class="offers-item__info">
                                 <svg width="10" height="20">
                                     <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
                                 </svg>
@@ -177,29 +177,29 @@
                     </div>
                 </li>
                 <li>
-                    <div class="products-item products-item--discount">
+                    <div class="offers-item offers-item--discount">
                         <a href="#">
-                            <img src="{$.assets_url}web/img/product-3.jpg" alt="" class="products-item__image">
+                            <img src="{$.assets_url}web/img/product-3.jpg" alt="" class="offers-item__image">
                         </a>
-                        <div class="products-item__docket">
-                            <div class="products-item__prices">
-                                <div class="products-item__price-old">
+                        <div class="offers-item__docket">
+                            <div class="offers-item__prices">
+                                <div class="offers-item__price-old">
                                     18 500
                                     <svg width="10" height="10">
                                         <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                                     </svg>
                                 </div>
-                                <div class="products-item__price-new">
+                                <div class="offers-item__price-new">
                                     16 000
                                     <svg width="14" height="16">
                                         <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                                     </svg>
                                 </div>
                             </div>
-                            <button class="products-item__buy uk-button button-bordered">
+                            <button class="offers-item__buy uk-button button-bordered">
                                 Купить
                             </button>
-                            <a href="#" class="products-item__info">
+                            <a href="#" class="offers-item__info">
                                 <svg width="10" height="20">
                                     <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
                                 </svg>
@@ -208,29 +208,29 @@
                     </div>
                 </li>
                 <li>
-                    <div class="products-item">
+                    <div class="offers-item">
                         <a href="#">
-                            <img src="{$.assets_url}web/img/product-4.jpg" alt="" class="products-item__image">
+                            <img src="{$.assets_url}web/img/product-4.jpg" alt="" class="offers-item__image">
                         </a>
-                        <div class="products-item__docket">
-                            <div class="products-item__prices">
-                                <div class="products-item__price-old">
+                        <div class="offers-item__docket">
+                            <div class="offers-item__prices">
+                                <div class="offers-item__price-old">
                                     18 500
                                     <svg width="10" height="10">
                                         <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                                     </svg>
                                 </div>
-                                <div class="products-item__price-new">
+                                <div class="offers-item__price-new">
                                     16 000
                                     <svg width="14" height="16">
                                         <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                                     </svg>
                                 </div>
                             </div>
-                            <button class="products-item__buy uk-button button-bordered">
+                            <button class="offers-item__buy uk-button button-bordered">
                                 Купить
                             </button>
-                            <a href="#" class="products-item__info">
+                            <a href="#" class="offers-item__info">
                                 <svg width="10" height="20">
                                     <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
                                 </svg>
@@ -239,29 +239,29 @@
                     </div>
                 </li>
                 <li>
-                    <div class="products-item">
+                    <div class="offers-item">
                         <a href="#">
-                            <img src="{$.assets_url}web/img/product-5.jpg" alt="" class="products-item__image">
+                            <img src="{$.assets_url}web/img/product-5.jpg" alt="" class="offers-item__image">
                         </a>
-                        <div class="products-item__docket">
-                            <div class="products-item__prices">
-                                <div class="products-item__price-old">
+                        <div class="offers-item__docket">
+                            <div class="offers-item__prices">
+                                <div class="offers-item__price-old">
                                     18 500
                                     <svg width="10" height="10">
                                         <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                                     </svg>
                                 </div>
-                                <div class="products-item__price-new">
+                                <div class="offers-item__price-new">
                                     16 000
                                     <svg width="14" height="16">
                                         <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                                     </svg>
                                 </div>
                             </div>
-                            <button class="products-item__buy uk-button button-bordered">
+                            <button class="offers-item__buy uk-button button-bordered">
                                 Купить
                             </button>
-                            <a href="#" class="products-item__info">
+                            <a href="#" class="offers-item__info">
                                 <svg width="10" height="20">
                                     <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
                                 </svg>
@@ -270,29 +270,29 @@
                     </div>
                 </li>
                 <li>
-                    <div class="products-item">
+                    <div class="offers-item">
                         <a href="#">
-                            <img src="{$.assets_url}web/img/product-6.jpg" alt="" class="products-item__image">
+                            <img src="{$.assets_url}web/img/product-6.jpg" alt="" class="offers-item__image">
                         </a>
-                        <div class="products-item__docket">
-                            <div class="products-item__prices">
-                                <div class="products-item__price-old">
+                        <div class="offers-item__docket">
+                            <div class="offers-item__prices">
+                                <div class="offers-item__price-old">
                                     18 500
                                     <svg width="10" height="10">
                                         <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                                     </svg>
                                 </div>
-                                <div class="products-item__price-new">
+                                <div class="offers-item__price-new">
                                     16 000
                                     <svg width="14" height="16">
                                         <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                                     </svg>
                                 </div>
                             </div>
-                            <button class="products-item__buy uk-button button-bordered">
+                            <button class="offers-item__buy uk-button button-bordered">
                                 Купить
                             </button>
-                            <a href="#" class="products-item__info">
+                            <a href="#" class="offers-item__info">
                                 <svg width="10" height="20">
                                     <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
                                 </svg>
@@ -309,87 +309,87 @@
     <div class="uk-container">
         <h2 class="section-home__title">Популярное</h2>
         <div class="products">
-            <div class="products-item">
+            <div class="offers-item">
                 <a href="#">
-                    <img src="{$.assets_url}web/img/product-1.jpg" alt="" class="products-item__image">
+                    <img src="{$.assets_url}web/img/product-1.jpg" alt="" class="offers-item__image">
                 </a>
-                <div class="products-item__docket">
-                    <div class="products-item__prices">
-                        <div class="products-item__price-old">
+                <div class="offers-item__docket">
+                    <div class="offers-item__prices">
+                        <div class="offers-item__price-old">
                             18 500
                             <svg width="10" height="10">
                                 <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                             </svg>
                         </div>
-                        <div class="products-item__price-new">
+                        <div class="offers-item__price-new">
                             16 000
                             <svg width="14" height="16">
                                 <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                             </svg>
                         </div>
                     </div>
-                    <button class="products-item__buy uk-button button-bordered">
+                    <button class="offers-item__buy uk-button button-bordered">
                         Купить
                     </button>
-                    <a href="#" class="products-item__info">
+                    <a href="#" class="offers-item__info">
                         <svg width="10" height="20">
                             <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
                         </svg>
                     </a>
                 </div>
             </div>
-            <div class="products-item">
+            <div class="offers-item">
                 <a href="#">
-                    <img src="{$.assets_url}web/img/product-1.jpg" alt="" class="products-item__image">
+                    <img src="{$.assets_url}web/img/product-1.jpg" alt="" class="offers-item__image">
                 </a>
-                <div class="products-item__docket">
-                    <div class="products-item__prices">
-                        <div class="products-item__price-old">
+                <div class="offers-item__docket">
+                    <div class="offers-item__prices">
+                        <div class="offers-item__price-old">
                             18 500
                             <svg width="10" height="10">
                                 <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                             </svg>
                         </div>
-                        <div class="products-item__price-new">
+                        <div class="offers-item__price-new">
                             16 000
                             <svg width="14" height="16">
                                 <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                             </svg>
                         </div>
                     </div>
-                    <button class="products-item__buy uk-button button-bordered">
+                    <button class="offers-item__buy uk-button button-bordered">
                         Купить
                     </button>
-                    <a href="#" class="products-item__info">
+                    <a href="#" class="offers-item__info">
                         <svg width="10" height="20">
                             <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
                         </svg>
                     </a>
                 </div>
             </div>
-            <div class="products-item">
+            <div class="offers-item">
                 <a href="#">
-                    <img src="{$.assets_url}web/img/product-1.jpg" alt="" class="products-item__image">
+                    <img src="{$.assets_url}web/img/product-1.jpg" alt="" class="offers-item__image">
                 </a>
-                <div class="products-item__docket">
-                    <div class="products-item__prices">
-                        <div class="products-item__price-old">
+                <div class="offers-item__docket">
+                    <div class="offers-item__prices">
+                        <div class="offers-item__price-old">
                             18 500
                             <svg width="10" height="10">
                                 <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                             </svg>
                         </div>
-                        <div class="products-item__price-new">
+                        <div class="offers-item__price-new">
                             16 000
                             <svg width="14" height="16">
                                 <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
                             </svg>
                         </div>
                     </div>
-                    <button class="products-item__buy uk-button button-bordered">
+                    <button class="offers-item__buy uk-button button-bordered">
                         Купить
                     </button>
-                    <a href="#" class="products-item__info">
+                    <a href="#" class="offers-item__info">
                         <svg width="10" height="20">
                             <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
                         </svg>

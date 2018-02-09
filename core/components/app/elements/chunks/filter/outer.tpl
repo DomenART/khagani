@@ -85,7 +85,7 @@
             {/if}
         </div>
 
-        <div class="products" id="mse2_results">
+        <div class="products js-products" id="mse2_results">
             {$results}
         </div>
 

@@ -1,4 +1,4 @@
-class FilterCategories {
+export default class FilterCategories {
 
   constructor(wrap) {
     this.wrap = wrap
@@ -40,10 +40,3 @@ class FilterCategories {
   }
 
 }
-
-document.querySelectorAll('.js-filter-categories').forEach(wrap => {
-    new FilterCategories(wrap, {
-        rows: '.js-filter-categories-rows>*',
-        add: '.js-filter-categories-add'
-    })
-})

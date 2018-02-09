@@ -26,6 +26,7 @@ class App
             'modelPath' => $corePath . 'model/',
             'processorsPath' => $corePath . 'processors/',
             'assetsUrl' => $assetsUrl,
+            'connectorUrl' => $assetsUrl . 'connector.php',
         ], $config);
         
         $this->modx->addPackage('app', $this->config['modelPath']);
@@ -104,6 +105,10 @@ class App
                     return $this->getColors($input);
                 });
 
+                $fenom->addModifier('getImages', function ($input) {
+                    return $this->getImages($input);
+                });
+
                 $fenom->addModifier('productsCount', function ($input) {
                     return $input;
                 });
@@ -155,7 +160,7 @@ class App
                 $this->modx->resource->_output = preg_replace('#\s+#', ' ', $this->modx->resource->_output);
 
                 $data_js = preg_replace(array('/^\n/', '/\t{6}/'), '', '
-                    App.config.connector_url = "' . $this->config['assetsUrl'] . 'mgr/connector.php";
+                    App.config.connector_url = "' . $this->config['connectorUrl'] . '";
                     App.product_id = ' . $id . ';
                 ');
                 $this->modx->regClientStartupScript("<script type=\"text/javascript\">\n" . $data_js . "\n</script>", true);
@@ -181,11 +186,47 @@ class App
         $q->where(array(
             'AppProductColor.product_id' => $id
         ));
-        $q->select('AppProductColor.id,AppColor.label,AppColor.color,Image.url as image,Thumb.url as thumb');
-        $colors = $this->modx->getCollection('AppProductColor', $q);
+        $q->select('AppProductColor.id,Image.id as file,AppColor.label,AppColor.color,Image.url as image,Thumb.url as thumb');
         if ($q->prepare() && $q->stmt->execute()) {
             $colors = $q->stmt->fetchAll(PDO::FETCH_ASSOC);
             return $colors;
         }
+    }
+
+    public function getImages($id)
+    {
+        $q = $this->modx->newQuery('msProductFile');
+        $q->where(array(
+            'msProductFile.product_id' => $id,
+            'msProductFile.parent' => 0,
+            'msProductFile.active' => 1
+        ));
+        $q->sortby('rank', 'ASC');
+        $q->select($this->modx->getSelectColumns('msProductFile','msProductFile',''));
+        if ($q->prepare() && $q->stmt->execute()) {
+            $images = $q->stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $images;
+        }
+    }
+
+    public function quickView($id)
+    {
+        $response = $this->runProcessor('product/quickview', [
+            'id' => $id
+        ]);
+
+        if($response['success']) {
+            $html = $this->pdoTools->getChunk('@FILE chunks/modals/quickview.tpl', $response['object']);
+
+            return array(
+                'success' => true,
+                'html' => $html
+            );
+        }
+
+        return array(
+            'success' => false,
+            'message' => 'Product not found'
+        );
     }
 }

@@ -10,7 +10,7 @@ App.grid.ProductColors = function (config) {
         tbar: this.getTopBar(config),
         sm: new Ext.grid.CheckboxSelectionModel(),
         baseParams: {
-            action: 'productcolor/getlist',
+            action: 'mgr/productcolor/getlist',
             product_id: App.product_id
         },
         listeners: {
@@ -80,7 +80,7 @@ Ext.extend(App.grid.ProductColors, MODx.grid.Grid, {
         MODx.Ajax.request({
             url: this.config.url,
             params: {
-                action: 'productcolor/get',
+                action: 'mgr/productcolor/get',
                 id: id
             },
             listeners: {
@@ -121,7 +121,7 @@ Ext.extend(App.grid.ProductColors, MODx.grid.Grid, {
                 : _('app_product_color_remove_confirm'),
             url: this.config.url,
             params: {
-                action: 'productcolor/remove',
+                action: 'mgr/productcolor/remove',
                 ids: Ext.util.JSON.encode(ids),
             },
             listeners: {
