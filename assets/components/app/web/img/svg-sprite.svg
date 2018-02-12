@@ -26,6 +26,12 @@
     <symbol id="slider-right" viewBox="0 0 12 15">
         <path d="M10 8l-5-6.01h-4l5 6-5 6h4l5-6z" />
     </symbol>
+    <symbol id="slider-up" viewBox="0 0 15 12">
+        <path d="M7.9927,1.99104l-6.00321,5.00288v4.00412l6.00355,-5.00306l6.00355,5.00306v-4.00412l-6.00355,-5.00288v0z" />
+    </symbol>
+    <symbol id="slider-down" viewBox="0 0 15 12">
+        <path d="M7.99266,10.00876l-6.00321,-5.00288v-4.00412l6.00355,5.00306l6.00355,-5.00306v4.00412l-6.00355,5.00288v0z" />
+    </symbol>
     <symbol id="check" viewBox="0 0 21 19">
         <path d="M 2,11 4,9 8,14 18,2 20,4 8,18 Z" />
     </symbol>

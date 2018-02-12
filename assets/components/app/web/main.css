@@ -1076,8 +1076,8 @@ select.uk-form-width-xsmall {
 .uk-checkbox {
   /* 1 */
   display: inline-block;
-  height: 16px;
-  width: 16px;
+  height: 18px;
+  width: 18px;
   /* 2 */
   overflow: hidden;
   /* 3 */
@@ -1087,10 +1087,15 @@ select.uk-form-width-xsmall {
   -webkit-appearance: none;
   -moz-appearance: none;
   /* 5 */
-  background-color: #ebebeb;
+  background-color: #ffffff;
   /* 6 */
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  border: 1px solid #cccccc;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 2px;
+  overflow: visible;
 }
 .uk-radio {
   border-radius: 50%;
@@ -1099,6 +1104,7 @@ select.uk-form-width-xsmall {
 .uk-radio:focus,
 .uk-checkbox:focus {
   outline: none;
+  background-image: none !important;
 }
 /*
  * Checked
@@ -1106,13 +1112,27 @@ select.uk-form-width-xsmall {
 .uk-radio:checked,
 .uk-checkbox:checked,
 .uk-checkbox:indeterminate {
-  background-color: #1e87f0;
+  background-color: #ffffff;
+  position: relative;
+  background-image: none !important;
+}
+.uk-radio:checked:before,
+.uk-checkbox:checked:before,
+.uk-checkbox:indeterminate:before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 18px;
+  height: 18px;
+  background: url(img/svg-sprite.svg?0d2abfdc48eb8d1c870b27c4b2113506#check-for-checkbox) no-repeat 50% 50%;
 }
 /* Focus */
 .uk-radio:checked:focus,
 .uk-checkbox:checked:focus,
 .uk-checkbox:indeterminate:focus {
-  background-color: #0e6dcd;
+  background-color: #ffffff;
+  background-image: none !important;
 }
 /*
  * Icons
@@ -1921,6 +1941,166 @@ select.uk-form-width-xsmall {
           flex: auto;
 }
 /* ========================================================================
+   Component: Card
+ ========================================================================== */
+.uk-card {
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/* Sections
+ ========================================================================== */
+.uk-card-body {
+  padding: 30px 30px;
+}
+.uk-card-header {
+  padding: 15px 30px;
+}
+.uk-card-footer {
+  padding: 15px 30px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .uk-card-body {
+    padding: 40px 40px;
+  }
+  .uk-card-header {
+    padding: 20px 40px;
+  }
+  .uk-card-footer {
+    padding: 20px 40px;
+  }
+}
+/*
+ * Micro clearfix
+ */
+.uk-card-body::before,
+.uk-card-body::after,
+.uk-card-header::before,
+.uk-card-header::after,
+.uk-card-footer::before,
+.uk-card-footer::after {
+  content: "";
+  display: table;
+}
+.uk-card-body::after,
+.uk-card-header::after,
+.uk-card-footer::after {
+  clear: both;
+}
+/*
+ * Remove margin from the last-child
+ */
+.uk-card-body > :last-child,
+.uk-card-header > :last-child,
+.uk-card-footer > :last-child {
+  margin-bottom: 0;
+}
+/* Media
+ ========================================================================== */
+/*
+ * Reserved alignment modifier to style the media element, e.g. with `border-radius`
+ * Implemented by the theme
+ */
+/* Title
+ ========================================================================== */
+.uk-card-title {
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+/* Badge
+ ========================================================================== */
+.uk-card-badge {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  z-index: 1;
+}
+/*
+ * Remove margin from adjacent element
+ */
+.uk-card-badge:first-child + * {
+  margin-top: 0;
+}
+/* Hover modifier
+ ========================================================================== */
+.uk-card-hover:not(.uk-card-default):not(.uk-card-primary):not(.uk-card-secondary):hover {
+  background: #f8f8f8;
+}
+/* Style modifiers
+ ========================================================================== */
+/*
+ * Default
+ * Note: Header and Footer are only implemented for the default style
+ */
+.uk-card-default {
+  background: #f8f8f8;
+  color: #666;
+}
+.uk-card-default .uk-card-title {
+  color: #333;
+}
+.uk-card-default.uk-card-hover:hover {
+  background-color: #ebebeb;
+}
+/*
+ * Primary
+ */
+.uk-card-primary {
+  background: #1e87f0;
+  color: #fff;
+}
+.uk-card-primary .uk-card-title {
+  color: #fff;
+}
+.uk-card-primary.uk-card-hover:hover {
+  background-color: #0f7ae5;
+}
+/*
+ * Secondary
+ */
+.uk-card-secondary {
+  background: #222;
+  color: #fff;
+}
+.uk-card-secondary .uk-card-title {
+  color: #fff;
+}
+.uk-card-secondary.uk-card-hover:hover {
+  background-color: #151515;
+}
+/* Size modifier
+ ========================================================================== */
+/*
+ * Small
+ */
+.uk-card-small.uk-card-body,
+.uk-card-small .uk-card-body {
+  padding: 20px 20px;
+}
+.uk-card-small .uk-card-header {
+  padding: 13px 20px;
+}
+.uk-card-small .uk-card-footer {
+  padding: 13px 20px;
+}
+/*
+ * Large
+ */
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .uk-card-large.uk-card-body,
+  .uk-card-large .uk-card-body {
+    padding: 70px 70px;
+  }
+  .uk-card-large .uk-card-header {
+    padding: 35px 70px;
+  }
+  .uk-card-large .uk-card-footer {
+    padding: 35px 70px;
+  }
+}
+/* ========================================================================
    Component: Close
  ========================================================================== */
 /*
@@ -2312,6 +2492,134 @@ select.uk-form-width-xsmall {
   text-align: left;
 }
 /* ========================================================================
+   Component: Slidenav
+ ========================================================================== */
+/*
+ * Adopts `uk-icon`
+ */
+.uk-slidenav {
+  padding: 5px 10px;
+  color: rgba(102, 102, 102, 0.5);
+}
+/* Hover + Focus */
+.uk-slidenav:hover,
+.uk-slidenav:focus {
+  color: rgba(102, 102, 102, 0.9);
+  outline: none;
+}
+/* OnClick */
+.uk-slidenav:active {
+  color: rgba(102, 102, 102, 0.5);
+}
+/* Icon modifier
+ ========================================================================== */
+/*
+ * Previous
+ */
+/*
+ * Next
+ */
+/* Size modifier
+ ========================================================================== */
+.uk-slidenav-large {
+  padding: 10px 10px;
+}
+/* Container
+ ========================================================================== */
+.uk-slidenav-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/* ========================================================================
+   Component: Dotnav
+ ========================================================================== */
+/*
+ * 1. Allow items to wrap into the next line
+ * 2. Reset list
+ * 3. Gutter
+ */
+.uk-dotnav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /* 1 */
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  /* 2 */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* 3 */
+  margin-left: -12px;
+}
+/*
+ * 1. Space is allocated solely based on content dimensions: 0 0 auto
+ * 2. Gutter
+ */
+.uk-dotnav > * {
+  /* 1 */
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  /* 2 */
+  padding-left: 12px;
+}
+/* Items
+ ========================================================================== */
+/*
+ * Items
+ * 1. Hide text if present
+ */
+.uk-dotnav > * > * {
+  display: block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(102, 102, 102, 0.2);
+  /* 1 */
+  text-indent: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+/* Hover + Focus */
+.uk-dotnav > * > :hover,
+.uk-dotnav > * > :focus {
+  background-color: rgba(102, 102, 102, 0.6);
+  outline: none;
+}
+/* OnClick */
+.uk-dotnav > * > :active {
+  background-color: rgba(102, 102, 102, 0.2);
+}
+/* Active */
+.uk-dotnav > .uk-active > * {
+  background-color: rgba(102, 102, 102, 0.6);
+}
+/* Modifier: 'uk-dotnav-vertical'
+ ========================================================================== */
+/*
+ * 1. Change direction
+ * 2. Gutter
+ */
+.uk-dotnav-vertical {
+  /* 1 */
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  /* 2 */
+  margin-left: 0;
+  margin-top: -12px;
+}
+/* 2 */
+.uk-dotnav-vertical > * {
+  padding-left: 0;
+  padding-top: 12px;
+}
+/* ========================================================================
    Component: Accordion
  ========================================================================== */
 .uk-accordion {
@@ -2452,6 +2760,8 @@ select.uk-form-width-xsmall {
   transition-property: opacity, -webkit-transform;
   transition-property: opacity, transform;
   transition-property: opacity, transform, -webkit-transform;
+  -webkit-box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.38);
+          box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.38);
 }
 /*
  * Open
@@ -2491,7 +2801,8 @@ select.uk-form-width-xsmall {
 /* Sections
  ========================================================================== */
 .uk-modal-body {
-  padding: 30px 30px;
+  padding: 20px 20px;
+  padding-right: 15px;
 }
 .uk-modal-header {
   padding: 15px 30px;
@@ -2529,8 +2840,14 @@ select.uk-form-width-xsmall {
 /* Title
  ========================================================================== */
 .uk-modal-title {
-  font-size: 2rem;
-  line-height: 1.3;
+  font-size: 14px;
+  line-height: 1;
+  color: #333333;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 5px 0 20px;
+  margin-bottom: 20px;
 }
 /* Close
  * Adopts `uk-close`
@@ -2538,9 +2855,9 @@ select.uk-form-width-xsmall {
 [class*='uk-modal-close-'] {
   position: absolute;
   z-index: 1010;
-  top: 10px;
-  right: 10px;
-  padding: 5px;
+  top: 15px;
+  right: 15px;
+  padding: 8px;
 }
 /*
  * Remove margin from adjacent element
@@ -2554,6 +2871,13 @@ select.uk-form-width-xsmall {
 /*
  * Default
  */
+.uk-modal-close-default {
+  border: 1px solid #cccccc;
+}
+.uk-modal-close-default:hover {
+  color: #333;
+  border-color: #999;
+}
 /*
  * Outside
  * 1. Prevent scrollbar on small devices
@@ -2561,7 +2885,7 @@ select.uk-form-width-xsmall {
 .uk-modal-close-outside {
   top: 0;
   /* 1 */
-  right: -5px;
+  right: -8px;
   -webkit-transform: translate(0, -100%);
           transform: translate(0, -100%);
   color: #ffffff;
@@ -4481,167 +4805,6 @@ td.uk-text-break {
   word-break: break-all;
 }
 /* ========================================================================
-   Component: Column
- ========================================================================== */
-[class*='uk-column-'] {
-  -webkit-column-gap: 30px;
-          column-gap: 30px;
-}
-/* Desktop and bigger */
-@media (min-width: 1200px) {
-  [class*='uk-column-'] {
-    -webkit-column-gap: 40px;
-            column-gap: 40px;
-  }
-}
-/*
- * Fix image 1px line wrapping into the next column in Chrome
- */
-[class*='uk-column-'] img {
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-}
-/* Divider
- ========================================================================== */
-/*
- * 1. Double the column gap
- */
-.uk-column-divider {
-  -webkit-column-rule: 1px solid #e5e5e5;
-          column-rule: 1px solid #e5e5e5;
-  /* 1 */
-  -webkit-column-gap: 60px;
-          column-gap: 60px;
-}
-/* Desktop and bigger */
-@media (min-width: 1200px) {
-  .uk-column-divider {
-    -webkit-column-gap: 80px;
-            column-gap: 80px;
-  }
-}
-/* Width modifiers
- ========================================================================== */
-.uk-column-1-2 {
-  -webkit-column-count: 2;
-          column-count: 2;
-}
-.uk-column-1-3 {
-  -webkit-column-count: 3;
-          column-count: 3;
-}
-.uk-column-1-4 {
-  -webkit-column-count: 4;
-          column-count: 4;
-}
-.uk-column-1-5 {
-  -webkit-column-count: 5;
-          column-count: 5;
-}
-.uk-column-1-6 {
-  -webkit-column-count: 6;
-          column-count: 6;
-}
-/* Phone landscape and bigger */
-@media (min-width: 768px) {
-  .uk-column-1-2\@s {
-    -webkit-column-count: 2;
-            column-count: 2;
-  }
-  .uk-column-1-3\@s {
-    -webkit-column-count: 3;
-            column-count: 3;
-  }
-  .uk-column-1-4\@s {
-    -webkit-column-count: 4;
-            column-count: 4;
-  }
-  .uk-column-1-5\@s {
-    -webkit-column-count: 5;
-            column-count: 5;
-  }
-  .uk-column-1-6\@s {
-    -webkit-column-count: 6;
-            column-count: 6;
-  }
-}
-/* Tablet landscape and bigger */
-@media (min-width: 980px) {
-  .uk-column-1-2\@m {
-    -webkit-column-count: 2;
-            column-count: 2;
-  }
-  .uk-column-1-3\@m {
-    -webkit-column-count: 3;
-            column-count: 3;
-  }
-  .uk-column-1-4\@m {
-    -webkit-column-count: 4;
-            column-count: 4;
-  }
-  .uk-column-1-5\@m {
-    -webkit-column-count: 5;
-            column-count: 5;
-  }
-  .uk-column-1-6\@m {
-    -webkit-column-count: 6;
-            column-count: 6;
-  }
-}
-/* Desktop and bigger */
-@media (min-width: 1200px) {
-  .uk-column-1-2\@l {
-    -webkit-column-count: 2;
-            column-count: 2;
-  }
-  .uk-column-1-3\@l {
-    -webkit-column-count: 3;
-            column-count: 3;
-  }
-  .uk-column-1-4\@l {
-    -webkit-column-count: 4;
-            column-count: 4;
-  }
-  .uk-column-1-5\@l {
-    -webkit-column-count: 5;
-            column-count: 5;
-  }
-  .uk-column-1-6\@l {
-    -webkit-column-count: 6;
-            column-count: 6;
-  }
-}
-/* Large screen and bigger */
-@media (min-width: 1600px) {
-  .uk-column-1-2\@xl {
-    -webkit-column-count: 2;
-            column-count: 2;
-  }
-  .uk-column-1-3\@xl {
-    -webkit-column-count: 3;
-            column-count: 3;
-  }
-  .uk-column-1-4\@xl {
-    -webkit-column-count: 4;
-            column-count: 4;
-  }
-  .uk-column-1-5\@xl {
-    -webkit-column-count: 5;
-            column-count: 5;
-  }
-  .uk-column-1-6\@xl {
-    -webkit-column-count: 6;
-            column-count: 6;
-  }
-}
-/* Make element span across all columns
- * Does not work in Firefox yet
- ========================================================================== */
-.uk-column-span {
-  -webkit-column-span: all;
-          column-span: all;
-}
-/* ========================================================================
    Component: Cover
  ========================================================================== */
 /*
@@ -4825,101 +4988,6 @@ iframe.uk-cover {
 }
 .uk-background-blend-luminosity {
   background-blend-mode: luminosity;
-}
-/* ========================================================================
-   Component: Align
- ========================================================================== */
-/*
- * Default
- */
-[class*='uk-align'] {
-  display: block;
-  margin-bottom: 30px;
-}
-* + [class*='uk-align'] {
-  margin-top: 30px;
-}
-/*
- * Center
- */
-.uk-align-center {
-  margin-left: auto;
-  margin-right: auto;
-}
-/*
- * Left/Right
- */
-.uk-align-left {
-  margin-top: 0;
-  margin-right: 30px;
-  float: left;
-}
-.uk-align-right {
-  margin-top: 0;
-  margin-left: 30px;
-  float: right;
-}
-/* Phone landscape and bigger */
-@media (min-width: 768px) {
-  .uk-align-left\@s {
-    margin-top: 0;
-    margin-right: 30px;
-    float: left;
-  }
-  .uk-align-right\@s {
-    margin-top: 0;
-    margin-left: 30px;
-    float: right;
-  }
-}
-/* Tablet landscape and bigger */
-@media (min-width: 980px) {
-  .uk-align-left\@m {
-    margin-top: 0;
-    margin-right: 30px;
-    float: left;
-  }
-  .uk-align-right\@m {
-    margin-top: 0;
-    margin-left: 30px;
-    float: right;
-  }
-}
-/* Desktop and bigger */
-@media (min-width: 1200px) {
-  .uk-align-left\@l {
-    margin-top: 0;
-    float: left;
-  }
-  .uk-align-right\@l {
-    margin-top: 0;
-    float: right;
-  }
-  .uk-align-left,
-  .uk-align-left\@s,
-  .uk-align-left\@m,
-  .uk-align-left\@l {
-    margin-right: 40px;
-  }
-  .uk-align-right,
-  .uk-align-right\@s,
-  .uk-align-right\@m,
-  .uk-align-right\@l {
-    margin-left: 40px;
-  }
-}
-/* Large screen and bigger */
-@media (min-width: 1600px) {
-  .uk-align-left\@xl {
-    margin-top: 0;
-    margin-right: 40px;
-    float: left;
-  }
-  .uk-align-right\@xl {
-    margin-top: 0;
-    margin-left: 40px;
-    float: right;
-  }
 }
 /* ========================================================================
    Component: Utility
@@ -6514,17 +6582,37 @@ iframe.uk-cover {
  * `uk-dark` is or dark colors on light backgrounds
  */
 .uk-light,
+.uk-card-primary.uk-card-body,
+.uk-card-primary > :not([class*='uk-card-media']),
+.uk-card-secondary.uk-card-body,
+.uk-card-secondary > :not([class*='uk-card-media']),
 .uk-overlay-primary {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light a,
 .uk-light .uk-link,
+.uk-card-primary.uk-card-body a,
+.uk-card-primary.uk-card-body .uk-link,
+.uk-card-primary > :not([class*='uk-card-media']) a,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-link,
+.uk-card-secondary.uk-card-body a,
+.uk-card-secondary.uk-card-body .uk-link,
+.uk-card-secondary > :not([class*='uk-card-media']) a,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-link,
 .uk-overlay-primary a,
 .uk-overlay-primary .uk-link {
   color: #fff;
 }
 .uk-light a:hover,
 .uk-light .uk-link:hover,
+.uk-card-primary.uk-card-body a:hover,
+.uk-card-primary.uk-card-body .uk-link:hover,
+.uk-card-primary > :not([class*='uk-card-media']) a:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-link:hover,
+.uk-card-secondary.uk-card-body a:hover,
+.uk-card-secondary.uk-card-body .uk-link:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) a:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-link:hover,
 .uk-overlay-primary a:hover,
 .uk-overlay-primary .uk-link:hover {
   color: #fff;
@@ -6532,12 +6620,28 @@ iframe.uk-cover {
 .uk-light :not(pre) > code,
 .uk-light :not(pre) > kbd,
 .uk-light :not(pre) > samp,
+.uk-card-primary.uk-card-body :not(pre) > code,
+.uk-card-primary.uk-card-body :not(pre) > kbd,
+.uk-card-primary.uk-card-body :not(pre) > samp,
+.uk-card-primary > :not([class*='uk-card-media']) :not(pre) > code,
+.uk-card-primary > :not([class*='uk-card-media']) :not(pre) > kbd,
+.uk-card-primary > :not([class*='uk-card-media']) :not(pre) > samp,
+.uk-card-secondary.uk-card-body :not(pre) > code,
+.uk-card-secondary.uk-card-body :not(pre) > kbd,
+.uk-card-secondary.uk-card-body :not(pre) > samp,
+.uk-card-secondary > :not([class*='uk-card-media']) :not(pre) > code,
+.uk-card-secondary > :not([class*='uk-card-media']) :not(pre) > kbd,
+.uk-card-secondary > :not([class*='uk-card-media']) :not(pre) > samp,
 .uk-overlay-primary :not(pre) > code,
 .uk-overlay-primary :not(pre) > kbd,
 .uk-overlay-primary :not(pre) > samp {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light em,
+.uk-card-primary.uk-card-body em,
+.uk-card-primary > :not([class*='uk-card-media']) em,
+.uk-card-secondary.uk-card-body em,
+.uk-card-secondary > :not([class*='uk-card-media']) em,
 .uk-overlay-primary em {
   color: #fff;
 }
@@ -6553,6 +6657,54 @@ iframe.uk-cover {
 .uk-light .uk-h5,
 .uk-light h6,
 .uk-light .uk-h6,
+.uk-card-primary.uk-card-body h1,
+.uk-card-primary.uk-card-body .uk-h1,
+.uk-card-primary.uk-card-body h2,
+.uk-card-primary.uk-card-body .uk-h2,
+.uk-card-primary.uk-card-body h3,
+.uk-card-primary.uk-card-body .uk-h3,
+.uk-card-primary.uk-card-body h4,
+.uk-card-primary.uk-card-body .uk-h4,
+.uk-card-primary.uk-card-body h5,
+.uk-card-primary.uk-card-body .uk-h5,
+.uk-card-primary.uk-card-body h6,
+.uk-card-primary.uk-card-body .uk-h6,
+.uk-card-primary > :not([class*='uk-card-media']) h1,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-h1,
+.uk-card-primary > :not([class*='uk-card-media']) h2,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-h2,
+.uk-card-primary > :not([class*='uk-card-media']) h3,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-h3,
+.uk-card-primary > :not([class*='uk-card-media']) h4,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-h4,
+.uk-card-primary > :not([class*='uk-card-media']) h5,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-h5,
+.uk-card-primary > :not([class*='uk-card-media']) h6,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-h6,
+.uk-card-secondary.uk-card-body h1,
+.uk-card-secondary.uk-card-body .uk-h1,
+.uk-card-secondary.uk-card-body h2,
+.uk-card-secondary.uk-card-body .uk-h2,
+.uk-card-secondary.uk-card-body h3,
+.uk-card-secondary.uk-card-body .uk-h3,
+.uk-card-secondary.uk-card-body h4,
+.uk-card-secondary.uk-card-body .uk-h4,
+.uk-card-secondary.uk-card-body h5,
+.uk-card-secondary.uk-card-body .uk-h5,
+.uk-card-secondary.uk-card-body h6,
+.uk-card-secondary.uk-card-body .uk-h6,
+.uk-card-secondary > :not([class*='uk-card-media']) h1,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-h1,
+.uk-card-secondary > :not([class*='uk-card-media']) h2,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-h2,
+.uk-card-secondary > :not([class*='uk-card-media']) h3,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-h3,
+.uk-card-secondary > :not([class*='uk-card-media']) h4,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-h4,
+.uk-card-secondary > :not([class*='uk-card-media']) h5,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-h5,
+.uk-card-secondary > :not([class*='uk-card-media']) h6,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-h6,
 .uk-overlay-primary h1,
 .uk-overlay-primary .uk-h1,
 .uk-overlay-primary h2,
@@ -6569,57 +6721,125 @@ iframe.uk-cover {
 }
 .uk-light hr,
 .uk-light .uk-hr,
+.uk-card-primary.uk-card-body hr,
+.uk-card-primary.uk-card-body .uk-hr,
+.uk-card-primary > :not([class*='uk-card-media']) hr,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-hr,
+.uk-card-secondary.uk-card-body hr,
+.uk-card-secondary.uk-card-body .uk-hr,
+.uk-card-secondary > :not([class*='uk-card-media']) hr,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-hr,
 .uk-overlay-primary hr,
 .uk-overlay-primary .uk-hr {
   border-top-color: rgba(255, 255, 255, 0.2);
 }
 .uk-light a.uk-link-muted,
 .uk-light .uk-link-muted a,
+.uk-card-primary.uk-card-body a.uk-link-muted,
+.uk-card-primary.uk-card-body .uk-link-muted a,
+.uk-card-primary > :not([class*='uk-card-media']) a.uk-link-muted,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-link-muted a,
+.uk-card-secondary.uk-card-body a.uk-link-muted,
+.uk-card-secondary.uk-card-body .uk-link-muted a,
+.uk-card-secondary > :not([class*='uk-card-media']) a.uk-link-muted,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-link-muted a,
 .uk-overlay-primary a.uk-link-muted,
 .uk-overlay-primary .uk-link-muted a {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light a.uk-link-muted:hover,
 .uk-light .uk-link-muted a:hover,
+.uk-card-primary.uk-card-body a.uk-link-muted:hover,
+.uk-card-primary.uk-card-body .uk-link-muted a:hover,
+.uk-card-primary > :not([class*='uk-card-media']) a.uk-link-muted:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-link-muted a:hover,
+.uk-card-secondary.uk-card-body a.uk-link-muted:hover,
+.uk-card-secondary.uk-card-body .uk-link-muted a:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) a.uk-link-muted:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-link-muted a:hover,
 .uk-overlay-primary a.uk-link-muted:hover,
 .uk-overlay-primary .uk-link-muted a:hover {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light a.uk-link-text:hover,
 .uk-light .uk-link-text a:hover,
+.uk-card-primary.uk-card-body a.uk-link-text:hover,
+.uk-card-primary.uk-card-body .uk-link-text a:hover,
+.uk-card-primary > :not([class*='uk-card-media']) a.uk-link-text:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-link-text a:hover,
+.uk-card-secondary.uk-card-body a.uk-link-text:hover,
+.uk-card-secondary.uk-card-body .uk-link-text a:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) a.uk-link-text:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-link-text a:hover,
 .uk-overlay-primary a.uk-link-text:hover,
 .uk-overlay-primary .uk-link-text a:hover {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-icon-link,
+.uk-card-primary.uk-card-body .uk-icon-link,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-icon-link,
+.uk-card-secondary.uk-card-body .uk-icon-link,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-icon-link,
 .uk-overlay-primary .uk-icon-link {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-icon-link:hover,
 .uk-light .uk-icon-link:focus,
+.uk-card-primary.uk-card-body .uk-icon-link:hover,
+.uk-card-primary.uk-card-body .uk-icon-link:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-icon-link:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-icon-link:focus,
+.uk-card-secondary.uk-card-body .uk-icon-link:hover,
+.uk-card-secondary.uk-card-body .uk-icon-link:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-icon-link:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-icon-link:focus,
 .uk-overlay-primary .uk-icon-link:hover,
 .uk-overlay-primary .uk-icon-link:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-icon-link:active,
 .uk-light .uk-active > .uk-icon-link,
+.uk-card-primary.uk-card-body .uk-icon-link:active,
+.uk-card-primary.uk-card-body .uk-active > .uk-icon-link,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-icon-link:active,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-active > .uk-icon-link,
+.uk-card-secondary.uk-card-body .uk-icon-link:active,
+.uk-card-secondary.uk-card-body .uk-active > .uk-icon-link,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-icon-link:active,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-active > .uk-icon-link,
 .uk-overlay-primary .uk-icon-link:active,
 .uk-overlay-primary .uk-active > .uk-icon-link {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-icon-button,
+.uk-card-primary.uk-card-body .uk-icon-button,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-icon-button,
+.uk-card-secondary.uk-card-body .uk-icon-button,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-icon-button,
 .uk-overlay-primary .uk-icon-button {
   background-color: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-icon-button:hover,
 .uk-light .uk-icon-button:focus,
+.uk-card-primary.uk-card-body .uk-icon-button:hover,
+.uk-card-primary.uk-card-body .uk-icon-button:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-icon-button:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-icon-button:focus,
+.uk-card-secondary.uk-card-body .uk-icon-button:hover,
+.uk-card-secondary.uk-card-body .uk-icon-button:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-icon-button:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-icon-button:focus,
 .uk-overlay-primary .uk-icon-button:hover,
 .uk-overlay-primary .uk-icon-button:focus {
   background-color: rgba(242, 242, 242, 0.1);
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-icon-button:active,
+.uk-card-primary.uk-card-body .uk-icon-button:active,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-icon-button:active,
+.uk-card-secondary.uk-card-body .uk-icon-button:active,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-icon-button:active,
 .uk-overlay-primary .uk-icon-button:active {
   background-color: rgba(230, 230, 230, 0.1);
   color: rgba(255, 255, 255, 0.7);
@@ -6627,6 +6847,18 @@ iframe.uk-cover {
 .uk-light .uk-input,
 .uk-light .uk-select,
 .uk-light .uk-textarea,
+.uk-card-primary.uk-card-body .uk-input,
+.uk-card-primary.uk-card-body .uk-select,
+.uk-card-primary.uk-card-body .uk-textarea,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-input,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-select,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-textarea,
+.uk-card-secondary.uk-card-body .uk-input,
+.uk-card-secondary.uk-card-body .uk-select,
+.uk-card-secondary.uk-card-body .uk-textarea,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-input,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-select,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea,
 .uk-overlay-primary .uk-input,
 .uk-overlay-primary .uk-select,
 .uk-overlay-primary .uk-textarea {
@@ -6637,6 +6869,18 @@ iframe.uk-cover {
 .uk-light .uk-input:focus,
 .uk-light .uk-select:focus,
 .uk-light .uk-textarea:focus,
+.uk-card-primary.uk-card-body .uk-input:focus,
+.uk-card-primary.uk-card-body .uk-select:focus,
+.uk-card-primary.uk-card-body .uk-textarea:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-input:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-select:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-textarea:focus,
+.uk-card-secondary.uk-card-body .uk-input:focus,
+.uk-card-secondary.uk-card-body .uk-select:focus,
+.uk-card-secondary.uk-card-body .uk-textarea:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-input:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-select:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea:focus,
 .uk-overlay-primary .uk-input:focus,
 .uk-overlay-primary .uk-select:focus,
 .uk-overlay-primary .uk-textarea:focus {
@@ -6644,43 +6888,87 @@ iframe.uk-cover {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-input:-ms-input-placeholder,
+.uk-card-primary.uk-card-body .uk-input:-ms-input-placeholder,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-input:-ms-input-placeholder,
+.uk-card-secondary.uk-card-body .uk-input:-ms-input-placeholder,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-input:-ms-input-placeholder,
 .uk-overlay-primary .uk-input:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.5) !important;
 }
 .uk-light .uk-input::-webkit-input-placeholder,
+.uk-card-primary.uk-card-body .uk-input::-webkit-input-placeholder,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-input::-webkit-input-placeholder,
+.uk-card-secondary.uk-card-body .uk-input::-webkit-input-placeholder,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-input::-webkit-input-placeholder,
 .uk-overlay-primary .uk-input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-input::-ms-input-placeholder,
+.uk-card-primary.uk-card-body .uk-input::-ms-input-placeholder,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-input::-ms-input-placeholder,
+.uk-card-secondary.uk-card-body .uk-input::-ms-input-placeholder,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-input::-ms-input-placeholder,
 .uk-overlay-primary .uk-input::-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-input::placeholder,
+.uk-card-primary.uk-card-body .uk-input::placeholder,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-input::placeholder,
+.uk-card-secondary.uk-card-body .uk-input::placeholder,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-input::placeholder,
 .uk-overlay-primary .uk-input::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-textarea:-ms-input-placeholder,
+.uk-card-primary.uk-card-body .uk-textarea:-ms-input-placeholder,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-textarea:-ms-input-placeholder,
+.uk-card-secondary.uk-card-body .uk-textarea:-ms-input-placeholder,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea:-ms-input-placeholder,
 .uk-overlay-primary .uk-textarea:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.5) !important;
 }
 .uk-light .uk-textarea::-webkit-input-placeholder,
+.uk-card-primary.uk-card-body .uk-textarea::-webkit-input-placeholder,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-textarea::-webkit-input-placeholder,
+.uk-card-secondary.uk-card-body .uk-textarea::-webkit-input-placeholder,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea::-webkit-input-placeholder,
 .uk-overlay-primary .uk-textarea::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-textarea::-ms-input-placeholder,
+.uk-card-primary.uk-card-body .uk-textarea::-ms-input-placeholder,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-textarea::-ms-input-placeholder,
+.uk-card-secondary.uk-card-body .uk-textarea::-ms-input-placeholder,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea::-ms-input-placeholder,
 .uk-overlay-primary .uk-textarea::-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-textarea::placeholder,
+.uk-card-primary.uk-card-body .uk-textarea::placeholder,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-textarea::placeholder,
+.uk-card-secondary.uk-card-body .uk-textarea::placeholder,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea::placeholder,
 .uk-overlay-primary .uk-textarea::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-select:not([multiple]):not([size]),
+.uk-card-primary.uk-card-body .uk-select:not([multiple]):not([size]),
+.uk-card-primary > :not([class*='uk-card-media']) .uk-select:not([multiple]):not([size]),
+.uk-card-secondary.uk-card-body .uk-select:not([multiple]):not([size]),
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-select:not([multiple]):not([size]),
 .uk-overlay-primary .uk-select:not([multiple]):not([size]) {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2224%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22rgba%28255,%20255,%20255,%200.7%29%22%20points%3D%2212%201%209%206%2015%206%22%20%2F%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22rgba%28255,%20255,%20255,%200.7%29%22%20points%3D%2212%2013%209%208%2015%208%22%20%2F%3E%0A%3C%2Fsvg%3E%0A");
 }
 .uk-light .uk-radio,
 .uk-light .uk-checkbox,
+.uk-card-primary.uk-card-body .uk-radio,
+.uk-card-primary.uk-card-body .uk-checkbox,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-radio,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-checkbox,
+.uk-card-secondary.uk-card-body .uk-radio,
+.uk-card-secondary.uk-card-body .uk-checkbox,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-radio,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-checkbox,
 .uk-overlay-primary .uk-radio,
 .uk-overlay-primary .uk-checkbox {
   background-color: rgba(242, 242, 242, 0.1);
@@ -6688,6 +6976,18 @@ iframe.uk-cover {
 .uk-light .uk-radio:checked,
 .uk-light .uk-checkbox:checked,
 .uk-light .uk-checkbox:indeterminate,
+.uk-card-primary.uk-card-body .uk-radio:checked,
+.uk-card-primary.uk-card-body .uk-checkbox:checked,
+.uk-card-primary.uk-card-body .uk-checkbox:indeterminate,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-radio:checked,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-checkbox:checked,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-checkbox:indeterminate,
+.uk-card-secondary.uk-card-body .uk-radio:checked,
+.uk-card-secondary.uk-card-body .uk-checkbox:checked,
+.uk-card-secondary.uk-card-body .uk-checkbox:indeterminate,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-radio:checked,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-checkbox:checked,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-checkbox:indeterminate,
 .uk-overlay-primary .uk-radio:checked,
 .uk-overlay-primary .uk-checkbox:checked,
 .uk-overlay-primary .uk-checkbox:indeterminate {
@@ -6696,30 +6996,66 @@ iframe.uk-cover {
 .uk-light .uk-radio:checked:focus,
 .uk-light .uk-checkbox:checked:focus,
 .uk-light .uk-checkbox:indeterminate:focus,
+.uk-card-primary.uk-card-body .uk-radio:checked:focus,
+.uk-card-primary.uk-card-body .uk-checkbox:checked:focus,
+.uk-card-primary.uk-card-body .uk-checkbox:indeterminate:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-radio:checked:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-checkbox:checked:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-checkbox:indeterminate:focus,
+.uk-card-secondary.uk-card-body .uk-radio:checked:focus,
+.uk-card-secondary.uk-card-body .uk-checkbox:checked:focus,
+.uk-card-secondary.uk-card-body .uk-checkbox:indeterminate:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-radio:checked:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-checkbox:checked:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-checkbox:indeterminate:focus,
 .uk-overlay-primary .uk-radio:checked:focus,
 .uk-overlay-primary .uk-checkbox:checked:focus,
 .uk-overlay-primary .uk-checkbox:indeterminate:focus {
   background-color: #e6e6e6;
 }
 .uk-light .uk-radio:checked,
+.uk-card-primary.uk-card-body .uk-radio:checked,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-radio:checked,
+.uk-card-secondary.uk-card-body .uk-radio:checked,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-radio:checked,
 .uk-overlay-primary .uk-radio:checked {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Ccircle%20fill%3D%22%23666%22%20cx%3D%228%22%20cy%3D%228%22%20r%3D%222%22%20%2F%3E%0A%3C%2Fsvg%3E");
 }
 .uk-light .uk-checkbox:checked,
+.uk-card-primary.uk-card-body .uk-checkbox:checked,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-checkbox:checked,
+.uk-card-secondary.uk-card-body .uk-checkbox:checked,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-checkbox:checked,
 .uk-overlay-primary .uk-checkbox:checked {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2211%22%20viewBox%3D%220%200%2014%2011%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2212%201%205%207.5%202%205%201%205.5%205%2010%2013%201.5%22%20%2F%3E%0A%3C%2Fsvg%3E%0A");
 }
 .uk-light .uk-checkbox:indeterminate,
+.uk-card-primary.uk-card-body .uk-checkbox:indeterminate,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-checkbox:indeterminate,
+.uk-card-secondary.uk-card-body .uk-checkbox:indeterminate,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-checkbox:indeterminate,
 .uk-overlay-primary .uk-checkbox:indeterminate {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Crect%20fill%3D%22%23666%22%20x%3D%223%22%20y%3D%228%22%20width%3D%2210%22%20height%3D%221%22%20%2F%3E%0A%3C%2Fsvg%3E");
 }
 .uk-light .uk-button-default,
+.uk-card-primary.uk-card-body .uk-button-default,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-default,
+.uk-card-secondary.uk-card-body .uk-button-default,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-default,
 .uk-overlay-primary .uk-button-default {
   background-color: #fff;
   color: #666;
 }
 .uk-light .uk-button-default:hover,
 .uk-light .uk-button-default:focus,
+.uk-card-primary.uk-card-body .uk-button-default:hover,
+.uk-card-primary.uk-card-body .uk-button-default:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-default:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-default:focus,
+.uk-card-secondary.uk-card-body .uk-button-default:hover,
+.uk-card-secondary.uk-card-body .uk-button-default:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-default:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-default:focus,
 .uk-overlay-primary .uk-button-default:hover,
 .uk-overlay-primary .uk-button-default:focus {
   background-color: #f2f2f2;
@@ -6727,18 +7063,38 @@ iframe.uk-cover {
 }
 .uk-light .uk-button-default:active,
 .uk-light .uk-button-default.uk-active,
+.uk-card-primary.uk-card-body .uk-button-default:active,
+.uk-card-primary.uk-card-body .uk-button-default.uk-active,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-default:active,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-default.uk-active,
+.uk-card-secondary.uk-card-body .uk-button-default:active,
+.uk-card-secondary.uk-card-body .uk-button-default.uk-active,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-default:active,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-default.uk-active,
 .uk-overlay-primary .uk-button-default:active,
 .uk-overlay-primary .uk-button-default.uk-active {
   background-color: #e6e6e6;
   color: #666;
 }
 .uk-light .uk-button-primary,
+.uk-card-primary.uk-card-body .uk-button-primary,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-primary,
+.uk-card-secondary.uk-card-body .uk-button-primary,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-primary,
 .uk-overlay-primary .uk-button-primary {
   background-color: #fff;
   color: #666;
 }
 .uk-light .uk-button-primary:hover,
 .uk-light .uk-button-primary:focus,
+.uk-card-primary.uk-card-body .uk-button-primary:hover,
+.uk-card-primary.uk-card-body .uk-button-primary:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-primary:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-primary:focus,
+.uk-card-secondary.uk-card-body .uk-button-primary:hover,
+.uk-card-secondary.uk-card-body .uk-button-primary:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-primary:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-primary:focus,
 .uk-overlay-primary .uk-button-primary:hover,
 .uk-overlay-primary .uk-button-primary:focus {
   background-color: #f2f2f2;
@@ -6746,18 +7102,38 @@ iframe.uk-cover {
 }
 .uk-light .uk-button-primary:active,
 .uk-light .uk-button-primary.uk-active,
+.uk-card-primary.uk-card-body .uk-button-primary:active,
+.uk-card-primary.uk-card-body .uk-button-primary.uk-active,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-primary:active,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-primary.uk-active,
+.uk-card-secondary.uk-card-body .uk-button-primary:active,
+.uk-card-secondary.uk-card-body .uk-button-primary.uk-active,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-primary:active,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-primary.uk-active,
 .uk-overlay-primary .uk-button-primary:active,
 .uk-overlay-primary .uk-button-primary.uk-active {
   background-color: #e6e6e6;
   color: #666;
 }
 .uk-light .uk-button-secondary,
+.uk-card-primary.uk-card-body .uk-button-secondary,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-secondary,
+.uk-card-secondary.uk-card-body .uk-button-secondary,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-secondary,
 .uk-overlay-primary .uk-button-secondary {
   background-color: #fff;
   color: #666;
 }
 .uk-light .uk-button-secondary:hover,
 .uk-light .uk-button-secondary:focus,
+.uk-card-primary.uk-card-body .uk-button-secondary:hover,
+.uk-card-primary.uk-card-body .uk-button-secondary:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-secondary:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-secondary:focus,
+.uk-card-secondary.uk-card-body .uk-button-secondary:hover,
+.uk-card-secondary.uk-card-body .uk-button-secondary:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-secondary:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-secondary:focus,
 .uk-overlay-primary .uk-button-secondary:hover,
 .uk-overlay-primary .uk-button-secondary:focus {
   background-color: #f2f2f2;
@@ -6765,158 +7141,389 @@ iframe.uk-cover {
 }
 .uk-light .uk-button-secondary:active,
 .uk-light .uk-button-secondary.uk-active,
+.uk-card-primary.uk-card-body .uk-button-secondary:active,
+.uk-card-primary.uk-card-body .uk-button-secondary.uk-active,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-secondary:active,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-secondary.uk-active,
+.uk-card-secondary.uk-card-body .uk-button-secondary:active,
+.uk-card-secondary.uk-card-body .uk-button-secondary.uk-active,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-secondary:active,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-secondary.uk-active,
 .uk-overlay-primary .uk-button-secondary:active,
 .uk-overlay-primary .uk-button-secondary.uk-active {
   background-color: #e6e6e6;
   color: #666;
 }
 .uk-light .uk-button-text,
+.uk-card-primary.uk-card-body .uk-button-text,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-text,
+.uk-card-secondary.uk-card-body .uk-button-text,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-text,
 .uk-overlay-primary .uk-button-text {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-button-text:hover,
 .uk-light .uk-button-text:focus,
+.uk-card-primary.uk-card-body .uk-button-text:hover,
+.uk-card-primary.uk-card-body .uk-button-text:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-text:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-text:focus,
+.uk-card-secondary.uk-card-body .uk-button-text:hover,
+.uk-card-secondary.uk-card-body .uk-button-text:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-text:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-text:focus,
 .uk-overlay-primary .uk-button-text:hover,
 .uk-overlay-primary .uk-button-text:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-button-text:disabled,
+.uk-card-primary.uk-card-body .uk-button-text:disabled,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-text:disabled,
+.uk-card-secondary.uk-card-body .uk-button-text:disabled,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-text:disabled,
 .uk-overlay-primary .uk-button-text:disabled {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-button-link,
+.uk-card-primary.uk-card-body .uk-button-link,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-link,
+.uk-card-secondary.uk-card-body .uk-button-link,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-link,
 .uk-overlay-primary .uk-button-link {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-button-link:hover,
 .uk-light .uk-button-link:focus,
+.uk-card-primary.uk-card-body .uk-button-link:hover,
+.uk-card-primary.uk-card-body .uk-button-link:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-link:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-button-link:focus,
+.uk-card-secondary.uk-card-body .uk-button-link:hover,
+.uk-card-secondary.uk-card-body .uk-button-link:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-link:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-button-link:focus,
 .uk-overlay-primary .uk-button-link:hover,
 .uk-overlay-primary .uk-button-link:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-grid-divider > :not(.uk-first-column)::before,
+.uk-card-primary.uk-card-body .uk-grid-divider > :not(.uk-first-column)::before,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-grid-divider > :not(.uk-first-column)::before,
+.uk-card-secondary.uk-card-body .uk-grid-divider > :not(.uk-first-column)::before,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-grid-divider > :not(.uk-first-column)::before,
 .uk-overlay-primary .uk-grid-divider > :not(.uk-first-column)::before {
   border-left-color: rgba(255, 255, 255, 0.2);
 }
 .uk-light .uk-grid-divider.uk-grid-stack > .uk-grid-margin::before,
+.uk-card-primary.uk-card-body .uk-grid-divider.uk-grid-stack > .uk-grid-margin::before,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-grid-divider.uk-grid-stack > .uk-grid-margin::before,
+.uk-card-secondary.uk-card-body .uk-grid-divider.uk-grid-stack > .uk-grid-margin::before,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-grid-divider.uk-grid-stack > .uk-grid-margin::before,
 .uk-overlay-primary .uk-grid-divider.uk-grid-stack > .uk-grid-margin::before {
   border-top-color: rgba(255, 255, 255, 0.2);
 }
 .uk-light .uk-close,
+.uk-card-primary.uk-card-body .uk-close,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-close,
+.uk-card-secondary.uk-card-body .uk-close,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-close,
 .uk-overlay-primary .uk-close {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-close:hover,
 .uk-light .uk-close:focus,
+.uk-card-primary.uk-card-body .uk-close:hover,
+.uk-card-primary.uk-card-body .uk-close:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-close:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-close:focus,
+.uk-card-secondary.uk-card-body .uk-close:hover,
+.uk-card-secondary.uk-card-body .uk-close:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-close:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-close:focus,
 .uk-overlay-primary .uk-close:hover,
 .uk-overlay-primary .uk-close:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-totop,
+.uk-card-primary.uk-card-body .uk-totop,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-totop,
+.uk-card-secondary.uk-card-body .uk-totop,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-totop,
 .uk-overlay-primary .uk-totop {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-totop:hover,
 .uk-light .uk-totop:focus,
+.uk-card-primary.uk-card-body .uk-totop:hover,
+.uk-card-primary.uk-card-body .uk-totop:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-totop:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-totop:focus,
+.uk-card-secondary.uk-card-body .uk-totop:hover,
+.uk-card-secondary.uk-card-body .uk-totop:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-totop:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-totop:focus,
 .uk-overlay-primary .uk-totop:hover,
 .uk-overlay-primary .uk-totop:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-totop:active,
+.uk-card-primary.uk-card-body .uk-totop:active,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-totop:active,
+.uk-card-secondary.uk-card-body .uk-totop:active,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-totop:active,
 .uk-overlay-primary .uk-totop:active {
   color: #fff;
 }
 .uk-light .uk-marker,
+.uk-card-primary.uk-card-body .uk-marker,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-marker,
+.uk-card-secondary.uk-card-body .uk-marker,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-marker,
 .uk-overlay-primary .uk-marker {
   background: #f8f8f8;
   color: #666;
 }
 .uk-light .uk-marker:hover,
 .uk-light .uk-marker:focus,
+.uk-card-primary.uk-card-body .uk-marker:hover,
+.uk-card-primary.uk-card-body .uk-marker:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-marker:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-marker:focus,
+.uk-card-secondary.uk-card-body .uk-marker:hover,
+.uk-card-secondary.uk-card-body .uk-marker:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-marker:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-marker:focus,
 .uk-overlay-primary .uk-marker:hover,
 .uk-overlay-primary .uk-marker:focus {
   color: #666;
 }
 .uk-light .uk-badge,
+.uk-card-primary.uk-card-body .uk-badge,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-badge,
+.uk-card-secondary.uk-card-body .uk-badge,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-badge,
 .uk-overlay-primary .uk-badge {
   background-color: #fff;
   color: #666;
 }
 .uk-light .uk-badge:hover,
 .uk-light .uk-badge:focus,
+.uk-card-primary.uk-card-body .uk-badge:hover,
+.uk-card-primary.uk-card-body .uk-badge:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-badge:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-badge:focus,
+.uk-card-secondary.uk-card-body .uk-badge:hover,
+.uk-card-secondary.uk-card-body .uk-badge:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-badge:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-badge:focus,
 .uk-overlay-primary .uk-badge:hover,
 .uk-overlay-primary .uk-badge:focus {
   color: #666;
 }
 .uk-light .uk-label,
+.uk-card-primary.uk-card-body .uk-label,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-label,
+.uk-card-secondary.uk-card-body .uk-label,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-label,
 .uk-overlay-primary .uk-label {
   background-color: #fff;
   color: #666;
 }
 .uk-light .uk-tab > * > a,
+.uk-card-primary.uk-card-body .uk-tab > * > a,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-tab > * > a,
+.uk-card-secondary.uk-card-body .uk-tab > * > a,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-tab > * > a,
 .uk-overlay-primary .uk-tab > * > a {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-tab > * > a:hover,
 .uk-light .uk-tab > * > a:focus,
+.uk-card-primary.uk-card-body .uk-tab > * > a:hover,
+.uk-card-primary.uk-card-body .uk-tab > * > a:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-tab > * > a:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-tab > * > a:focus,
+.uk-card-secondary.uk-card-body .uk-tab > * > a:hover,
+.uk-card-secondary.uk-card-body .uk-tab > * > a:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-tab > * > a:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-tab > * > a:focus,
 .uk-overlay-primary .uk-tab > * > a:hover,
 .uk-overlay-primary .uk-tab > * > a:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-tab > .uk-active > a,
+.uk-card-primary.uk-card-body .uk-tab > .uk-active > a,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-tab > .uk-active > a,
+.uk-card-secondary.uk-card-body .uk-tab > .uk-active > a,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-tab > .uk-active > a,
 .uk-overlay-primary .uk-tab > .uk-active > a {
   color: #fff;
 }
 .uk-light .uk-tab > .uk-disabled > a,
+.uk-card-primary.uk-card-body .uk-tab > .uk-disabled > a,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-tab > .uk-disabled > a,
+.uk-card-secondary.uk-card-body .uk-tab > .uk-disabled > a,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-tab > .uk-disabled > a,
 .uk-overlay-primary .uk-tab > .uk-disabled > a {
   color: rgba(255, 255, 255, 0.5);
 }
+.uk-light .uk-slidenav,
+.uk-card-primary.uk-card-body .uk-slidenav,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-slidenav,
+.uk-card-secondary.uk-card-body .uk-slidenav,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-slidenav,
+.uk-overlay-primary .uk-slidenav {
+  color: rgba(255, 255, 255, 0.7);
+}
+.uk-light .uk-slidenav:hover,
+.uk-light .uk-slidenav:focus,
+.uk-card-primary.uk-card-body .uk-slidenav:hover,
+.uk-card-primary.uk-card-body .uk-slidenav:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-slidenav:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-slidenav:focus,
+.uk-card-secondary.uk-card-body .uk-slidenav:hover,
+.uk-card-secondary.uk-card-body .uk-slidenav:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-slidenav:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-slidenav:focus,
+.uk-overlay-primary .uk-slidenav:hover,
+.uk-overlay-primary .uk-slidenav:focus {
+  color: rgba(255, 255, 255, 0.95);
+}
+.uk-light .uk-slidenav:active,
+.uk-card-primary.uk-card-body .uk-slidenav:active,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-slidenav:active,
+.uk-card-secondary.uk-card-body .uk-slidenav:active,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-slidenav:active,
+.uk-overlay-primary .uk-slidenav:active {
+  color: rgba(255, 255, 255, 0.7);
+}
+.uk-light .uk-dotnav > * > *,
+.uk-card-primary.uk-card-body .uk-dotnav > * > *,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-dotnav > * > *,
+.uk-card-secondary.uk-card-body .uk-dotnav > * > *,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-dotnav > * > *,
+.uk-overlay-primary .uk-dotnav > * > * {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.uk-light .uk-dotnav > * > :hover,
+.uk-light .uk-dotnav > * > :focus,
+.uk-card-primary.uk-card-body .uk-dotnav > * > :hover,
+.uk-card-primary.uk-card-body .uk-dotnav > * > :focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-dotnav > * > :hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-dotnav > * > :focus,
+.uk-card-secondary.uk-card-body .uk-dotnav > * > :hover,
+.uk-card-secondary.uk-card-body .uk-dotnav > * > :focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-dotnav > * > :hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-dotnav > * > :focus,
+.uk-overlay-primary .uk-dotnav > * > :hover,
+.uk-overlay-primary .uk-dotnav > * > :focus {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.uk-light .uk-dotnav > * > :active,
+.uk-card-primary.uk-card-body .uk-dotnav > * > :active,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-dotnav > * > :active,
+.uk-card-secondary.uk-card-body .uk-dotnav > * > :active,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-dotnav > * > :active,
+.uk-overlay-primary .uk-dotnav > * > :active {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.uk-light .uk-dotnav > .uk-active > *,
+.uk-card-primary.uk-card-body .uk-dotnav > .uk-active > *,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-dotnav > .uk-active > *,
+.uk-card-secondary.uk-card-body .uk-dotnav > .uk-active > *,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-dotnav > .uk-active > *,
+.uk-overlay-primary .uk-dotnav > .uk-active > * {
+  background-color: rgba(255, 255, 255, 0.9);
+}
 .uk-light .uk-accordion-title,
+.uk-card-primary.uk-card-body .uk-accordion-title,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-accordion-title,
+.uk-card-secondary.uk-card-body .uk-accordion-title,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-accordion-title,
 .uk-overlay-primary .uk-accordion-title {
   color: #fff;
 }
 .uk-light .uk-accordion-title:hover,
 .uk-light .uk-accordion-title:focus,
+.uk-card-primary.uk-card-body .uk-accordion-title:hover,
+.uk-card-primary.uk-card-body .uk-accordion-title:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-accordion-title:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-accordion-title:focus,
+.uk-card-secondary.uk-card-body .uk-accordion-title:hover,
+.uk-card-secondary.uk-card-body .uk-accordion-title:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-accordion-title:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-accordion-title:focus,
 .uk-overlay-primary .uk-accordion-title:hover,
 .uk-overlay-primary .uk-accordion-title:focus {
   color: #666;
 }
 .uk-light .uk-text-lead,
+.uk-card-primary.uk-card-body .uk-text-lead,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-text-lead,
+.uk-card-secondary.uk-card-body .uk-text-lead,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-text-lead,
 .uk-overlay-primary .uk-text-lead {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-text-meta,
+.uk-card-primary.uk-card-body .uk-text-meta,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-text-meta,
+.uk-card-secondary.uk-card-body .uk-text-meta,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-text-meta,
 .uk-overlay-primary .uk-text-meta {
   color: rgba(255, 255, 255, 0.5);
 }
 .uk-light .uk-text-muted,
+.uk-card-primary.uk-card-body .uk-text-muted,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-text-muted,
+.uk-card-secondary.uk-card-body .uk-text-muted,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-text-muted,
 .uk-overlay-primary .uk-text-muted {
   color: rgba(255, 255, 255, 0.5) !important;
 }
 .uk-light .uk-text-primary,
+.uk-card-primary.uk-card-body .uk-text-primary,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-text-primary,
+.uk-card-secondary.uk-card-body .uk-text-primary,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-text-primary,
 .uk-overlay-primary .uk-text-primary {
   color: rgba(255, 255, 255, 0.7) !important;
 }
-.uk-light .uk-column-divider,
-.uk-overlay-primary .uk-column-divider {
-  -webkit-column-rule-color: rgba(255, 255, 255, 0.2);
-          column-rule-color: rgba(255, 255, 255, 0.2);
-}
 .uk-light .uk-logo,
+.uk-card-primary.uk-card-body .uk-logo,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-logo,
+.uk-card-secondary.uk-card-body .uk-logo,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-logo,
 .uk-overlay-primary .uk-logo {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-logo:hover,
 .uk-light .uk-logo:focus,
+.uk-card-primary.uk-card-body .uk-logo:hover,
+.uk-card-primary.uk-card-body .uk-logo:focus,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-logo:hover,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-logo:focus,
+.uk-card-secondary.uk-card-body .uk-logo:hover,
+.uk-card-secondary.uk-card-body .uk-logo:focus,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-logo:hover,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-logo:focus,
 .uk-overlay-primary .uk-logo:hover,
 .uk-overlay-primary .uk-logo:focus {
   color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-logo > :not(.uk-logo-inverse):not(:only-of-type),
+.uk-card-primary.uk-card-body .uk-logo > :not(.uk-logo-inverse):not(:only-of-type),
+.uk-card-primary > :not([class*='uk-card-media']) .uk-logo > :not(.uk-logo-inverse):not(:only-of-type),
+.uk-card-secondary.uk-card-body .uk-logo > :not(.uk-logo-inverse):not(:only-of-type),
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-logo > :not(.uk-logo-inverse):not(:only-of-type),
 .uk-overlay-primary .uk-logo > :not(.uk-logo-inverse):not(:only-of-type) {
   display: none;
 }
 .uk-light .uk-logo-inverse,
+.uk-card-primary.uk-card-body .uk-logo-inverse,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-logo-inverse,
+.uk-card-secondary.uk-card-body .uk-logo-inverse,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-logo-inverse,
 .uk-overlay-primary .uk-logo-inverse {
   display: inline;
 }
@@ -7085,7 +7692,41 @@ h4 {
   right: -4px;
   width: 18px;
   height: 18px;
-  background: url(img/svg-sprite.svg?928dc450f2d69e1e430d41306d62f382#check-for-checkbox) no-repeat 50% 50%;
+  background: url(img/svg-sprite.svg?0d2abfdc48eb8d1c870b27c4b2113506#check-for-checkbox) no-repeat 50% 50%;
+}
+label.uk-form-danger {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 18px;
+  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4);
+  border: 1px solid #cc0000;
+  background-color: #ff6666;
+  position: absolute;
+  z-index: 999;
+  margin-left: 15px;
+  margin-top: 4px;
+  margin-right: 20px;
+  display: block;
+}
+label.uk-form-danger:before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  bottom: 100%;
+  border-width: 0 5px 6px;
+  border-style: solid;
+  border-color: transparent transparent #cc0000;
+}
+label.uk-form-danger:after {
+  content: '';
+  position: absolute;
+  left: 13px;
+  bottom: 100%;
+  border-width: 0 4px 5px;
+  border-style: solid;
+  border-color: transparent transparent #ff6a6a;
 }
 .button-blue {
   padding: 0 15px;
@@ -7452,7 +8093,7 @@ ul.content-list li:before {
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 12px;
   font-weight: 400;
-  background: url(img/svg-sprite.svg?928dc450f2d69e1e430d41306d62f382#envelope-gray) no-repeat;
+  background: url(img/svg-sprite.svg?0d2abfdc48eb8d1c870b27c4b2113506#envelope-gray) no-repeat;
   background-color: #ffffff;
   background-size: 18px 18px;
   background-position: 18px 50%;
@@ -7671,6 +8312,9 @@ ul.content-list li:before {
   background-color: #f1f1f1;
   padding: 15px;
 }
+.module-slider .form-success {
+  background-color: #f1f1f1;
+}
 .module-slider__headline {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7717,7 +8361,7 @@ ul.content-list li:before {
   display: inline-block;
   padding: 0 10px;
   cursor: pointer;
-  height: 32px;
+  height: 30px;
   margin: 0 3px;
 }
 .slider-arrow:first-child {
@@ -8364,6 +9008,8 @@ ul.content-list li:before {
   padding: 0 5px;
   display: none;
   border-left: 1px solid #ccc;
+  position: relative;
+  z-index: 10;
 }
 @media (max-width: 979px) {
   .toolbar__search {
@@ -8386,6 +9032,8 @@ ul.content-list li:before {
   .toolbar__menu {
     display: inline-block;
     padding: 9px 14px;
+    position: relative;
+    z-index: 10;
   }
   .toolbar__menu span {
     -webkit-transform: scale(1.35);
@@ -8396,6 +9044,7 @@ ul.content-list li:before {
   float: right;
   padding-right: 30px;
   position: relative;
+  z-index: 10;
 }
 @media (max-width: 979px) {
   .toolbar-subscribe {
@@ -8482,9 +9131,7 @@ ul.content-list li:before {
   position: relative;
   z-index: 100;
   background: #fff;
-}
-.uk-sticky-below .header {
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #f1f1f1;
 }
 @media (max-width: 767px) {
   .header {
@@ -8753,7 +9400,7 @@ ul.content-list li:before {
   overflow: auto;
   max-height: calc(100% - 7px);
 }
-.mobile-menu--open {
+.mobile-menu-opened .mobile-menu {
   visibility: visible;
   -webkit-transform: translateY(0);
           transform: translateY(0);
@@ -8828,6 +9475,7 @@ ul.content-list li:before {
   height: 36px;
   border: 1px solid #c2c2c2;
   background-color: #fbfbfb;
+  cursor: pointer;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   right: 6px;
@@ -8869,15 +9517,18 @@ ul.content-list li:before {
   padding: 0;
   margin: 0;
 }
-.mobile-menu__submenu li {
+.mobile-menu__submenu > li {
   list-style: none;
   display: block;
   border-bottom: 1px dotted #d3d5d4;
 }
-.mobile-menu__submenu li.active a {
+.mobile-menu__submenu > li:last-child {
+  border-bottom: none;
+}
+.mobile-menu__submenu > li.active > a {
   color: #0099cc;
 }
-.mobile-menu__submenu li a {
+.mobile-menu__submenu > li > a {
   display: block;
   color: #666666;
   font-size: 16px;
@@ -8885,14 +9536,14 @@ ul.content-list li:before {
   padding: 10px 60px 10px 70px;
   text-decoration: none;
 }
-.mobile-menu__submenu li a:hover {
+.mobile-menu__submenu > li > a:hover {
   text-decoration: none;
   background-color: #f2f1f1;
 }
-.mobile-menu__submenu li.parent a {
+.mobile-menu__submenu > li.parent > a {
   position: relative;
 }
-.mobile-menu__submenu li.parent a::before {
+.mobile-menu__submenu > li.parent > a::before {
   content: '';
   position: absolute;
   right: 38px;
@@ -8903,7 +9554,7 @@ ul.content-list li:before {
   border-radius: 2px;
   color: #3e3d3d;
 }
-.mobile-menu__submenu li.parent a::after {
+.mobile-menu__submenu > li.parent > a::after {
   content: '';
   position: absolute;
   right: 44px;
@@ -8917,19 +9568,19 @@ ul.content-list li:before {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
-.mobile-menu__submenu li.parent a:hover::before {
+.mobile-menu__submenu > li.parent > a:hover::before {
   background-color: #e9e7e7;
 }
 .mobile-menu__menu {
   padding: 0;
   margin: 0;
 }
-.mobile-menu__menu li {
+.mobile-menu__menu > li {
   list-style: none;
   display: block;
   border-bottom: 1px dotted #d3d5d4;
 }
-.mobile-menu__menu li a {
+.mobile-menu__menu > li > a {
   display: block;
   color: #333333;
   font-size: 18px;
@@ -8937,20 +9588,20 @@ ul.content-list li:before {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.18px;
-  padding: 15px 74px 15px 56px;
+  padding: 15px 75px 15px 50px;
   text-decoration: none;
 }
-.mobile-menu__menu li a:hover {
+.mobile-menu__menu > li > a:hover {
   text-decoration: none;
   background-color: #f2f1f1;
 }
-.mobile-menu__menu li.active a {
+.mobile-menu__menu > li.active > a {
   color: #0099cc;
 }
-.mobile-menu__menu li.parent a {
+.mobile-menu__menu > li.parent > a {
   position: relative;
 }
-.mobile-menu__menu li.parent a::before {
+.mobile-menu__menu > li.parent > a::before {
   content: '';
   position: absolute;
   right: 58px;
@@ -8961,7 +9612,7 @@ ul.content-list li:before {
   border-radius: 2px;
   color: #3e3d3d;
 }
-.mobile-menu__menu li.parent a::after {
+.mobile-menu__menu > li.parent > a::after {
   content: '';
   position: absolute;
   right: 64px;
@@ -8975,7 +9626,7 @@ ul.content-list li:before {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
-.mobile-menu__menu li.parent a:hover::before {
+.mobile-menu__menu > li.parent > a:hover::before {
   background-color: #e9e7e7;
 }
 .breadcrumb {
@@ -9849,19 +10500,21 @@ ul.pagination li.control a {
   width: 34px;
 }
 .quickview {
-  -webkit-box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.38);
-          box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.38);
-  width: 785px;
   padding: 20px 20px 45px;
+  width: 785px;
 }
-.quickview-options__label {
+.product__dimensions {
+  margin: 2px 0;
+  margin-top: 15px;
+}
+.product-options__label {
   color: #333333;
   font-size: 14px;
   font-weight: 400;
   text-transform: uppercase;
   margin-bottom: 12px;
 }
-.quickview-options__values {
+.product-options__values {
   margin: 0 -4px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9869,14 +10522,22 @@ ul.pagination li.control a {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-.quickview-options__input {
+.product-options__colors {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.product-options__input {
   display: inline-block;
   margin: 0 4px;
+  position: relative;
 }
-.quickview-options__input input {
-  display: none;
+.product-options__input input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
 }
-.quickview-options__input input + span {
+.product-options__input input + span {
   color: #666666;
   font-size: 14px;
   font-weight: 600;
@@ -9889,12 +10550,12 @@ ul.pagination li.control a {
   background-color: #f8f8f8;
   display: inline-block;
 }
-.quickview-options__input input:checked + span {
+.product-options__input input:checked + span {
   border: 1px solid #5b84ad;
   background-color: #e5f0fd;
   color: #5b84ad;
 }
-.quickview-options__desc {
+.product-options__desc {
   display: inline-block;
   vertical-align: middle;
   margin-left: 16px;
@@ -9903,31 +10564,33 @@ ul.pagination li.control a {
   font-weight: 400;
   text-transform: none;
 }
-.quickview-options__color {
-  display: inline-block;
+.product-options__color {
+  display: block;
   margin: 0 4px;
 }
-.quickview-options__color input {
+.product-options__color input {
   display: none;
 }
-.quickview-options__color input + span {
+.product-options__color input + span {
   width: 16px;
   height: 16px;
   border: 1px solid #999999;
   background-color: #ff9933;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  display: inline-block;
+  display: block;
   cursor: pointer;
 }
-.quickview-options__color input:checked + span {
+.product-options__color input:checked + span {
   border-color: #ff0000;
 }
 .quickview-gallery {
   position: relative;
+  max-width: 280px;
+  margin: 0 auto;
 }
-.quickview-gallery__previous,
-.quickview-gallery__next {
+.slidenav-previous,
+.slidenav-next {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -9943,22 +10606,22 @@ ul.pagination li.control a {
   -webkit-transition: all ease .3s;
   transition: all ease .3s;
 }
-.quickview-gallery__previous:hover,
-.quickview-gallery__next:hover {
+.slidenav-previous:hover,
+.slidenav-next:hover {
   background-color: rgba(51, 51, 51, 0.8);
 }
-.quickview-gallery__previous svg,
-.quickview-gallery__next svg {
+.slidenav-previous svg,
+.slidenav-next svg {
   position: relative;
   top: -2px;
 }
-.quickview-gallery__previous {
+.slidenav-previous {
   left: -10px;
 }
-.quickview-gallery__next {
+.slidenav-next {
   right: -10px;
 }
-.quickview-gallery__link {
+.gallery-link {
   position: absolute;
   display: block;
   left: 0;
@@ -9967,10 +10630,10 @@ ul.pagination li.control a {
   bottom: 0;
   color: #333333;
 }
-.quickview-gallery__link:hover {
+.gallery-link:hover {
   color: #000000;
 }
-.quickview-gallery__link svg {
+.gallery-link svg {
   position: absolute;
   right: 10px;
   bottom: 10px;
@@ -9978,28 +10641,31 @@ ul.pagination li.control a {
 .quickview__dimensions {
   margin: 9px 0 15px;
 }
-.quickview__dimensions a {
+.dimensions-link {
   color: #6699cc;
   font-size: 11px;
   font-weight: 700;
   text-decoration: none;
   letter-spacing: .4px;
 }
-.quickview__dimensions a svg {
+.dimensions-link svg {
   fill: #6699cc;
   vertical-align: middle;
   display: inline-block;
   position: relative;
   top: -2px;
 }
-.quickview__dimensions a:hover {
+.dimensions-link:hover {
   color: #4f78a1;
   text-decoration: none;
 }
-.quickview__dimensions a:hover svg {
+.dimensions-link:hover svg {
   fill: #4f78a1;
 }
-.quickview-count__label {
+.product-count {
+  margin-top: 15px;
+}
+.product-count__label {
   color: #333333;
   font-size: 14px;
   text-transform: uppercase;
@@ -10018,6 +10684,10 @@ ul.pagination li.control a {
   padding: 4px;
   display: inline-block;
   cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .form-number__input {
   color: #333333;
@@ -10042,10 +10712,15 @@ ul.pagination li.control a {
   padding: 4px;
   display: inline-block;
   cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .modal-close {
   position: absolute;
   right: 10px;
+  top: 10px;
   width: 32px;
   height: 32px;
   border: 1px solid #cccccc;
@@ -10053,6 +10728,8 @@ ul.pagination li.control a {
           box-sizing: border-box;
   background: transparent;
   cursor: pointer;
+  z-index: 10;
+  background: #f1f1f1;
 }
 .modal-close:before,
 .modal-close:after {
@@ -10081,6 +10758,12 @@ ul.pagination li.control a {
 .modal-close:hover:after {
   background-color: #333333;
 }
+@media (max-width: 767px) {
+  .modal-close {
+    top: -1px;
+    right: -1px;
+  }
+}
 .quickview__cart:after {
   content: '';
   display: inline-block;
@@ -10092,6 +10775,12 @@ ul.pagination li.control a {
   vertical-align: middle;
   top: -2px;
   position: relative;
+}
+@media (max-width: 767px) {
+  .quickview__cart {
+    font-size: 14px;
+    padding: 0 20px;
+  }
 }
 .quickview__cart-wrap {
   display: inline-block;
@@ -10206,6 +10895,8 @@ ul.pagination li.control a {
 }
 .quickview__price-old svg {
   fill: #999999;
+  position: relative;
+  top: -2px;
 }
 .quickview__price {
   color: #000000;
@@ -10215,6 +10906,386 @@ ul.pagination li.control a {
 }
 .quickview__price svg {
   fill: #000000;
+  position: relative;
+  top: -1px;
+}
+.modal-subscribe {
+  background: transparent;
+  padding: 40px 0;
+  padding-left: calc(50% - 600px + 1200px - 550px);
+  padding-right: calc(50% - 600px);
+  overflow-y: scroll;
+}
+.modal-subscribe > .uk-modal-dialog {
+  width: 100%;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.14);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.14);
+  border: 1px solid #cccccc;
+}
+@media (max-width: 1199px) {
+  .modal-subscribe {
+    padding-right: 10px;
+  }
+}
+@media (max-width: 767px) {
+  .modal-subscribe {
+    padding: 0;
+  }
+}
+.form-success {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  -webkit-transition: opacity ease .3s;
+  transition: opacity ease .3s;
+}
+.af_completed .form-success {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.form-success__title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0 0 24px;
+}
+.form-success__desc {
+  color: #666666;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1;
+}
+.product-grid {
+  max-width: 890px;
+  margin-bottom: 35px;
+}
+.product-gallery {
+  margin-left: 110px;
+  margin-bottom: 26px;
+}
+.product-gallery__thumbs {
+  width: 95px;
+  float: left;
+  margin: 0;
+  padding: 0;
+  margin-left: -110px;
+}
+.product-gallery__thumbs li {
+  display: block;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  list-style: none;
+  margin-bottom: 4px;
+  border: 1px solid #f1f1f1;
+  padding: 5px;
+  background-color: #ffffff;
+  text-align: center;
+}
+.product-gallery__thumbs li img {
+  max-height: 72px;
+  width: auto;
+}
+.product-gallery__thumbs li.uk-active {
+  border-color: #6699cc;
+}
+.product-gallery__slideshow {
+  width: 100%;
+  position: relative;
+}
+.product-gallery__slideshow .slidenav-previous {
+  left: 0;
+}
+.product-gallery__slideshow .slidenav-next {
+  right: 0;
+}
+.product__intro {
+  border-top: 1px dotted #cbcbcb;
+  color: #000000;
+  font-size: 11px;
+  font-style: italic;
+  padding-top: 13px;
+  line-height: 1.3;
+}
+.product__title {
+  font-weight: 400;
+  margin: 0 0 33px;
+}
+.product__article {
+  color: #666666;
+  font-size: 16px;
+  line-height: 1;
+}
+.product__prices {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 45px 0 53px;
+}
+.product__price-old {
+  color: #999999;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: line-through;
+  margin-bottom: 9px;
+}
+.product__price-old svg {
+  fill: #999999;
+  position: relative;
+  top: -2px;
+}
+.product__price {
+  color: #000000;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+}
+.product__price svg {
+  fill: #000000;
+  position: relative;
+  top: -1px;
+}
+.product__misc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+@media (max-width: 767px) {
+  .product__misc {
+    display: block;
+  }
+}
+.product__row {
+  margin: 28px 0;
+}
+.product__cart {
+  width: 100%;
+}
+.product__cart:after {
+  content: '';
+  display: inline-block;
+  margin-left: 6px;
+  width: 26px;
+  height: 18px;
+  background: url(img/icon-cart.svg?4c90780551d74e32fda1399bcf021793) no-repeat 50% 50%;
+  background-size: cover;
+  vertical-align: middle;
+  top: -2px;
+  position: relative;
+}
+@media (max-width: 767px) {
+  .product__cart {
+    font-size: 14px;
+    padding: 0 20px;
+  }
+}
+.product-small {
+  border-top: 1px solid #f1f1f1;
+  border-left: 1px solid #f1f1f1;
+  padding: 15px 25px;
+}
+.product-small:hover .product-small__view {
+  opacity: 1;
+}
+.product-small__figure {
+  position: relative;
+  margin-bottom: 10px;
+}
+.product-small__image {
+  width: 100%;
+  display: block;
+}
+.product-small__view {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  cursor: pointer;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.34);
+  color: #ffffff;
+  font-size: 14px;
+  padding: 0 15px;
+  line-height: 28px;
+  -webkit-transition: all ease .3s;
+  transition: all ease .3s;
+  opacity: 0;
+  border: 2px solid rgba(153, 153, 153, 0.55);
+  background-color: rgba(102, 102, 102, 0.55);
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), color-stop(1%, rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 1%, rgba(0, 0, 0, 0) 100%);
+}
+.product-small__view:hover {
+  border: 2px solid #999999;
+  background-color: rgba(51, 51, 51, 0.55);
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), color-stop(1%, rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 1%, rgba(0, 0, 0, 0) 100%);
+}
+.product-small__name {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+.product-small__name a {
+  color: #6699cc;
+  text-decoration: none;
+}
+.product-small__name a:hover {
+  color: #ff6666;
+  text-decoration: none;
+}
+.product-small__prices {
+  margin-bottom: 10px;
+}
+.product-small__price-old {
+  display: inline-block;
+  vertical-align: middle;
+  color: #999999;
+  font-size: 12px;
+  font-weight: 400;
+  text-decoration: line-through;
+  margin-right: 17px;
+}
+.product-small__price-old svg {
+  fill: #999999;
+  position: relative;
+  top: -1px;
+}
+.product-small__price {
+  display: inline-block;
+  vertical-align: middle;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 700;
+}
+.product-small__price svg {
+  fill: #000000;
+  position: relative;
+  top: -1px;
+}
+.product-small__colors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.product-small__color {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #999999;
+  background-color: #f9ba98;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 1px 4px;
+  display: inline-block;
+  padding: 0;
+}
+.product-small__color:hover {
+  border-color: #ff0000;
+}
+.product-others {
+  position: relative;
+  margin: 6px 0 20px;
+}
+.product-others__tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0;
+  margin: 0 0 9px;
+}
+.product-others__tabs li {
+  list-style: none;
+  display: inline-block;
+  padding-right: 12px;
+  margin-right: 12px;
+  border-right: 1px dotted #b7b7b7;
+  line-height: 19px;
+}
+.product-others__tabs li:last-child {
+  border-right: 0;
+  margin-right: 0;
+  padding-right: 0;
+}
+.product-others__tabs li.uk-active button {
+  color: #000000;
+}
+.product-others__tabs button {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  color: #999999;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.product-others__slider {
+  background-color: #ffffff;
+}
+.product-others__arrows {
+  position: absolute;
+  top: -7px;
+  right: 0;
+}
+.product-desc {
+  background: #ffffff;
+  padding: 20px;
+  margin: 20px 0;
+}
+.product-desc__title {
+  color: #333333;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 18px;
+  margin-bottom: 19px;
+}
+.product-desc__content {
+  color: #000000;
+  font-size: 14px;
+  padding: 21px 10px;
+  line-height: 1.3;
+}
+.product-desc__content p {
+  margin: 0 0 18px;
+}
+.product-also {
+  border-left: 3px solid #ececec;
+  width: 190px;
+}
+.product-also__arrows {
+  float: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.product-also__arrows .slider-arrow {
+  padding: 0 6px;
+  margin: 0 0 0 2px;
+}
+.product-also__title {
+  color: #999999;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 /* pages */
 .section-home {

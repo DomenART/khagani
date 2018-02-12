@@ -3,15 +3,16 @@
 return [
     'BaseTemplate' => [
         'file' => 'base',
-        'description' => 'Base template',
+        'description' => '',
         '_tmplvars' => [
             'seo.title',
             'seo.keywords',
             'seo.description'
-        ]
-    ],
+            ]
+        ],
     'Home' => [
         'file' => 'home',
+        'description' => '',
         '_tmplvars' => [
             'seo.title',
             'seo.keywords',
@@ -20,6 +21,7 @@ return [
     ],
     'Catalog' => [
         'file' => 'catalog',
+        'description' => '',
         '_tmplvars' => [
             'seo.title',
             'seo.keywords',
@@ -28,6 +30,7 @@ return [
     ],
     'Categories' => [
         'file' => 'categories',
+        'description' => '',
         '_tmplvars' => [
             'seo.title',
             'seo.keywords',
@@ -37,6 +40,7 @@ return [
     ],
     'Category' => [
         'file' => 'category',
+        'description' => '',
         '_tmplvars' => [
             'seo.title',
             'seo.keywords',
@@ -49,6 +53,7 @@ return [
     ],
     'Product' => [
         'file' => 'product',
+        'description' => '',
         '_tmplvars' => [
             'seo.title',
             'seo.keywords',
@@ -57,6 +62,7 @@ return [
     ],
     'Article' => [
         'file' => 'article',
+        'description' => '',
         '_tmplvars' => [
             'seo.title',
             'seo.keywords',

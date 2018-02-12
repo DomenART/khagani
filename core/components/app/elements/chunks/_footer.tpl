@@ -1,76 +1,16 @@
 <section class="short-categories">
     <div class="uk-container">
-        <div class="short-categories__grid">
-            <article class="short-category">
-                <a href="#" class="short-category__image">
-                    <img src="http://via.placeholder.com/66x66" alt="">
-                </a>
-                <div class="short-category__info">
-                    <h6 class="short-category__name">
-                        <a href="#">Обувь</a>
-                    </h6>
-                    <ul class="short-category__childs">
-                        <li>
-                            <a href="#">Туфли</a>
-                        </li>
-                        <li>
-                            <a href="#">Мокасины</a>
-                        </li>
-                    </ul>
-                </div>
-            </article>
-            <article class="short-category">
-                <a href="#" class="short-category__image">
-                    <img src="http://via.placeholder.com/66x66" alt="">
-                </a>
-                <div class="short-category__info">
-                    <h6 class="short-category__name">
-                        <a href="#">Одежда</a>
-                    </h6>
-                    <ul class="short-category__childs">
-                        <li>
-                            <a href="#">Костюмы</a>
-                        </li>
-                        <li>
-                            <a href="#">Рубашки</a>
-                        </li>
-                    </ul>
-                </div>
-            </article>
-            <article class="short-category">
-                <a href="#" class="short-category__image">
-                    <img src="http://via.placeholder.com/66x66" alt="">
-                </a>
-                <div class="short-category__info">
-                    <h6 class="short-category__name">
-                        <a href="#">Верхняя одежда</a>
-                    </h6>
-                    <ul class="short-category__childs">
-                        <li>
-                            <a href="#">Пальто</a>
-                        </li>
-                    </ul>
-                </div>
-            </article>
-            <article class="short-category">
-                <a href="#" class="short-category__image">
-                    <img src="http://via.placeholder.com/66x66" alt="">
-                </a>
-                <div class="short-category__info">
-                    <h6 class="short-category__name">
-                        <a href="#">Аксессуары</a>
-                    </h6>
-                    <ul class="short-category__childs">
-                        <li>
-                            <a href="#">Галстуки</a>
-                        </li>
-                        <li>
-                            <a href="#">Бабочки</a>
-                        </li>
-                    </ul>
-                </div>
-            </article>
-        </div>
+        {'pdoMenu' | snippet : [
+            'level' => 2,
+            'parents' => 'catalog' | uri2id,
+            'includeTVs' => 'image,category_type',
+            'tvPrefix' => '',
+            'where' => ['category_type'=>null],
+            'tplOuter' => '@FILE chunks/partials/short_categories.outer.tpl',
+            'tpl' => '@FILE chunks/partials/short_categories.row.tpl',
+            'tplInner' => '@FILE chunks/partials/short_categories.inner_outer.tpl',
+            'tplInnerRow' => '@FILE chunks/partials/short_categories.inner_row.tpl',
+        ]}
     </div>
 </section>
 
@@ -91,31 +31,31 @@
             <div class="footer__links">
                 <ul class="footer-menu">
                     <li>
-                        <a href="#">О компании</a>
+                        <a href="about">О компании</a>
                     </li>
                     <li>
-                        <a href="#">Шоурум</a>
+                        <a href="showroom">Шоурум</a>
                     </li>
                     <li>
-                        <a href="#">Дополнительные услуги</a>
+                        <a href="additional">Дополнительные услуги</a>
                     </li>
                     <li>
-                        <a href="#">Новости</a>
+                        <a href="news">Новости</a>
                     </li>
                     <li>
-                        <a href="#">Как нас найти</a>
+                        <a href="find-us">Как нас найти</a>
                     </li>
                     <li>
-                        <a href="#">Пользовательское соглашение</a>
+                        <a href="terms-of-use">Пользовательское соглашение</a>
                     </li>
                     <li>
-                        <a href="#">Статьи</a>
+                        <a href="articles">Статьи</a>
                     </li>
                     <li>
-                        <a href="#">Контакты</a>
+                        <a href="contacts">Контакты</a>
                     </li>
                     <li>
-                        <a href="#">Политика обработки персональных данных</a>
+                        <a href="privacy-policy">Политика обработки персональных данных</a>
                     </li>
                 </ul>
             </div>
@@ -140,7 +80,7 @@
                             </svg>
                         </a>
                     </div>
-                    <a href="#" class="footer__sitemap">Карта сайта</a>
+                    <a href="sitemap" class="footer__sitemap">Карта сайта</a>
                 </div>
             </div>
         </div>

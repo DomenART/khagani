@@ -13,7 +13,7 @@ document.querySelectorAll('.js-mobile-menu').forEach((el) => {
             let submenu = el.children[i].querySelector('ul')
             let item = {
                 href: link.getAttribute('href'),
-                title: link.innerText,
+                title: link.innerHTML,
                 classes: el.children[i].getAttribute('class') || ''
             }
 
@@ -27,12 +27,13 @@ document.querySelectorAll('.js-mobile-menu').forEach((el) => {
     }
 
     let menu = parseMenu(document.querySelector('.js-menu-main'))
-    menu.push({
-        href: 'catalog',
+    menu.splice(1, 0, {
+        href: '/catalog',
         title: 'Каталог',
-        classes: 'mobile-menu__catalog parent',
+        showChildren: true,
         children: parseMenu(document.querySelector('.js-menu-catalog'))
     })
+    console.log(menu);
 
     ReactDOM.render(
         <Menu items={menu} />,

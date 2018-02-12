@@ -2,13 +2,13 @@
 <div uk-sticky>
     <section class="toolbar">
         <div class="uk-container">
-            <button class="toolbar__menu uk-button button-purple" uk-toggle="target: #mobile-menu; cls: mobile-menu--open">
+            <button class="toolbar__menu uk-button button-purple" uk-toggle="target: html; cls: mobile-menu-opened uk-modal-page">
                 <span uk-icon="icon: menu"></span>
             </button>
-            <button class="toolbar__search uk-button button-blue">
+            <a href="{'search' | uri2id | url}" class="toolbar__search uk-button button-blue">
                 <span uk-icon="icon: search"></span>
-            </button>
-            <a href="#" class="toolbar-subscribe uk-button button-blue">
+            </a>
+            <a href="{'contacts' | uri2id | url}" class="toolbar-subscribe uk-button button-blue" uk-toggle="target: #subscribe">
                 <span class="toolbar-subscribe__icon" uk-icon="icon: pencil"></span>
                 <span class="toolbar-subscribe__text">Запись на примерку</span>
                 <span class="toolbar-subscribe__tip" title="Ваш график строго расписан и у вас нет ни минуты лишнего времени? Запишитесь на примерку, в удобное вам время наши консультанты будут ждать вас." uk-tooltip>?</span>
@@ -26,23 +26,35 @@
                 <a href="/" class="header__logo"><img src="/assets/components/app/web/img/logo.png" alt=""></a>
                 {'pdoMenu' | snippet : [
                     'parents' => 'catalog' | uri2id,
+                    'level' => 2,
+                    'parentClass' => 'parent',
                     'outerClass' => 'header-menu js-menu-catalog',
-                    'innerClass' => 'header-menu__submenu'
+                    'innerClass' => 'header-menu__submenu',
+                    'includeTVs' => 'category_type',
+                    'where' => ['category_type'=>null]
                 ]}
-                <form class="header-search">
-                    <input type="text" placeholder="Поиск по сайту" class="header-search__input">
-                    <button type="submit" class="header-search__submit"><span uk-icon="icon: search"></span></button>
-                </form>
+                {'!mSearchForm' | snippet : [
+                    'pageId' => 'search' | uri2id,
+                    'tplForm' => '@FILE chunks/partials/searchform.tpl'
+                ]}
                 <div class="header__phone">
                     +7 (926) 960-60-69
                 </div>
-                <a href="#" class="header-cart header-cart--not-empty">
-                    <svg width="34" height="26">
-                        <use href="/assets/components/app/web/img/svg-sprite.svg#cart" />
-                    </svg>
-                    <span class="header-cart__count">1</span>
-                </a>
+                {'!msMiniCart' | snippet : [
+                    'tpl' => '@FILE chunks/partials/minicart.tpl'
+                ]}
             </div>
         </div>
     </section>
+</div>
+
+<div id="subscribe" class="modal-subscribe" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-title">Запись на примерку</div>
+        {'!AjaxForm@Form' | snippet : [
+            'form' => '@FILE chunks/forms/subscribe.tpl',
+            'validate' => 'phone:required,rules:required'
+        ]}
+    </div>
 </div>

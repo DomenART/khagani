@@ -10,6 +10,7 @@ class Menu extends React.Component {
         }
 
         this.getBack = this.getBack.bind(this)
+        this.renderItem = this.renderItem.bind(this)
     }
 
     componentDidMount() {
@@ -26,6 +27,9 @@ class Menu extends React.Component {
 
             if (row.children)
                 row.children = this.prepareKeys(row.children)
+
+            if (row.childrenVisible)
+                row.childrenVisible = this.prepareKeys(row.childrenVisible)
 
             return row
         })
@@ -61,19 +65,31 @@ class Menu extends React.Component {
         this.setMenu(this.state.parent)
     }
 
-    render() {
-        let menu = this.state.menu.map((row, i) => (
+    renderItem(row, i) {
+        let children
+        if (row.showChildren && row.children) {
+            children = row.children.map(this.renderItem)
+        }
+        children = (
+            <ul className="mobile-menu__submenu">{children}</ul>
+        )
+        return (
             <li className={row.classes} key={i}>
                 <a href={row.href} onClick={row.onClick}>{row.title}</a>
+                {children}
             </li>
-        ))
+        )
+    }
+
+    render() {
+        let menu = this.state.menu.map(this.renderItem)
 
         return (
             <div id="mobile-menu" className="mobile-menu">
                 <div className="mobile-menu__head uk-flex uk-flex-middle">
                     {this.state.self ? <a href={this.state.self.href}>{this.state.self.title}</a> : ''}
                 </div>
-                <a href="#mobile-menu" className="mobile-menu__close" uk-toggle="cls: mobile-menu--open" />
+                <button className="mobile-menu__close" uk-toggle="target: html; cls: mobile-menu-opened uk-modal-page" />
                 {this.state.parent !== false ? <span className="mobile-menu__back" onClick={this.getBack} /> : ''}
                 <ul className={this.state.parent !== false ? 'mobile-menu__submenu' : 'mobile-menu__menu'}>
                     {menu}

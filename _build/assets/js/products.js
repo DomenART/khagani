@@ -1,9 +1,11 @@
 import FilterCategories from './filter_categories.js'
-import { ColorViews } from './colors.js'
+import { ColorViews, ColorOptions } from './colors.js'
+import { FormNumber, FormProductValidation } from './form.js'
 import $ from 'jquery'
 
 // sorting by select
-document.querySelector('[name="mse2_sort"]').addEventListener('change', el => {
+let sortSelect = document.querySelector('[name="mse2_sort"]')
+sortSelect && sortSelect.addEventListener('change', el => {
     let sort = el.target.value
     mse2Config['sort'] = (sort != mse2Config['start_sort']) ? sort : ''
     let params = mSearch2.getFilters()
@@ -26,3 +28,16 @@ document.querySelectorAll('.js-filter-categories').forEach(wrap => {
         add: '.js-filter-categories-add'
     })
 })
+
+// form validation
+document.querySelectorAll('.ms2_form').forEach(form => {
+    new FormProductValidation(form)
+})
+
+// select count
+document.querySelectorAll('.js-form-number').forEach(el => {
+    new FormNumber(el)
+})
+
+// select color
+new ColorOptions(document.querySelector('.js-product'))

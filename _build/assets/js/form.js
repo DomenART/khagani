@@ -1,45 +1,42 @@
-import { validate } from "validate.js"
+import "jquery-validation"
+import "jquery-validation/dist/localization/messages_ru.js"
 
 class FormNumber {
 
-    constructor(selectors, config) {
-        this.selectors = Object.assign({
-            wrap: '.js-form-number',
-            plus: '.js-form-number-plus',
-            minus: '.js-form-number-minus',
-            input: '.js-form-number-input'
-        }, selectors)
+    constructor(wrap, config) {
         this.config = Object.assign({
-            min: false,
-            max: false
+            selectors: {
+                plus: '.js-form-number-plus',
+                minus: '.js-form-number-minus',
+                input: '.js-form-number-input'
+            }
         }, config)
+        this.wrap = wrap
         this.init()
     }
 
     init() {
-        document.querySelectorAll(this.selectors.wrap).forEach(el => {
-            let minus = el.querySelector(this.selectors.minus)
-            let plus = el.querySelector(this.selectors.plus)
-            let input = el.querySelector(this.selectors.input)
+        let el = this.wrap
+        let minus = el.querySelector(this.config.selectors.minus)
+        let plus = el.querySelector(this.config.selectors.plus)
+        let input = el.querySelector(this.config.selectors.input)
+        let min = input.min || false
+        let max = input.max || false
+        let step = input.step || 1
 
-            minus.addEventListener('click', () => {
-                if (this.config.min !== false) {
-                    if (input.value > this.config.min) {
-                        input.value--
-                    }
-                } else {
-                    input.value--
-                }
-            })
-            plus.addEventListener('click', () => {
-                if (this.config.max !== false) {
-                    if (input.value < this.config.max) {
-                        input.value++
-                    }
-                } else {
-                    input.value++
-                }
-            })
+        minus.addEventListener('click', () => {
+            input.value = Number(input.value) - step
+
+            if (min !== false && Number(input.value) < min) {
+                input.value = min
+            }
+        })
+        plus.addEventListener('click', () => {
+            input.value = Number(input.value) + step
+
+            if (max !== false && Number(input.value) > max) {
+                input.value = max
+            }
         })
     }
 
@@ -47,55 +44,29 @@ class FormNumber {
 
 class FormProductValidation {
     
-    constructor(form, rules) {
-        this.form = form
-        this.rules = rules
-        this.id = this.random()
-        this.button = this.form.querySelector('[value="cart/add"]')
+    constructor(form) {
+        // form validation
+        let submit = form.querySelector('[name="ms2_action"]')
 
-        form.addEventListener('submit', (e) => {
-            if (this.button.$alert) {
-                this.button.$alert.parentNode.removeChild(this.button.$alert)
-            }
-
-            miniShop2.Callbacks.add('Cart.add.before', 'validate_product_form_' + this.id, () => {
-                miniShop2.Callbacks.remove('Cart.add.before', 'validate_product_form_' + this.id)
-                
-                let errors = validate(validate.collectFormValues(form), rules)
-
-                if (errors) {
-                    let alert = document.createElement('div')
-                    let close = document.createElement('div')
-                    let list = document.createElement('ul')
-
-                    alert.classList.add('form-error')
-                    close.classList.add('form-error__close')
-                    list.classList.add('form-error__list')
-
-                    close.addEventListener('click', () => {
-                        alert.style.display = 'none'
-                    })
-
-                    alert.appendChild(close)
-                    alert.appendChild(list)
-                    
-                    Object.keys(errors).forEach(key => {
-                        let row = document.createElement('li')
-                        row.innerHTML = errors[key]
-                        list.appendChild(row)
-                    })
-
-                    this.button.$alert = alert
-                    this.button.parentNode.insertBefore(alert, this.button.nextSibling)
-
-                    return false;
+        $(form).validate({
+            errorClass: 'uk-form-danger',
+            validClass: 'uk-form-success',
+            messages: {
+                "options[size]": {
+                    required: "Выберите размер"
                 }
-            })
+            },
+            errorPlacement(error, element) {
+                switch (element.attr("name")) {
+                    case "options[size]":
+                        error.insertAfter(submit)
+                        break
+                    default:
+                        error.insertAfter(element)
+                        break
+                }
+            }
         })
-    }
-
-    random() {
-        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)
     }
 
 }

@@ -1,6 +1,7 @@
 <div class="uk-grid uk-grid-small" uk-grid id="mse2_mfilter">
     <div class="uk-width-2-5@s uk-width-1-4@m">
-        <form action="[[~[[*id]]]]" method="post" id="mse2_filters" class="filters">
+        <button class="uk-button button-bordered uk-hidden@s" uk-toggle="target: #mse2_filters; cls: uk-visible@s" type="button">Показать фильтр</button>
+        <form action="[[~[[*id]]]]" method="post" id="mse2_filters" class="filters uk-visible@s">
             <div class="filters__head">
                 <button type="reset" class="uk-button filters__reset hidden">
                     {'mse2_reset' | lexicon}

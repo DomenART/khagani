@@ -4,8 +4,32 @@
 		"selected_items":
 		[
 			[
+				"bot",
+				"bottom"
+			],
+			[
+				"c",
+				"children"
+			],
+			[
 				"tr",
-				"translate()"
+				"transition"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"inner",
+				"innerText"
+			],
+			[
+				"le",
+				"let"
+			],
+			[
+				"con",
+				"constructor"
 			],
 			[
 				"to",
@@ -30,10 +54,6 @@
 			[
 				"que",
 				"querySelectorAll"
-			],
-			[
-				"con",
-				"console"
 			],
 			[
 				"add",
@@ -84,10 +104,6 @@
 				"transparent"
 			],
 			[
-				"le",
-				"length"
-			],
-			[
 				"a",
 				"auto"
 			],
@@ -112,10 +128,6 @@
 				"box-sizing"
 			],
 			[
-				"c",
-				"class\tAttr"
-			],
-			[
 				"bo",
 				"border"
 			],
@@ -136,55 +148,46 @@
 	"buffers":
 	[
 		{
+			"file": "/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/templates/home.tpl",
+			"settings":
+			{
+				"buffer_size": 18697,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/_header.tpl",
+			"settings":
+			{
+				"buffer_size": 2717,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "assets/js/components/menu.js",
+			"settings":
+			{
+				"buffer_size": 2925,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "assets/js/menu.js",
+			"settings":
+			{
+				"buffer_size": 1113,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "assets/less/_common.less",
 			"settings":
 			{
-				"buffer_size": 63979,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/model/app.class.php",
-			"settings":
-			{
-				"buffer_size": 8853,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "assets/js/quickview.js",
-			"settings":
-			{
-				"buffer_size": 1503,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/modals/quickview.tpl",
-			"settings":
-			{
-				"buffer_size": 3216,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "assets/js/form.js",
-			"settings":
-			{
-				"buffer_size": 158,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "assets/js/colors.js",
-			"settings":
-			{
-				"buffer_size": 1900,
+				"buffer_size": 70268,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -246,7 +249,7 @@
 				"Material Theme: Advanced configuration"
 			]
 		],
-		"width": 531.0
+		"width": 549.0
 	},
 	"console":
 	{
@@ -269,22 +272,45 @@
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/js",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/js/components",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/less",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/modals",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/resources",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/templates",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/model",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/processors",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/processors/web",
-		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/processors/web/product",
-		"/home/kundius/Projects/docker/www/khagani/Extras/App/assets/components/app",
-		"/home/kundius/Projects/docker/www/khagani/Extras/App/assets/components/app/mgr",
-		"/home/kundius/Projects/docker/www/khagani/Extras/App/assets/components/app/mgr/css",
-		"/home/kundius/Projects/docker/www/khagani/Extras/App/assets/components/app/web"
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/processors/web/product"
 	],
 	"file_history":
 	[
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/js/__menu.js",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/js/menu.js",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/resources/offers.item.tpl",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/_header.tpl",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/js/_menu.js",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/resources/offers.item.slider.tpl",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/less/_variables.less",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/js/ajaxform.js",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/forms/subscribe.tpl",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/partials/short_categories.row.tpl",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/_footer.tpl",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/partials/short_categories.inner_row.tpl",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/partials/short_categories.inner_outer.tpl",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/partials/short_categories.outer.tpl",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/node_modules/jquery-validation/package.json",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/less/_common.less",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/js/form.js",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/model/app.class.php",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/js/quickview.js",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/node_modules/jquery-form/package.json",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/node_modules/jquery-form/src/jquery.form.js",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/modals/quickview.tpl",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/js/colors.js",
+		"/home/kundius/Projects/docker/www/khagani/Extras/App/assets/components/app/web/main.js",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/assets/components/app/action.php",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/js/app.js",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/js/product.js",
@@ -295,7 +321,6 @@
 		"/tmp/11818-24030-1yjs7mr.y59h.log",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/js/filter_categories.js",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/js/mse2.js",
-		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/js/colors.js",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/modals/quickview.options.tpl",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/assets/components/app/mgr/css/main.css",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/filter/outer.tpl",
@@ -303,8 +328,6 @@
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/assets/components/app/mgr/js/product/widgets/colors.windows.js",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/assets/components/app/mgr/js/product/widgets/colors.grid.js",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/assets/components/app/mgr/js/product/misc/combo.js",
-		"/home/kundius/Projects/docker/www/khagani/Extras/App/_build/assets/js/menu.js",
-		"/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/model/app.class.php",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/assets/components/app/connector.php",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/assets/components/app/web/connector.php",
 		"/home/kundius/Projects/docker/www/khagani/Extras/App/assets/components/app/mgr/connector.php",
@@ -341,7 +364,7 @@
 	],
 	"find":
 	{
-		"height": 30.0
+		"height": 70.0
 	},
 	"find_in_files":
 	{
@@ -357,6 +380,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"this",
+			"i",
+			"row",
+			"array[i]",
+			"media (min",
+			"toolbar-menu",
+			"modal-form-success",
+			"body",
+			"form-err",
+			"form",
+			"'",
+			"  ",
 			"'\n",
 			"body",
 			"colors",
@@ -432,6 +467,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"    ",
 			"colors"
 		],
 		"reverse": false,
@@ -460,29 +496,29 @@
 			[
 				{
 					"buffer": 0,
-					"file": "assets/less/_common.less",
+					"file": "/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/templates/home.tpl",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 63979,
+						"buffer_size": 18697,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								60435,
-								60435
+								5881,
+								5881
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/LESS/LESS.sublime-syntax",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 65021.0,
+						"translation.y": 184.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
@@ -490,130 +526,26 @@
 				},
 				{
 					"buffer": 1,
-					"file": "/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/model/app.class.php",
+					"file": "/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/_header.tpl",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8853,
+						"buffer_size": 2717,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8462,
-								8462
+								244,
+								244
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4611.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "assets/js/quickview.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1503,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								93,
-								93
-							],
-							[
-								127,
-								127
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/home/kundius/Projects/docker/www/khagani/Extras/App/core/components/app/elements/chunks/modals/quickview.tpl",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3216,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2511,
-								2497
-							],
-							[
-								2568,
-								2588
-							],
-							[
-								2730,
-								2750
-							],
-							[
-								2835,
-								2816
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 966.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "assets/js/form.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 158,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								105,
-								105
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -623,31 +555,93 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "assets/js/colors.js",
+					"buffer": 2,
+					"file": "assets/js/components/menu.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1900,
+						"buffer_size": 2925,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1541,
-								1541
+								1502,
+								1501
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 875.0,
+						"translation.y": 1518.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "assets/js/menu.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1113,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								963,
+								978
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 345.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "assets/less/_common.less",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 70268,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								38044,
+								38044
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LESS/LESS.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 41247.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]

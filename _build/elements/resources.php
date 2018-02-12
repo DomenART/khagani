@@ -265,7 +265,13 @@ return [
         ],
         'sitemap' => [
             'pagetitle' => 'Карта сайта',
-            'hidemenu' => true
+            'hidemenu' => true,
+            '_template' => 'BaseTemplate'
+        ],
+        'search' => [
+            'pagetitle' => 'Поиск',
+            'hidemenu' => true,
+            '_template' => 'BaseTemplate'
         ],
         'service' => [
             'pagetitle' => 'Service',

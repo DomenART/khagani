@@ -7,7 +7,6 @@
 @breakpoint-large:                             1200px; // Desktop
 @breakpoint-xlarge:                            1600px; // Large Screens
 
-
 @container-max-width: 1180px;
 @container-padding-horizontal: 10px;
 @container-padding-horizontal-s: 10px;
@@ -17,3 +16,66 @@
 @global-small-gutter: 15px;
 @global-medium-gutter: 40px;
 @global-large-gutter: 70px;
+
+@accordion-content-margin-top: 0;
+@accordion-item-margin-top: 0;
+@modal-body-padding-horizontal: 20px;
+@modal-body-padding-vertical: 20px;
+@modal-background: rgba(255,255,255,0.8);
+.hook-modal-dialog() {
+    box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.38);
+}
+.hook-modal-body() {
+    padding-right: 15px;
+}
+@modal-title-font-size: 14px;
+@modal-title-line-height: 1;
+.hook-modal-title() {
+    font-size: 14px;
+    line-height: 1;
+    color: #333333;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 5px 0 20px;
+    margin-bottom: 20px;
+}
+@modal-close-position: 15px;
+@modal-close-padding: 8px;
+.hook-modal-close-default() {
+    border: 1px solid #cccccc;
+}
+.hook-modal-close-default-hover() {
+    color: #333;
+    border-color: #999;
+}
+
+@form-radio-size: 18px;
+@form-radio-background: #ffffff;
+@form-radio-checked-background: #ffffff;
+@form-radio-checked-focus-background: #ffffff;
+.hook-form-radio() {
+    border: 1px solid #cccccc;
+    box-sizing: border-box;
+    border-radius: 2px;
+    overflow: visible;
+}
+.hook-form-radio-checked() {
+    position: relative;
+    background-image: none !important;
+    &:before {
+        content: '';
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        width: 18px;
+        height: 18px;
+        background: url('../img/svg-sprite.svg#check-for-checkbox') no-repeat 50% 50%;
+    }
+}
+.hook-form-radio-focus() {
+    background-image: none !important;
+}
+.hook-form-radio-checked-focus() {
+    background-image: none !important;
+}

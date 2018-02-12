@@ -114,192 +114,13 @@
         </div>
         <div class="uk-slider-container products-slider-container">
             <ul class="uk-grid uk-grid-medium uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m">
-                <li>
-                    <div class="offers-item offers-item--new">
-                        <a href="#">
-                            <img src="{$.assets_url}web/img/product-1.jpg" alt="" class="offers-item__image">
-                        </a>
-                        <div class="offers-item__docket">
-                            <div class="offers-item__prices">
-                                <div class="offers-item__price-old">
-                                    18 500
-                                    <svg width="10" height="10">
-                                        <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                                    </svg>
-                                </div>
-                                <div class="offers-item__price-new">
-                                    16 000
-                                    <svg width="14" height="16">
-                                        <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <button class="offers-item__buy uk-button button-bordered">
-                                Купить
-                            </button>
-                            <a href="#" class="offers-item__info">
-                                <svg width="10" height="20">
-                                    <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="offers-item offers-item--hit">
-                        <a href="#">
-                            <img src="{$.assets_url}web/img/product-2.jpg" alt="" class="offers-item__image">
-                        </a>
-                        <div class="offers-item__docket">
-                            <div class="offers-item__prices">
-                                <div class="offers-item__price-old">
-                                    18 500
-                                    <svg width="10" height="10">
-                                        <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                                    </svg>
-                                </div>
-                                <div class="offers-item__price-new">
-                                    16 000
-                                    <svg width="14" height="16">
-                                        <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <button class="offers-item__buy uk-button button-bordered">
-                                Купить
-                            </button>
-                            <a href="#" class="offers-item__info">
-                                <svg width="10" height="20">
-                                    <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="offers-item offers-item--discount">
-                        <a href="#">
-                            <img src="{$.assets_url}web/img/product-3.jpg" alt="" class="offers-item__image">
-                        </a>
-                        <div class="offers-item__docket">
-                            <div class="offers-item__prices">
-                                <div class="offers-item__price-old">
-                                    18 500
-                                    <svg width="10" height="10">
-                                        <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                                    </svg>
-                                </div>
-                                <div class="offers-item__price-new">
-                                    16 000
-                                    <svg width="14" height="16">
-                                        <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <button class="offers-item__buy uk-button button-bordered">
-                                Купить
-                            </button>
-                            <a href="#" class="offers-item__info">
-                                <svg width="10" height="20">
-                                    <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="offers-item">
-                        <a href="#">
-                            <img src="{$.assets_url}web/img/product-4.jpg" alt="" class="offers-item__image">
-                        </a>
-                        <div class="offers-item__docket">
-                            <div class="offers-item__prices">
-                                <div class="offers-item__price-old">
-                                    18 500
-                                    <svg width="10" height="10">
-                                        <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                                    </svg>
-                                </div>
-                                <div class="offers-item__price-new">
-                                    16 000
-                                    <svg width="14" height="16">
-                                        <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <button class="offers-item__buy uk-button button-bordered">
-                                Купить
-                            </button>
-                            <a href="#" class="offers-item__info">
-                                <svg width="10" height="20">
-                                    <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="offers-item">
-                        <a href="#">
-                            <img src="{$.assets_url}web/img/product-5.jpg" alt="" class="offers-item__image">
-                        </a>
-                        <div class="offers-item__docket">
-                            <div class="offers-item__prices">
-                                <div class="offers-item__price-old">
-                                    18 500
-                                    <svg width="10" height="10">
-                                        <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                                    </svg>
-                                </div>
-                                <div class="offers-item__price-new">
-                                    16 000
-                                    <svg width="14" height="16">
-                                        <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <button class="offers-item__buy uk-button button-bordered">
-                                Купить
-                            </button>
-                            <a href="#" class="offers-item__info">
-                                <svg width="10" height="20">
-                                    <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="offers-item">
-                        <a href="#">
-                            <img src="{$.assets_url}web/img/product-6.jpg" alt="" class="offers-item__image">
-                        </a>
-                        <div class="offers-item__docket">
-                            <div class="offers-item__prices">
-                                <div class="offers-item__price-old">
-                                    18 500
-                                    <svg width="10" height="10">
-                                        <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                                    </svg>
-                                </div>
-                                <div class="offers-item__price-new">
-                                    16 000
-                                    <svg width="14" height="16">
-                                        <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <button class="offers-item__buy uk-button button-bordered">
-                                Купить
-                            </button>
-                            <a href="#" class="offers-item__info">
-                                <svg width="10" height="20">
-                                    <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </li>
+                {'msProducts' | snippet : [
+                    'tpl' => '@FILE chunks/resources/offers.item.slider.tpl', 'includeThumbs' => 'medium',
+                    'parents' => 0,
+                    'where' => [
+                        'Data.new' => true
+                    ]
+                ]}
             </ul>
         </div>
     </div>
@@ -308,94 +129,15 @@
 <section class="section-home">
     <div class="uk-container">
         <h2 class="section-home__title">Популярное</h2>
-        <div class="products">
-            <div class="offers-item">
-                <a href="#">
-                    <img src="{$.assets_url}web/img/product-1.jpg" alt="" class="offers-item__image">
-                </a>
-                <div class="offers-item__docket">
-                    <div class="offers-item__prices">
-                        <div class="offers-item__price-old">
-                            18 500
-                            <svg width="10" height="10">
-                                <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                            </svg>
-                        </div>
-                        <div class="offers-item__price-new">
-                            16 000
-                            <svg width="14" height="16">
-                                <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                            </svg>
-                        </div>
-                    </div>
-                    <button class="offers-item__buy uk-button button-bordered">
-                        Купить
-                    </button>
-                    <a href="#" class="offers-item__info">
-                        <svg width="10" height="20">
-                            <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="offers-item">
-                <a href="#">
-                    <img src="{$.assets_url}web/img/product-1.jpg" alt="" class="offers-item__image">
-                </a>
-                <div class="offers-item__docket">
-                    <div class="offers-item__prices">
-                        <div class="offers-item__price-old">
-                            18 500
-                            <svg width="10" height="10">
-                                <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                            </svg>
-                        </div>
-                        <div class="offers-item__price-new">
-                            16 000
-                            <svg width="14" height="16">
-                                <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                            </svg>
-                        </div>
-                    </div>
-                    <button class="offers-item__buy uk-button button-bordered">
-                        Купить
-                    </button>
-                    <a href="#" class="offers-item__info">
-                        <svg width="10" height="20">
-                            <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="offers-item">
-                <a href="#">
-                    <img src="{$.assets_url}web/img/product-1.jpg" alt="" class="offers-item__image">
-                </a>
-                <div class="offers-item__docket">
-                    <div class="offers-item__prices">
-                        <div class="offers-item__price-old">
-                            18 500
-                            <svg width="10" height="10">
-                                <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                            </svg>
-                        </div>
-                        <div class="offers-item__price-new">
-                            16 000
-                            <svg width="14" height="16">
-                                <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-                            </svg>
-                        </div>
-                    </div>
-                    <button class="offers-item__buy uk-button button-bordered">
-                        Купить
-                    </button>
-                    <a href="#" class="offers-item__info">
-                        <svg width="10" height="20">
-                            <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
+        <div class="offers">
+            {'msProducts' | snippet : [
+                'tpl' => '@FILE chunks/resources/offers.item.tpl',
+                'parents' => 0,
+                'includeThumbs' => 'medium',
+                'optionFilters' => [
+                    'Data.favorite' => true
+                ]
+            ]}
         </div>
     </div>
 </section>
@@ -578,32 +320,10 @@
                             <h3 class="module-slider__title">Запись на примерку</h3>
                         </div>
                         <div class="module-slider__body">
-                            <form action="" class="form-record">
-                                <div class="form-record__row">
-                                    <input type="text" placeholder="Имя:" name="name" class="input">
-                                </div>
-                                <div class="form-record__row">
-                                    <input type="tel" placeholder="Телефон*:" name="phone" class="input">
-                                </div>
-                                <div class="form-record__row">
-                                    <textarea rows="3" name="message" class="textarea" placeholder="Сообщение:"></textarea>
-                                </div>
-                                <div class="form-record__note">
-                                    <span>Обязательно заполните поле ТЕЛЕФОН, чтобы мы могли связаться с вами для уточнения времени.</span>
-                                </div>
-                                <div class="form-record__rules">
-                                    <label>
-                                        <input type="checkbox" name="rules" class="checkbox">
-                                        <span></span>
-                                        Прочитал(-а)
-                                        <a href="#" target="_blank">пользовательское соглашение</a> и соглашаюсь с
-                                        <a href="#" target="_blank">политикой обработки персональных данных</a>.
-                                    </label>
-                                </div>
-                                <div class="form-record__submit">
-                                    <button type="submit" class="uk-button button-blue">Хочу Записаться</button>
-                                </div>
-                            </form>
+                            {'!AjaxForm@Form' | snippet : [
+                                'form' => '@FILE chunks/forms/subscribe.tpl',
+                                'validate' => 'phone:required,rules:required'
+                            ]}
                         </div>
                     </div>
                 </div>

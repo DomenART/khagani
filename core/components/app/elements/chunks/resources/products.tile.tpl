@@ -10,7 +10,7 @@
             {if $old_price?}
                 <span class="badge-discount"></span>
             {/if}
-            <img src="{$thumb}" alt="{$pagetitle}" class="products-item__image" id="image-{$id}">
+            <img src="{$medium}" alt="{$pagetitle}" class="products-item__image" id="image-{$id}">
         </a>
         <button class="products-item__view js-product-view" data-id="{$id}">Быстрый просмотр</button>
     </div>
@@ -29,7 +29,7 @@
             class="products-item__color js-product-color" 
             style="background-color: {$color.color};" 
             data-image="{$color.image}" 
-            data-thumb="{$color.thumb}" 
+            data-thumb="{$color.medium}" 
             data-target="#image-{$id}"></button>
         {/foreach}
     </div>

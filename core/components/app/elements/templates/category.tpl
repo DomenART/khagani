@@ -13,6 +13,7 @@
         {'!mFilter2' | snippet : [
             'class' => 'msProduct',
             'element' => 'msProducts',
+            'includeThumbs' => 'medium',
             'parents' => $_modx->resource.id,
             'limit' => 21,
 

@@ -1,9 +1,10 @@
 import axios from 'axios'
-import UIkit from './uikit.js'
+import UIkit from 'uikit'
 import { ColorOptions } from './colors.js'
 import { FormNumber, FormProductValidation } from "./form.js"
 
-document.querySelector('.js-products').addEventListener('click', e => {
+let products = document.querySelector('.js-products')
+products && products.addEventListener('click', e => {
     if(e.target && e.target.classList.contains('js-product-view')) {
         let button = e.target
 
@@ -32,20 +33,17 @@ document.querySelector('.js-products').addEventListener('click', e => {
             }
 
             window.QuickView.$content.innerHTML = response.data.html
+            
+            // select color
             new ColorOptions(window.QuickView.$content)
-            new FormNumber({
-                wrap: '.js-form-number',
-                plus: '.js-form-number-plus',
-                minus: '.js-form-number-minus',
-                input: '.js-form-number-input'
-            }, {
-                min: 1
-            })
-            new FormProductValidation(window.QuickView.$content.querySelector('.ms2_form'), {
-                'options[size]': {
-                    presence: { message: '^Выберите размер' }
-                }
-            })
+            
+            // select count
+            new FormNumber(window.QuickView.$content.querySelector('.js-form-number'))
+            
+            // form validation
+            new FormProductValidation(window.QuickView.$content.querySelector('.ms2_form'))
+
+            // show modal
             window.QuickView.show()
         })
     }

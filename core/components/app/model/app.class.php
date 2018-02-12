@@ -97,8 +97,21 @@ class App
                 $fenom->addAccessorSmart('assets_url', 'assets_url', Fenom::ACCESSOR_PROPERTY);
                 $fenom->assets_url = $this->config['assetsUrl'];
 
+                if ($this->modx->resource) {
+                    $fenom->addAccessorSmart('resource', 'resource', Fenom::ACCESSOR_PROPERTY);
+                    $fenom->resource = $this->modx->resource->toArray();
+                }
+
                 $fenom->addModifier('uri2id', function ($input) {
                     return $this->modx->findResource($input);
+                });
+
+                $fenom->addModifier('getViewedIDs', function ($input) {
+                    return $this->getViewedIDs($input);
+                });
+
+                $fenom->addModifier('addViewedID', function ($input) {
+                    return $this->addViewedID($input);
                 });
 
                 $fenom->addModifier('getColors', function ($input) {
@@ -179,14 +192,25 @@ class App
 
     public function getColors($id)
     {
+        $thumbs = [
+            'small',
+            'medium'
+        ];
         $q = $this->modx->newQuery('AppProductColor');
         $q->innerJoin('AppColor','AppColor', 'AppColor.id = AppProductColor.color_id'); 
         $q->leftJoin('msProductFile','Image', 'Image.id = AppProductColor.product_file_id'); 
-        $q->leftJoin('msProductFile','Thumb', 'Thumb.parent = Image.id'); 
+        foreach ($thumbs as $thumb) {
+            $q->leftJoin('msProductFile', $thumb, $thumb . '.parent = Image.id'); 
+            $q->where(array(
+                $thumb . '.path:LIKE' => '%'. $thumb . '%'
+            ));
+            $q->select($thumb . '.url as ' . $thumb);
+        }
         $q->where(array(
             'AppProductColor.product_id' => $id
         ));
-        $q->select('AppProductColor.id,Image.id as file,AppColor.label,AppColor.color,Image.url as image,Thumb.url as thumb');
+        $q->groupby('AppProductColor.id');
+        $q->select('AppProductColor.id,Image.id as file,AppColor.label,AppColor.color,Image.url as image');
         if ($q->prepare() && $q->stmt->execute()) {
             $colors = $q->stmt->fetchAll(PDO::FETCH_ASSOC);
             return $colors;
@@ -195,17 +219,27 @@ class App
 
     public function getImages($id)
     {
+        $thumbs = [
+            // 'small',
+            // 'medium'
+        ];
         $q = $this->modx->newQuery('msProductFile');
         $q->where(array(
             'msProductFile.product_id' => $id,
             'msProductFile.parent' => 0,
             'msProductFile.active' => 1
-        ));
+        )); 
+        foreach ($thumbs as $thumb) {
+            $q->leftJoin('msProductFile', $thumb, $thumb . '.parent = msProductFile.id'); 
+            $q->where(array(
+                $thumb . '.path:LIKE' => '%'. $thumb . '%'
+            ));
+            $q->select($thumb . '.url as ' . $thumb);
+        }
         $q->sortby('rank', 'ASC');
         $q->select($this->modx->getSelectColumns('msProductFile','msProductFile',''));
         if ($q->prepare() && $q->stmt->execute()) {
-            $images = $q->stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $images;
+            return $q->stmt->fetchAll(PDO::FETCH_ASSOC);
         }
     }
 
@@ -228,5 +262,30 @@ class App
             'success' => false,
             'message' => 'Product not found'
         );
+    }
+
+    public function addViewedID($id) {
+        if(!isset($_SESSION['viewed'])) {
+            $_SESSION['viewed'] = array();
+        }
+        if(!in_array($id, $_SESSION['viewed'])) {
+            $_SESSION['viewed'][] = $id;
+        }
+    }
+
+    public function getViewedIDs($id) {
+        $ids = $_SESSION['viewed'];
+        if(!empty($ids)) {
+            $key = array_search($id, $ids);
+            
+            if($key !== false) {
+                unset($ids[$key]);
+            }
+            
+            $ids = array_reverse($ids);
+            
+            return implode(',',$ids);
+        }
+        return false;
     }
 }
