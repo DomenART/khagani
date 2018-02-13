@@ -1,4 +1,6 @@
-{extends 'file:templates/base.tpl'} {block 'content'}
+{extends 'file:templates/base.tpl'}
+
+{block 'content'}
 <div class="home-slideshow">
     <div class="uk-container">
         <div class="slideshow" uk-slideshow="ratio: 7:3; animation: push">

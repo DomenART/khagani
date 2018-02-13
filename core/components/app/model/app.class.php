@@ -106,12 +106,36 @@ class App
                     return $this->modx->findResource($input);
                 });
 
+                $fenom->addModifier('units', function ($input, $titles) {
+                    return $this->units($input, $titles);
+                });
+
+                $fenom->addModifier('averagePercentage', function ($input, $number) {
+                    return $this->averagePercentage($input, $number);
+                });
+
+                $fenom->addModifier('totalAverageRating', function ($input) {
+                    return $this->totalAverageRating($input);
+                });
+
+                $fenom->addModifier('totalAverageRatingPercent', function ($input) {
+                    return $this->totalAverageRatingPercent($input);
+                });
+
+                $fenom->addModifier('round', function (...$args) {
+                    return round(...$args);
+                });
+
                 $fenom->addModifier('getViewedIDs', function ($input) {
                     return $this->getViewedIDs($input);
                 });
 
                 $fenom->addModifier('addViewedID', function ($input) {
                     return $this->addViewedID($input);
+                });
+
+                $fenom->addModifier('primaryParent', function ($input) {
+                    return $this->primaryParent($input);
                 });
 
                 $fenom->addModifier('getColors', function ($input) {
@@ -167,6 +191,141 @@ class App
             case 'OnLoadWebDocument':
                 break;
             case 'OnPageNotFound':
+                break;
+            case 'OnBeforeCommentPublish':
+            case 'OnBeforeCommentDelete':
+            case 'OnBeforeCommentUndelete':
+            case 'OnBeforeCommentUnpublish':
+            case 'OnBeforeCommentSave':
+                $commment = $event->params['TicketComment'];
+                $thread = $this->modx->getObject('TicketThread', $commment->get('thread'));
+                $resource = $this->modx->getObject('modResource', $thread->get('resource'));
+                $c_properties = $commment->get('properties');
+                $r_properties = $resource->get('properties');                
+                $fields = ['vote-overall','vote-price','vote-quality','advantages','disadvantages','recommend','city','time'];
+                foreach ($fields as $name) {
+                    if (isset($_POST[$name])) {
+                        $c_properties[$name] = $this->modx->stripTags($_POST[$name]);
+                    }
+                }
+                $c_properties['vote-medium'] = ($c_properties['vote-overall'] + $c_properties['vote-price'] + $c_properties['vote-quality']) / 3;
+                if (isset($_POST['message'])) {
+                    $text = $this->modx->stripTags($_POST['message']);
+                    $commment->set('text', $text);
+                    $commment->set('raw', $text);
+                }
+                if (isset($_FILES['file'])) {
+                    $pathinfo = pathinfo($_FILES['file']['name']);
+                    $uploadFile = uniqid() . '.' . $pathinfo['extension'];
+                    $uploadDir = 'images/comments/' . $resource->id . '/';
+                    $uploadPath = MODX_ASSETS_PATH . $uploadDir . $uploadFile;
+                    $uploadUrl = MODX_ASSETS_URL . $uploadDir . $uploadFile;
+                    if (!is_dir(MODX_ASSETS_PATH . $uploadDir)) {
+                        mkdir(MODX_ASSETS_PATH . $uploadDir);
+                    }
+                    if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadPath)) {
+                        $c_properties['file'] = [
+                            'url' => $uploadUrl,
+                            'name' => $pathinfo['filename'],
+                            'type' => $_FILES['file']['type'],
+                            'size' => $_FILES['file']['size'],
+                            'path' => $uploadDir,
+                            'file' => $uploadFile
+                        ];
+                    }
+                }
+                $commment->set('properties', $c_properties);
+
+                // rating
+                $votes = [
+                    'vote-overall',
+                    'vote-price',
+                    'vote-quality'
+                ];
+                $value = 0;
+
+                if (!$c_properties['counted'] && $commment->published && !$commment->deleted) {
+                    $value = 1;
+                    $c_properties['counted'] = true;
+                    $commment->set('properties', $c_properties);
+                }
+                
+                if ($c_properties['counted'] && (!$commment->published || $commment->deleted)) {
+                    $value = -1;
+                    $c_properties['counted'] = false;
+                    $commment->set('properties', $c_properties);
+                }
+                
+                if ($value != 0) {
+                    // update stars count
+                    foreach ($votes as $name) {
+                        // create arrays in empty
+                        if(!isset($r_properties[$name])) {
+                            $r_properties[$name] = [
+                                1 => 0,
+                                2 => 0,
+                                3 => 0,
+                                4 => 0,
+                                5 => 0,
+                            ];
+                        }
+                        $r_properties[$name][$c_properties[$name]] += $value;
+                        if(!isset($r_properties['vote-total'])) {
+                            $r_properties['vote-total'] = [
+                                1 => 0,
+                                2 => 0,
+                                3 => 0,
+                                4 => 0,
+                                5 => 0,
+                            ];
+                        }
+                        $r_properties['vote-total'][$c_properties[$name]] += $value;
+                        if(!isset($r_properties['stars-count'])) {
+                            $r_properties['stars-count'] = 0;
+                        }
+                        $r_properties['stars-count'] += $value;
+                    }
+
+                    if(!isset($r_properties['recommendations'])) {
+                        $r_properties['recommendations'] = 0;
+                    }
+                    if($c_properties['recommend']) {
+                        $r_properties['recommendations'] += $value;
+                    }
+
+                    $resource->set('properties', $r_properties);
+                    $resource->save();
+                }
+                break;
+            case 'OnBeforeCommentRemove':
+                $votes = [
+                    'vote-overall',
+                    'vote-price',
+                    'vote-quality'
+                ];
+                $commment = $event->params['TicketComment'];
+                $thread = $this->modx->getObject('TicketThread', $commment->get('thread'));
+                $resource = $this->modx->getObject('modResource', $thread->get('resource'));
+                $c_properties = $commment->get('properties');
+                $r_properties = $resource->get('properties');
+                
+                if ($c_properties['counted']) {
+                    // update stars count
+                    foreach ($votes as $name) {
+                        $r_properties[$name][$c_properties[$name]]--;
+                        $r_properties['vote-total'][$c_properties[$name]]--;
+                        $r_properties['stars-count']--;
+                    }
+                    if($c_properties['recommend']) {
+                        $r_properties['recommendations'] += -1;
+                    }
+
+                    $resource->set('properties', $r_properties);
+                    $resource->save();
+                }
+                if ($c_properties['file']) {
+                    unlink(MODX_ASSETS_PATH . $c_properties['file']['path'] . $c_properties['file']['file']);
+                }
                 break;
             case 'OnDocFormPrerender':
                 // Compress output html for Google
@@ -264,6 +423,16 @@ class App
         );
     }
 
+    public function primaryParent($id) {
+        $resource = $this->modx->getObject('modResource', $id);
+
+        if ($resource->parent == 0) {
+            return $resource->id;
+        } else {
+            return $this->primaryParent($resource->parent);
+        }
+    }
+
     public function addViewedID($id) {
         if(!isset($_SESSION['viewed'])) {
             $_SESSION['viewed'] = array();
@@ -287,5 +456,32 @@ class App
             return implode(',',$ids);
         }
         return false;
+    }
+
+    public function units($number, $titles) {
+        $keys = array(2, 0, 1, 1, 1, 2);
+        $mod = $number % 100;
+        $suffix_key = ($mod > 7 && $mod < 20) ? 2: $keys[min($mod % 10, 5)];
+        return $titles[$suffix_key];
+    }
+
+    public function averageRatingPercent($properties, $number) {
+        return $properties['vote-total'][$number] / $properties['stars-count'] * 100;
+    }
+
+    public function totalAverageRating($properties) {
+        $total = 0;
+        foreach($properties['vote-total'] as $num=>$count) {
+            $total += $num*$count;
+        }
+        return round($total / $properties['stars-count'], 1);
+    }
+
+    public function totalAverageRatingPercent($properties) {
+        $total = 0;
+        foreach($properties['vote-total'] as $num=>$count) {
+            $total += $num*$count;
+        }
+        return round($total / $properties['stars-count'] / 5 * 100, 0);
     }
 }

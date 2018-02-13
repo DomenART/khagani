@@ -33,6 +33,12 @@ return [
         'rank' => 10,
         '_category' => 'Параметры'
     ),
+    'category_related' => array(
+        'type' => 'textfield',
+        'caption' => 'Связанные категории',
+        'rank' => 10,
+        '_category' => 'Параметры'
+    ),
     'table_sizes' => array(
         'type' => 'textfield',
         'caption' => 'Таблица размеров',

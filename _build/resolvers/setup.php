@@ -194,6 +194,11 @@ $packages = array(
         'version' => '2.4.12-pl',
         'provider' => 'modstore.pro'
     ),
+    array(
+        'name' => 'xLike',
+        'version' => '1.0.2-beta',
+        'provider' => 'modstore.pro'
+    ),
 );
 $success = false;
 

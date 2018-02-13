@@ -1,5 +1,5 @@
  {if $files?}
- <div class="product-gallery js-options-color-images" uk-slideshow="animation: pull; ratio: 3:4">
+ <div class="product-gallery js-options-color-images uk-clearfix" uk-slideshow="animation: pull; ratio: 3:4">
     <ul class="product-gallery__thumbs">
         {foreach $files as $key=>$file}
             <li uk-slideshow-item="{$key}">
@@ -10,7 +10,7 @@
     <div class="product-gallery__slideshow">
         <ul class="uk-slideshow-items" uk-lightbox>
             {foreach $files as $file}
-                <li>
+                <li class="js-options-color-image-{$file['id']}">
                     <img src="{$file['medium']}" alt="" title="" uk-cover>
                     <a href="{$file['url']}" uk-icon="search" title="{$file['name']}" class="gallery-link"></a>
                 </li>

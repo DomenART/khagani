@@ -2,6 +2,8 @@ import FilterCategories from './filter_categories.js'
 import { ColorViews, ColorOptions } from './colors.js'
 import { FormNumber, FormProductValidation } from './form.js'
 import $ from 'jquery'
+import "jquery-validation"
+import "jquery-validation/dist/localization/messages_ru.js"
 
 // sorting by select
 let sortSelect = document.querySelector('[name="mse2_sort"]')
@@ -41,3 +43,41 @@ document.querySelectorAll('.js-form-number').forEach(el => {
 
 // select color
 new ColorOptions(document.querySelector('.js-product'))
+
+// reviews
+let form = document.getElementById('comment-form')
+form && $(form).validate({
+    errorClass: 'uk-form-danger',
+    validClass: 'uk-form-success',
+    messages: {
+        "vote-overall": {
+            required: "Выставьте все оценки"
+        },
+        "vote-price": {
+            required: "Выставьте все оценки"
+        },
+        "vote-quality": {
+            required: "Выставьте все оценки"
+        }
+    },
+    errorPlacement(error, element) {
+        let errors = form.querySelector('.js-validate-votes')
+        switch (element.attr("name")) {
+            case "vote-overall":
+            case "vote-price":
+            case "vote-quality":
+                error.insertAfter(errors)
+                break
+            default:
+                error.insertAfter(element)
+                break
+        }
+    }
+})
+$(document).on('tickets_comment_save', (event, response) => {
+    let form = document.getElementById('comment-form')
+    form.classList.add('review-form_completed')
+    setTimeout(() => {
+        form.classList.remove('review-form_completed');
+    }, 5000);
+})

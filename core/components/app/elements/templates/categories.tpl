@@ -5,6 +5,7 @@
     <div class="uk-container">
         {'pdoCrumbs' | snippet : [
             'showHome' => true,
+            'tplWrapper' => '@INLINE <div class="page-breadcrumb"><ul class="breadcrumb">{$output}</ul></div>',
             'tplCurrent' => '@INLINE <li><span>{$menutitle}</span></li>'
         ]}
 

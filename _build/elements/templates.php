@@ -35,7 +35,8 @@ return [
             'seo.title',
             'seo.keywords',
             'seo.description',
-            'image'
+            'image',
+            'category_related',
         ]
     ],
     'Category' => [
@@ -48,7 +49,8 @@ return [
             'category_type',
             'image',
             'table_sizes',
-            'stylist_choice'
+            'stylist_choice',
+            'category_related',
         ]
     ],
     'Product' => [
