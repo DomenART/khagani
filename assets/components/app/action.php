@@ -33,6 +33,9 @@ switch ($action) {
     case 'product/quickview':
         $response = $App->quickView($_REQUEST['id']);
         break;
+    case 'get/cart':
+        $response = $App->getCart();
+        break;
     default:
         $message = $_REQUEST['action'] != $action
             ? 'tickets_err_register_globals'

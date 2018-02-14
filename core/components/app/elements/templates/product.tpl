@@ -56,7 +56,12 @@
                             </div>
                         </div>
                         <div class="uk-width-1-2@s">
-                            <div class="product__article">{$article}</div>
+                            <div class="uk-flex uk-flex-between uk-flex-middle">
+                                <div class="product__article">{$article}</div>
+                                <div class="rating-stars">
+                                    <div class="rating-stars__fill" style="width: {$.resource.properties | totalAverageRatingPercent}%"></div>
+                                </div>
+                            </div>
                             <div class="product__prices">
                                 {if $old_price?}
                                     <div class="product__price-old">

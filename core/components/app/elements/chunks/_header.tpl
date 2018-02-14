@@ -15,6 +15,7 @@
             </a>
             {'pdoMenu' | snippet : [
                 'parents' => 0,
+                'level' => 1,
                 'outerClass' => 'toolbar-menu js-menu-main'
             ]}
         </div>
@@ -65,6 +66,17 @@
         <div class="uk-modal-title">Задать вопрос</div>
         {'!AjaxForm@Form' | snippet : [
             'form' => '@FILE chunks/forms/question.tpl',
+            'validate' => 'phone:required,rules:required'
+        ]}
+    </div>
+</div>
+
+<div id="order" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-title">Оформить заказ</div>
+        {'!AjaxForm@Form' | snippet : [
+            'form' => '@FILE chunks/forms/order.tpl',
             'validate' => 'phone:required,rules:required'
         ]}
     </div>

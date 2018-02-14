@@ -62,6 +62,15 @@ return [
             'seo.description',
         ]
     ],
+    'Articles' => [
+        'file' => 'articles',
+        'description' => '',
+        '_tmplvars' => [
+            'seo.title',
+            'seo.keywords',
+            'seo.description',
+        ]
+    ],
     'Article' => [
         'file' => 'article',
         'description' => '',
@@ -69,6 +78,11 @@ return [
             'seo.title',
             'seo.keywords',
             'seo.description',
+            'image',
+            'article_type',
+            'article_format',
+            'article_products',
+            'rating',
         ]
     ],
 ];

@@ -15,6 +15,7 @@ return [
             'OnBeforeCommentDelete' => [],
             'OnBeforeCommentUndelete' => [],
             'OnBeforeCommentUnpublish' => [],
+            'xLikeOnVote' => [],
             //'OnPageNotFound' => [],
             //'OnLoadWebDocument' => [],
         ],

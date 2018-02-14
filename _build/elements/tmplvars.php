@@ -26,10 +26,30 @@ return [
         'rank' => 10,
         '_category' => 'Параметры'
     ),
-    'category_type' => array(
+    'article_type' => array(
         'type' => 'option',
-        'caption' => 'Тип категории',
-        'elements' => 'Обычная==||Популярное==1||Распродажа==2',
+        'caption' => 'Тип статьи',
+        'elements' => 'Советы стилиста||Как выбрать||Как ухаживать||Мода и стиль',
+        'rank' => 10,
+        '_category' => 'Параметры'
+    ),
+    'article_format' => array(
+        'type' => 'option',
+        'caption' => 'Формат статьи',
+        'elements' => 'Статья||Видео',
+        'default_text' => 'Статья',
+        'rank' => 10,
+        '_category' => 'Параметры'
+    ),
+    'article_products' => array(
+        'type' => 'textfield',
+        'caption' => 'Товары в статье',
+        'rank' => 10,
+        '_category' => 'Параметры'
+    ),
+    'rating' => array(
+        'type' => 'textfield',
+        'caption' => 'Рейтинг',
         'rank' => 10,
         '_category' => 'Параметры'
     ),

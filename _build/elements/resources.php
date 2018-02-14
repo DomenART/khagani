@@ -7,31 +7,37 @@ return [
             'longtitle' => 'Khagani_man',
             'description' => 'Магазин мужской деловой одежды',
             'hidemenu' => false,
+            'richtext' => true,
             '_template' => 'Home',
         ],
         'dimensions' => [
             'pagetitle' => 'Таблица размеров',
             'hidemenu' => true,
+            'richtext' => true,
             '_template' => 'BaseTemplate'
         ],
         'stylist-choice' => [
             'pagetitle' => 'Выбор стилиста',
             'hidemenu' => true,
+            'richtext' => true,
             '_template' => 'BaseTemplate'
         ],
         'additional' => [
             'pagetitle' => 'Дополнительные услуги',
             'hidemenu' => true,
+            'richtext' => true,
             '_template' => 'BaseTemplate'
         ],
         'about' => [
             'pagetitle' => 'О компании',
             'hidemenu' => true,
+            'richtext' => true,
             '_template' => 'BaseTemplate'
         ],
         'news' => [
             'pagetitle' => 'Новости',
             'hidemenu' => true,
+            'richtext' => true,
             'class_key' => 'TicketsSection',
             '_template' => 'BaseTemplate',
             'properties' => [
@@ -49,12 +55,14 @@ return [
                     'pagetitle' => 'Новость 1',
                     'class_key' => 'Ticket',
                     'show_in_tree' => false,
+                    'richtext' => true,
                     '_template' => 'Article',
                 ],
                 'news-2' => [
                     'pagetitle' => 'Новость 2',
                     'class_key' => 'Ticket',
                     'show_in_tree' => false,
+                    'richtext' => true,
                     '_template' => 'Article',
                 ]
             ]
@@ -62,32 +70,45 @@ return [
         'terms-of-use' => [
             'pagetitle' => 'Пользовательское соглашение',
             'hidemenu' => true,
+            'richtext' => true,
             '_template' => 'BaseTemplate'
         ],
         'privacy-policy' => [
             'pagetitle' => 'Политика обработки персональных данных',
             'hidemenu' => true,
+            'richtext' => true,
             '_template' => 'BaseTemplate'
         ],
         'showroom' => [
             'pagetitle' => 'Шоурум',
+            'richtext' => true,
             '_template' => 'BaseTemplate'
         ],
         'articles' => [
             'pagetitle' => 'Статьи',
-            '_template' => 'BaseTemplate'
+            'richtext' => true,
+            'class_key' => 'TicketsSection',
+            '_template' => 'Articles',
+            'properties' => [
+                'tickets' => [
+                    'template' => 'Article',
+                    'uri' => '%alias%ext',
+                    'show_in_tree' => false,
+                    'hidemenu' => false,
+                    'disable_jevix' => true,
+                    'process_tags' => true,
+                ]
+            ],
         ],
         'find-us' => [
             'pagetitle' => 'Как нас найти',
-            '_template' => 'BaseTemplate'
-        ],
-        'contacts' => [
-            'pagetitle' => 'Контакты',
+            'richtext' => true,
             '_template' => 'BaseTemplate'
         ],
         'catalog' => [
             'pagetitle' => 'Каталог',
             'hidemenu' => true,
+            'richtext' => true,
             '_template' => 'Catalog',
             'resources' => [
                 'clothes' => [
@@ -266,6 +287,7 @@ return [
         'sitemap' => [
             'pagetitle' => 'Карта сайта',
             'hidemenu' => true,
+            'richtext' => true,
             '_template' => 'BaseTemplate'
         ],
         'search' => [
@@ -276,6 +298,7 @@ return [
         'service' => [
             'pagetitle' => 'Service',
             'hidemenu' => true,
+            'richtext' => true,
             'published' => false,
             'resources' => [
                 '404' => [

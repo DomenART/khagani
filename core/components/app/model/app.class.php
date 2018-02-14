@@ -192,6 +192,14 @@ class App
                 break;
             case 'OnPageNotFound':
                 break;
+            case 'xLikeOnVote':
+                if ($scriptProperties['class'] == 'modResource' && $scriptProperties['list'] == 'default') {
+                    if ($resource = $this->modx->getObject($scriptProperties['class'], array('id' => $scriptProperties['parent']))) {
+                        $resource->setTVValue('rating', $scriptProperties['rating']);
+                        $resource->save();
+                    }
+                }
+                break;
             case 'OnBeforeCommentPublish':
             case 'OnBeforeCommentDelete':
             case 'OnBeforeCommentUndelete':
@@ -400,6 +408,25 @@ class App
         if ($q->prepare() && $q->stmt->execute()) {
             return $q->stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+    }
+
+    public function getCart()
+    {
+        $cart = $this->modx->runSnippet('msCart', [
+            'tpl' => '@FILE chunks/partials/cart.tpl'
+        ]);
+
+        if (!empty($cart)) {
+            return array(
+                'success' => true,
+                'html' => $cart
+            );
+        }
+
+        return array(
+            'success' => false,
+            'message' => 'Cart not found'
+        );
     }
 
     public function quickView($id)

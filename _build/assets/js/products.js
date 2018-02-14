@@ -1,3 +1,4 @@
+import axios from 'axios'
 import FilterCategories from './filter_categories.js'
 import { ColorViews, ColorOptions } from './colors.js'
 import { FormNumber, FormProductValidation } from './form.js'
@@ -42,7 +43,8 @@ document.querySelectorAll('.js-form-number').forEach(el => {
 })
 
 // select color
-new ColorOptions(document.querySelector('.js-product'))
+let product = document.querySelector('.js-product')
+product && new ColorOptions(document.querySelector('.js-product'))
 
 // reviews
 let form = document.getElementById('comment-form')
@@ -66,11 +68,11 @@ form && $(form).validate({
             case "vote-overall":
             case "vote-price":
             case "vote-quality":
-                error.insertAfter(errors)
-                break
+            error.insertAfter(errors)
+            break
             default:
-                error.insertAfter(element)
-                break
+            error.insertAfter(element)
+            break
         }
     }
 })
@@ -80,4 +82,22 @@ $(document).on('tickets_comment_save', (event, response) => {
     setTimeout(() => {
         form.classList.remove('review-form_completed');
     }, 5000);
+})
+
+// select color
+let order = document.getElementById('order')
+order && order.addEventListener('beforeshow', (a,b,c) => {
+    let cart = a.target.querySelector('.js-order-cart')
+    
+    cart && axios.get(assets_url + 'action.php?action=get/cart')
+    .then(response => {
+        if (response.data.success) {
+            cart.innerHTML = response.data.html
+
+            // select count
+            cart.querySelectorAll('.js-form-number').forEach(el => {
+                new FormNumber(el)
+            })
+        }
+    })
 })

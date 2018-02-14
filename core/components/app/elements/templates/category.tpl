@@ -34,7 +34,7 @@
             'tplFilter.outer.mscolor|color_id' => '@FILE chunks/filter/filter.colors.tpl',
             'tplFilter.row.mscolor|color_id' => '@FILE chunks/filter/filter.color.tpl',
 
-            'tplOuter' => '@FILE chunks/filter/outer.tpl',
+            'tplOuter' => '@FILE chunks/filter/products.tpl',
             'tplPageWrapper' => '@INLINE <div class="products-pagination"><ul class="pagination">[[+first]][[+pages]][[+last]]</ul></div>',
             'tplPageFirst' => '@INLINE <li class="control"><a href="[[+href]]"><i uk-icon="icon: chevron-left; ratio: .6"></i>[[%pdopage_first]]</a></li>',
             'tplPageLast' => '@INLINE <li class="control"><a href="[[+href]]">[[%pdopage_last]]<i uk-icon="icon: chevron-right; ratio: .6"></i></a></li>',
