@@ -11,6 +11,9 @@
     'parents' => $id,
     'ajaxMode' => 'button',
     'limit' => 5,
+    'where' => [
+        'class_key' => 'msCategory'
+    ],
     'tpl' => '@FILE chunks/resources/categories.sub.tpl',
     'ajaxTplMore' => '@INLINE <div class="categories-sub"><button class="categories-sub__more js-more">+ 5 категорий</button></div>'
 ]}
@@ -33,7 +36,7 @@
         </div>
         {if $introtext?}
         <div class="categories-group__desc">
-            {$introtext}
+            {$introtext | nl2br}
         </div>
         {/if}
         {if $stylist_choice?}
