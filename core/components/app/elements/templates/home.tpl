@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         <div class="slideshow-info__more">
-                            <a href="#" class="uk-button button-blue">
+                            <a href="{'catalog/accessories/ties' | uri2id | url}" class="uk-button button-blue">
                                 Узнать больше
                                 <svg width="8" height="10">
                                     <use href="{$.assets_url}web/img/svg-sprite.svg#slider-right" />
@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="slideshow-info__more">
-                            <a href="#" class="uk-button button-blue">
+                            <a href="{'showroom' | uri2id | url}" class="uk-button button-blue">
                                 Узнать больше
                                 <svg width="8" height="10">
                                     <use href="{$.assets_url}web/img/svg-sprite.svg#slider-right" />
@@ -76,7 +76,7 @@
                         <div class="home-opening__title">
                             Метро Чеховская
                         </div>
-                        <a href="#" class="home-opening__more uk-button button-blue">
+                        <a href="{'showroom' | uri2id | url}" class="home-opening__more uk-button button-blue">
                             Узнать больше
                             <svg width="8" height="10">
                                 <use href="{$.assets_url}web/img/svg-sprite.svg#slider-right" />
@@ -93,7 +93,7 @@
                     <div class="home-range__title">
                         5 000 видов костюмов
                     </div>
-                    <a href="#" class="home-range__open">
+                    <a href="{'catalog/clothes' | uri2id | url}" class="home-range__open">
                         перейти в каталог
                         <span uk-icon="icon: arrow-right; ratio: 0.8"></span>
                     </a>
@@ -149,7 +149,7 @@
         <h2 class="section-home__title">Каталог</h2>
         <div class="catalog">
             <div class="catalog-item">
-                <a href="#">
+                <a href="{'catalog/clothes/costumes' | uri2id | url}">
                     <img src="{$.assets_url}web/img/stylishly.jpg" alt="" class="catalog-item__image">
                 </a>
                 <div class="catalog-item__info">
@@ -159,7 +159,7 @@
                     <div class="catalog-item__desc">
                         для торжества и на каждый день
                     </div>
-                    <a href="#" class="catalog-item__more uk-button button-blue">
+                    <a href="{'catalog/clothes/costumes' | uri2id | url}" class="catalog-item__more uk-button button-blue">
                         В раздел
                         <svg width="6" height="7">
                             <use href="{$.assets_url}web/img/svg-sprite.svg#slider-right" />
@@ -168,7 +168,7 @@
                 </div>
             </div>
             <div class="catalog-item">
-                <a href="#">
+                <a href="{'catalog/clothes/costumes' | uri2id | url}">
                     <img src="{$.assets_url}web/img/trend.jpg" alt="" class="catalog-item__image">
                 </a>
                 <div class="catalog-item__info">
@@ -178,7 +178,7 @@
                     <div class="catalog-item__desc">
                         Самое актуальное и модное
                     </div>
-                    <a href="#" class="catalog-item__more uk-button button-blue">
+                    <a href="{'catalog/clothes/costumes' | uri2id | url}" class="catalog-item__more uk-button button-blue">
                         В раздел
                         <svg width="6" height="7">
                             <use href="{$.assets_url}web/img/svg-sprite.svg#slider-right" />
@@ -187,7 +187,7 @@
                 </div>
             </div>
             <div class="catalog-item">
-                <a href="#">
+                <a href="{'catalog/accessories' | uri2id | url}">
                     <img src="{$.assets_url}web/img/accessories.jpg" alt="" class="catalog-item__image">
                 </a>
                 <div class="catalog-item__info">
@@ -197,7 +197,7 @@
                     <div class="catalog-item__desc">
                         Описание раздела
                     </div>
-                    <a href="#" class="catalog-item__more uk-button button-blue">
+                    <a href="{'catalog/accessories' | uri2id | url}" class="catalog-item__more uk-button button-blue">
                         В раздел
                         <svg width="6" height="7">
                             <use href="{$.assets_url}web/img/svg-sprite.svg#slider-right" />
@@ -206,7 +206,7 @@
                 </div>
             </div>
             <div class="catalog-item">
-                <a href="#">
+                <a href="{'catalog/outerwear' | uri2id | url}">
                     <img src="{$.assets_url}web/img/outerwear.jpg" alt="" class="catalog-item__image">
                 </a>
                 <div class="catalog-item__info">
@@ -216,7 +216,7 @@
                     <div class="catalog-item__desc">
                         Описание раздела
                     </div>
-                    <a href="#" class="catalog-item__more uk-button button-blue">
+                    <a href="{'catalog/outerwear' | uri2id | url}" class="catalog-item__more uk-button button-blue">
                         В раздел
                         <svg width="6" height="7">
                             <use href="{$.assets_url}web/img/svg-sprite.svg#slider-right" />
@@ -225,7 +225,7 @@
                 </div>
             </div>
             <div class="catalog-item">
-                <a href="#">
+                <a href="{'catalog/footwear/shoes' | uri2id | url}">
                     <img src="{$.assets_url}web/img/shoes.jpg" alt="" class="catalog-item__image">
                 </a>
                 <div class="catalog-item__info">
@@ -235,7 +235,7 @@
                     <div class="catalog-item__desc">
                         Описание раздела
                     </div>
-                    <a href="#" class="catalog-item__more uk-button button-blue">
+                    <a href="{'catalog/footwear/shoes' | uri2id | url}" class="catalog-item__more uk-button button-blue">
                         В раздел
                         <svg width="6" height="7">
                             <use href="{$.assets_url}web/img/svg-sprite.svg#slider-right" />
