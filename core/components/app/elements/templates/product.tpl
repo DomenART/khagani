@@ -4,6 +4,12 @@
 {$.resource.id | addViewedID}
 {var $viewed = $.resource.id | getViewedIDs}
 {var $related = $.resource.parent | resource : 'category_related'}
+{var $sizes = 'msOptions' | snippet : [
+    'tpl' => '@FILE chunks/product/options.tpl',
+    'options' => 'size',
+    'product' => $.resource.id
+]}
+{var $colors = $.resource.id | getColors}
 
 <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
 <script src="//yastatic.net/share2/share.js"></script>
@@ -78,11 +84,6 @@
                                     </svg>
                                 </div>
                             </div>
-                            {var $sizes = 'msOptions' | snippet : [
-                                'tpl' => '@FILE chunks/product/options.tpl',
-                                'options' => 'size',
-                                'product' => $.resource.id
-                            ]}
                             {if $sizes?}
                                 <div class="product__misc product__row">
                                     {$sizes}
@@ -97,13 +98,14 @@
                                 </div>
                             {/if}
                             <div class="product__misc product__row">
+                                {if $colors?}
                                 <div class="product-options">
                                     <div class="product-options__label">
                                         Цвет
                                         <span class="product-options__desc js-options-color-label"></span>
                                     </div>
                                     <div class="product-options__values product-options__colors">
-                                        {foreach $.resource.id | getColors as $color}
+                                        {foreach $colors as $color}
                                             <label class="product-options__color">
                                                 <input 
                                                 type="radio" 
@@ -116,6 +118,7 @@
                                         {/foreach}
                                     </div>
                                 </div>
+                                {/if}
 
                                 <div class="product-count uk-flex">
                                     <label for="product_price" class="product-count__label">Количество</label>

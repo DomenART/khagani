@@ -19,12 +19,12 @@
         <div class="footer__first">
             <div class="footer__info">
                 <div class="footer__address">
-                    м: Чеховская,
-                    <br> г. Москва, ул Страстной б-р 6, стр 1.
+                    м: Чеховская,<br>
+                    {'app_address' | config}
                 </div>
                 <div class="footer__phones">
-                    +7 (926) 26-910-49
-                    <br> +7 (499) 34-666-14
+                    +7 (926) 26-910-49<br>
+                    +7 (499) 34-666-14
                 </div>
             </div>
 
@@ -87,12 +87,11 @@
 
         <div class="footer__second">
             <div class="footer__copyright">
-                ©2018, Khagani-man<br>
-                Модная мужская одежда из Турции в Москве.
+                {'app_copyright' | config | nl2br}
             </div>
             
             <div class="footer__counters">
-                [^t^]
+                {'app_counters' | config}
             </div>
             
             <div class="footer__creator">

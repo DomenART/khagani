@@ -14,7 +14,7 @@ class AppPackage
 
     const name = 'App';
     const name_lower = 'app';
-    const version = '1.0.4';
+    const version = '1.0.7';
     const release = 'pl';
 
 
@@ -140,7 +140,7 @@ class AppPackage
             /** @var modSystemSetting $setting */
             $setting = $this->modx->newObject('modSystemSetting');
             $setting->fromArray(array_merge([
-                'key' => 'app_' . $name,
+                'key' => $name,
                 'namespace' => $this::name_lower,
             ], $data), '', true, true);
             $output[] = [

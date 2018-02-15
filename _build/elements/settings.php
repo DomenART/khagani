@@ -1,6 +1,24 @@
 <?php
 
 return [
+    'app_address' => [
+        'xtype' => 'textarea',
+        'value' => '',
+        'area' => 'default',
+        'namespace' => 'app',
+    ],
+    'app_copyright' => [
+        'xtype' => 'textarea',
+        'value' => '',
+        'area' => 'default',
+        'namespace' => 'app',
+    ],
+    'app_counters' => [
+        'xtype' => 'textarea',
+        'value' => '',
+        'area' => 'default',
+        'namespace' => 'app',
+    ],
     'container_suffix' => [
         'key' => 'container_suffix',
         'xtype' => 'textfield',

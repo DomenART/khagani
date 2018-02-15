@@ -1,3 +1,9 @@
+{var $sizes = 'msOptions' | snippet : [
+    'tpl' => '@FILE chunks/product/options.tpl',
+    'options' => 'size',
+    'product' => $id
+]}
+{var $colors = $id | getColors}
 <form class="ms2_form" method="post">
     <input type="hidden" name="id" value="{$id}">
     <div class="uk-grid uk-grid-medium" uk-grid>
@@ -35,11 +41,6 @@
                     </svg>
                 </div>
             </div>
-            {var $sizes = 'msOptions' | snippet : [
-                'tpl' => '@FILE chunks/product/options.tpl',
-                'options' => 'size',
-                'product' => $id
-            ]}
             {if $sizes?}
                 {$sizes}
                 <div class="quickview__dimensions">
@@ -52,13 +53,14 @@
                 </div>
             {/if}
             <div class="product__misc">
+                {if $colors?}
                 <div class="product-options">
                     <div class="product-options__label">
                         Цвет
                         <span class="product-options__desc js-options-color-label"></span>
                     </div>
                     <div class="product-options__values product-options__colors">
-                        {foreach $id | getColors as $color}
+                        {foreach $colors as $color}
                             <label class="product-options__color">
                                 <input 
                                 type="radio" 
@@ -71,6 +73,7 @@
                         {/foreach}
                     </div>
                 </div>
+                {/if}
 
                 <div class="product-count uk-flex">
                     <label for="product_price" class="product-count__label">Количество</label>

@@ -7,7 +7,7 @@
 
             <ul class="uk-slideshow-items">
                 <li>
-                    <img src="{$.assets_url}web/img/slide-2.jpg" alt="" uk-cover>
+                    <img src="{$.assets_url}web/img/slide-3.jpg" alt="" uk-cover>
                 </li>
                 <li>
                     <img src="{$.assets_url}web/img/slide-1.jpg" alt="" uk-cover>
@@ -25,13 +25,14 @@
                 <ul class="slideshow-info__list" uk-height-match="target: .slideshow-info__flex">
                     <li uk-slideshow-item="0">
                         <div class="slideshow-info__flex">
-                            <div class="slideshow-info__title">Галстук в подарок</div>
+                            <div class="slideshow-info__title">Любой костюм</div>
+                            <div class="slideshow-info__desc">за 10 000 руб.</div>
                             <div class="slideshow-info__city">
-                                <span>только в январе</span>
+                                <span>только в феврале</span>
                             </div>
                         </div>
                         <div class="slideshow-info__more">
-                            <a href="{'catalog/accessories/ties' | uri2id | url}" class="uk-button button-blue">
+                            <a href="{'catalog/clothes/costumes' | uri2id | url}" class="uk-button button-blue">
                                 Узнать больше
                                 <svg width="8" height="10">
                                     <use href="{$.assets_url}web/img/svg-sprite.svg#slider-right" />

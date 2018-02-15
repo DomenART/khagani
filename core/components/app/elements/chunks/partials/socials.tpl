@@ -8,10 +8,10 @@
                 </svg>
                 @khagani_man
             </div>
-            <a href="#" class="social-item__subscribe">Подписаться</a>
+            <a href="https://www.instagram.com/khagani_man/" class="social-item__subscribe" target="_blank">Подписаться</a>
         </div>
         <div class="social-item__body">
-            instagram widget
+            <iframe src='{$.assets_url}vendor/inwidget/index.php?adaptive=true&inline=1&view=1&toolbar=false' data-inwidget scrolling='no' frameborder='no' style='border:none;width:100%;height:355px;overflow:hidden;'></iframe> 
         </div>
     </div>
     <div class="social-item">
@@ -22,10 +22,18 @@
                 </svg>
                 KHAGANI_man
             </div>
-            <a href="#" class="social-item__subscribe">Подписаться</a>
+            <a href="https://www.facebook.com/magazinkostumov/" class="social-item__subscribe" target="_blank">Подписаться</a>
         </div>
         <div class="social-item__body">
-            facebook widget
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.12&appId=117458959077438&autoLogAppEvents=1';
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+            <div class="fb-page" data-href="https://www.facebook.com/magazinkostumov/" data-tabs="timeline" data-height="355" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false"><blockquote cite="https://www.facebook.com/magazinkostumov/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/magazinkostumov/">Khagani-MAN</a></blockquote></div>
         </div>
     </div>
     <div class="social-item">
