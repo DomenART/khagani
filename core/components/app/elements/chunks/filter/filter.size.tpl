@@ -7,7 +7,7 @@
             {$rows}
         </div>
         <div class="filter-fieldset__foot">
-            <a href="{'dimensions' | uri2id | url}">
+            <a href="{'page.size_table' | config | url}">
                 <svg width="16" height="17">
                     <use href="{$.assets_url}web/img/svg-sprite.svg#table_sizes" />
                 </svg>

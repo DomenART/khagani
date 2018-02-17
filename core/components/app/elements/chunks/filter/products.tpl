@@ -95,5 +95,8 @@
                 {'page.nav' | placeholder}
             </div>
         </div>
+        <div class="catalog-content">
+            {$.resource.content}
+        </div>
     </div>
 </div>

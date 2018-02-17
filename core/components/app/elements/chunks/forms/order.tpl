@@ -20,8 +20,8 @@
             <input type="checkbox" name="rules" class="uk-checkbox" value="1" required>
             <span></span>
             Прочитал(-а)
-            <a href="{'terms-of-use' | uri2id | url}" target="_blank">пользовательское соглашение</a> и соглашаюсь с
-            <a href="{'privacy-policy' | uri2id | url}" target="_blank">политикой обработки персональных данных</a>.
+            <a href="{'page.terms_of_use' | config | url}" target="_blank">пользовательское соглашение</a> и соглашаюсь с
+            <a href="{'page.privacy_policy' | config | url}" target="_blank">политикой обработки персональных данных</a>.
         </label>
     </div>
     <div class="form-record__submit">

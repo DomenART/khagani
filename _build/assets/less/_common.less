@@ -311,7 +311,7 @@ ul.content-list {
 .short-categories__grid {
     display: grid;
     grid-template-columns: repeat(4, auto);
-    grid-gap: 15px;
+    grid-gap: 25px;
     padding: 69px 0 55px;
     @media (max-width: @breakpoint-small-max) {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -359,6 +359,10 @@ ul.content-list {
     padding: 0;
     margin: 0;
     font-size: 14px;
+    @media (max-width: @breakpoint-xsmall-max) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
     li {
         list-style: none;
         margin: 3px 0;
@@ -1973,7 +1977,7 @@ ul.content-list {
 }
 
 .mobile-menu__menu {
-    padding: 0;
+    padding: 0 0 20px;
     margin: 0;
     > li {
         list-style: none;
@@ -2169,6 +2173,45 @@ ul.content-list {
             }
         }
     }
+}
+
+.scrolltop {
+    position: fixed;
+    right: 0;
+    bottom: 100px;
+    width: 44px;
+    height: 63px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    transition: all ease .3s;
+    cursor: pointer;
+    transform: translateX(100%);
+    z-index: 940;
+    &:hover {
+        background-color: rgba(0, 0, 0, 1);
+    }
+    svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    &--visible {
+        transform: translateX(-20px);
+    }
+    @media (max-width: @breakpoint-small-max) {
+        bottom: 0;
+        width: 48px;
+        height: 48px;
+        &--visible {
+            transform: translateX(0);
+        }
+    }
+}
+
+.catalog-content {
+    padding: 100px 25px;
+    background-color: #ffffff;
 }
 
 .categories {
@@ -4538,5 +4581,30 @@ ul.pagination {
         fill: #000000;
         position: relative;
         top: -1px;
+    }
+}
+
+.page-404__code {
+    color: #6699cc;
+    font-size: 180px;
+    font-weight: 300;
+    line-height: 1;
+    margin: 0 50px;
+}
+
+.page-404__or-catalog {
+    text-align: center;
+    margin: 65px 0;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    a {
+        color: #000000;
+        text-decoration: none;
+        &:hover {
+            text-decoration: none;
+            color: #6699cc;
+        }
     }
 }

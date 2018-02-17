@@ -5,11 +5,11 @@
             <button class="toolbar__menu uk-button button-purple" uk-toggle="target: html; cls: mobile-menu-opened uk-modal-page">
                 <span uk-icon="icon: menu"></span>
             </button>
-            <a href="{'search' | uri2id | url}" class="toolbar__search uk-button button-blue">
+            <a href="{'page.search' | config | url}" class="toolbar__search uk-button button-blue">
                 <span uk-icon="icon: search"></span>
             </a>
-            <a href="{'contacts' | uri2id | url}" class="toolbar-subscribe uk-button button-blue" uk-toggle="target: #subscribe">
-                <span class="toolbar-subscribe__icon" uk-icon="icon: pencil"></span>
+            <a href="{'page.contacts' | config | url}" class="toolbar-subscribe uk-button button-blue" uk-toggle="target: #subscribe">
+                <span class="toolbar-subscribe__icon" uk-icon="icon: mail"></span>
                 <span class="toolbar-subscribe__text">Запись на примерку</span>
                 <span class="toolbar-subscribe__tip" title="Ваш график строго расписан и у вас нет ни минуты лишнего времени? Запишитесь на примерку, в удобное вам время наши консультанты будут ждать вас." uk-tooltip>?</span>
             </a>
@@ -26,7 +26,7 @@
             <div class="header__grid">
                 <a href="/" class="header__logo"><img src="/assets/components/app/web/img/logo.png" alt=""></a>
                 {'pdoMenu' | snippet : [
-                    'parents' => 'catalog' | uri2id,
+                    'parents' => 'page.catalog' | config,
                     'level' => 2,
                     'parentClass' => 'parent',
                     'outerClass' => 'header-menu js-menu-catalog',
@@ -35,7 +35,7 @@
                     'where' => ['category_type'=>null]
                 ]}
                 {'!mSearchForm' | snippet : [
-                    'pageId' => 'search' | uri2id,
+                    'pageId' => 'page.search' | config,
                     'tplForm' => '@FILE chunks/partials/searchform.tpl'
                 ]}
                 <div class="header__phone">

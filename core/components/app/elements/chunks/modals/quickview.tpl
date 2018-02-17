@@ -44,7 +44,7 @@
             {if $sizes?}
                 {$sizes}
                 <div class="quickview__dimensions">
-                    <a href="{'dimensions' | uri2id | url}" class="dimensions-link" target="_blank">
+                    <a href="{'page.size_table' | config | url}" class="dimensions-link" target="_blank">
                         <svg width="16" height="17">
                             <use href="{$.assets_url}web/img/svg-sprite.svg#table_sizes" />
                         </svg>

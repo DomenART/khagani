@@ -120,9 +120,9 @@ $packages = array(
         'provider' => 'modstore.pro'
     ),
     array(
-        'name' => 'yTranslit',
-        'version' => '1.2.0-pl',
-        'provider' => 'modstore.pro'
+        'name' => 'translit',
+        'version' => '1.0.0-beta',
+        'provider' => 'modx.com'
     ),
     array(
         'name' => 'Jevix',

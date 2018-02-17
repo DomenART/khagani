@@ -27,13 +27,13 @@
             <a href="{$uri}">{$pagetitle}</a>
         </div>
         <div class="articles-item__rating">
-            <svg width="14" height="14">
-                <use href="{$.assets_url}web/img/svg-sprite.svg#like" />
-            </svg>
-            {$rating ?: '0'}
+            {'!xLike' | snippet : [
+                'parent' => $id,
+                'tpl' => '@FILE chunks/partials/xlike.articles.tpl'
+            ]}
         </div>
         <div class="articles-item__more">
-            <a href="{$url}" class="uk-button button-framelight">Читать полностью</a>
+            <a href="{$uri}" class="uk-button button-framelight">Читать полностью</a>
         </div>
     </div>
 </div>

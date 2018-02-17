@@ -2,7 +2,7 @@
     <div class="uk-container">
         {'pdoMenu' | snippet : [
             'level' => 2,
-            'parents' => 'catalog' | uri2id,
+            'parents' => 'page.catalog' | config,
             'includeTVs' => 'image,category_type',
             'tvPrefix' => '',
             'where' => ['category_type'=>null],
@@ -19,7 +19,7 @@
         <div class="footer__first">
             <div class="footer__info">
                 <div class="footer__address">
-                    м: Чеховская,<br>
+                    м. Чеховская,<br>
                     {'app_address' | config}
                 </div>
                 <div class="footer__phones">
@@ -31,31 +31,31 @@
             <div class="footer__links">
                 <ul class="footer-menu">
                     <li>
-                        <a href="about">О компании</a>
+                        <a href="{'page.about' | config | url}">О компании</a>
                     </li>
                     <li>
-                        <a href="showroom">Шоурум</a>
+                        <a href="{'page.showroom' | config | url}">Шоурум</a>
                     </li>
                     <li>
-                        <a href="additional">Дополнительные услуги</a>
+                        <a href="{'page.additional_services' | config | url}">Дополнительные услуги</a>
                     </li>
                     <li>
-                        <a href="news">Новости</a>
+                        <a href="{'page.news' | config | url}">Новости</a>
                     </li>
                     <li>
-                        <a href="find-us">Как нас найти</a>
+                        <a href="{'page.find_us' | config | url}">Как нас найти</a>
                     </li>
                     <li>
-                        <a href="terms-of-use">Пользовательское соглашение</a>
+                        <a href="{'page.terms_of_use' | config | url}">Пользовательское соглашение</a>
                     </li>
                     <li>
-                        <a href="articles">Статьи</a>
+                        <a href="{'page.articles' | config | url}">Статьи</a>
                     </li>
                     <li>
-                        <a href="contacts">Контакты</a>
+                        <a href="{'page.contacts' | config | url}">Контакты</a>
                     </li>
                     <li>
-                        <a href="privacy-policy">Политика обработки персональных данных</a>
+                        <a href="{'page.privacy_policy' | config | url}">Политика обработки персональных данных</a>
                     </li>
                 </ul>
             </div>
@@ -69,18 +69,18 @@
 
                 <div class="footer__social">
                     <div class="social-groups">
-                        <a href="#" class="social-groups__item social-groups__item--facebook">
+                        <a href="https://www.facebook.com/magazinkostumov/" class="social-groups__item social-groups__item--facebook" target="_blank">
                             <svg width="24" height="24">
                                 <use href="/assets/components/app/web/img/svg-sprite.svg#facebook-letter" />
                             </svg>
                         </a>
-                        <a href="#" class="social-groups__item social-groups__item--instagram">
+                        <a href="https://www.instagram.com/khagani_man/" class="social-groups__item social-groups__item--instagram">
                             <svg width="24" height="24">
                                 <use href="/assets/components/app/web/img/svg-sprite.svg#instagram" />
                             </svg>
                         </a>
                     </div>
-                    <a href="sitemap" class="footer__sitemap">Карта сайта</a>
+                    <a href="{'page.sitemap' | config | url}" class="footer__sitemap">Карта сайта</a>
                 </div>
             </div>
         </div>
@@ -100,3 +100,5 @@
         </div>
     </div>
 </footer>
+
+<div class="scrolltop" uk-scroll uk-icon="icon: arrow-up; ratio: 1.5"></div>

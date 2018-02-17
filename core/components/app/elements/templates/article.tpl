@@ -19,12 +19,14 @@
                     <h1 class="article__title">{$.resource.longtitle ?: $.resource.pagetitle}</h1>
                 </div>
                 <div class="article__right">
+                    {if $.resource.class_key == 'Ticket'}
                     <a href="{$.resource.parent | url}" class="article__back uk-button button-blue">
                         <svg width="8" height="10">
                             <use href="{$.assets_url}web/img/svg-sprite.svg#slider-left" />
                         </svg>
                         Назад к статьям
                     </a>
+                    {/if}
                 </div>
             </div>
             
@@ -32,29 +34,37 @@
                 <div class="uk-width-expand">
                     <div class="article__left uk-grid uk-grid-collapse" uk-grid>
                         <div class="article-stats">
-                            <div class="article-stats__date">
-                                Опубликовано:<br>
-                                {$.resource.publishedon | date_format : '%d.%m.%Y'}
-                            </div>
-                            <div class="article-stats__type">{$.resource.article_type[1]}</div>
-                            <div class="article-stats__counts">
-                                <div class="article-stats__count">
-                                    <svg width="20" height="20">
-                                        <use href="{$.assets_url}web/img/svg-sprite.svg#eye" />
-                                    </svg>
-                                    {$.resource.views}
+                            <div uk-sticky="media: @s; bottom: true; offset: 125">
+                                {if $.resource.class_key == 'Ticket'}
+                                <div class="article-stats__date">
+                                    Опубликовано:<br>
+                                    {$.resource.publishedon | date_format : '%d.%m.%Y'}
                                 </div>
-                                {'!xLike' | snippet : [
-                                    'parent' => $.resource.id,
-                                    'tpl' => '@FILE chunks/partials/xlike.article.tpl'
-                                ]}
-                            </div>
-                            <div class="article-stats__share article-share">
-                                <div class="article-share__title">
-                                    Рассказать<br>
-                                    друзьям
+                                <div class="article-stats__type">{$.resource.article_type[1]}</div>
+                                <div class="article-stats__counts">
+                                    <div class="article-count">
+                                        <div class="article-count__icon">
+                                            <svg width="20" height="20">
+                                                <use href="{$.assets_url}web/img/svg-sprite.svg#eye" />
+                                            </svg>
+                                        </div>
+                                        <div class="article-count__value">
+                                            {$.resource.views}
+                                        </div>
+                                    </div>
+                                    {'!xLike' | snippet : [
+                                        'parent' => $.resource.id,
+                                        'tpl' => '@FILE chunks/partials/xlike.article.tpl'
+                                    ]}
                                 </div>
-                                <div class="article-share__buttons ya-share2" data-services="vkontakte,facebook,odnoklassniki,gplus,twitter"></div>
+                                {/if}
+                                <div class="article-stats__share article-share">
+                                    <div class="article-share__title">
+                                        Рассказать<br>
+                                        друзьям
+                                    </div>
+                                    <div class="article-share__buttons ya-share2" data-services="vkontakte,facebook,odnoklassniki,gplus,twitter"></div>
+                                </div>
                             </div>
                         </div>
                         <div class="uk-width-expand">
@@ -105,6 +115,7 @@
             </div>
         </div>
 
+        {if $.resource.class_key == 'Ticket'}
         <div class="see-also">
             <div class="see-also__title">Вам может быть интересно:</div>
             <div class="see-also__grid">
@@ -118,6 +129,7 @@
                 ]}
             </div>
         </div>
+        {/if}
         
         <h3 class="socials-title">Следите за рекомендациями Khagani-man в социальных сетях</h3>
         {include 'file:chunks/partials/socials.tpl'}

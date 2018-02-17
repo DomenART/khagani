@@ -29,6 +29,9 @@
                         'tpl' => '@FILE chunks/resources/categories.group.tpl'
                     ]}
                 </div>
+                <div class="catalog-content">
+                    {$.resource.content}
+                </div>
             </div>
         </div>
     </div>

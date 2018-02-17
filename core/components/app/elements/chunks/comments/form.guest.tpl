@@ -117,7 +117,7 @@
                         Правила публикации пользовательского контента. Как написать отзыв или задать вопрос?
                     </div>
                     <div class="review-form__rules">
-                        <a href="{'privacy-policy' | uri2id | url}" class="uk-button button-frame" target="_blank">
+                        <a href="{'page.privacy_policy' | config | url}" class="uk-button button-frame" target="_blank">
                             <svg width="6" height="13">
                                 <use href="{$.assets_url}web/img/svg-sprite.svg#info" />
                             </svg>
@@ -133,13 +133,13 @@
                         <input type="checkbox" name="rules" class="uk-checkbox" value="1" required>
                         <span></span>
                         Прочитал(-а)
-                        <a href="{'terms-of-use' | uri2id | url}" target="_blank">пользовательское соглашение</a> и соглашаюсь с
-                        <a href="{'privacy-policy' | uri2id | url}" target="_blank">политикой обработки персональных данных</a>.
+                        <a href="{'page.terms_of_use' | config | url}" target="_blank">пользовательское соглашение</a> и соглашаюсь с
+                        <a href="{'page.privacy_policy' | config | url}" target="_blank">политикой обработки персональных данных</a>.
                     </label>
                 </div>
 
                 <div class="modal-review__submit">
-                    <button type="submit" class="uk-button button-blue">Хочу Записаться</button>
+                    <button type="submit" class="uk-button button-blue">Отправить отзыв</button>
                 </div>
             </div>
 

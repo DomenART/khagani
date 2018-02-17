@@ -88,7 +88,7 @@
                                 <div class="product__misc product__row">
                                     {$sizes}
                                     <div class="product__dimensions">
-                                        <a href="{'dimensions' | uri2id | url}" class="dimensions-link" target="_blank">
+                                        <a href="{'page.size_table' | config | url}" class="dimensions-link" target="_blank">
                                             <svg width="16" height="17">
                                                 <use href="{$.assets_url}web/img/svg-sprite.svg#table_sizes" />
                                             </svg>
@@ -240,7 +240,7 @@
                     <ul class="uk-slider-items uk-child-width-1-3@s uk-child-width-1-4@m uk-child-width-1-5@l">
                         {'msProducts' | snippet : [
                             'tpl' => '@FILE chunks/resources/products.small.tpl',
-                            'parents' => 'catalog' | uri2id,
+                            'parents' => 'page.catalog' | config,
                             'limit' => 10,
                             'includeThumbs' => 'medium',
                             'resources' => $viewed
