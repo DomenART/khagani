@@ -368,33 +368,22 @@ class App
 
     public function productsCount($parent)
     {
-        $count = 0;
-        $q = $this->modx->newQuery('modResource');
-        $q->where(array(
-            'parent' => $parent,
-            'deleted' => false,
-            'published' => true,
-        ));
-        $q->select('id,parent,class_key');
-        if ($q->prepare() && $q->stmt->execute()) {
-            $resources = $q->stmt->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($resources as $resource) {
-                if ($resource['class_key'] == 'msProduct') {
-                    $count++;
-                }
-
-                $children = $this->modx->getCount('modResource', [
-                    'parent' => $resource['id'],
-                    'deleted' => false,
-                    'published' => true,
-                ]);
-                if ($children > 0) {
-                    $count += $this->productsCount($resource['id']);
-                }
-            }
-        }
-
-        return $count;
+        $params = [
+            'class' => 'msProduct',
+            'sortby' => 'msProduct.id',
+            'sortdir' => 'ASC',
+            'groupby' => 'msProduct.id',
+            'limit' => 0,
+            'parents' => $parent,
+            'where' => [
+                'class_key' => 'msProduct'
+            ],
+            'return' => 'data',
+        ];
+        $this->pdoTools->setConfig($params, false);
+        $rows = $this->pdoTools->run();
+        
+        return count($rows);
     }
 
     public function getColors($id)
