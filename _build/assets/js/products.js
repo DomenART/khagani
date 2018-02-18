@@ -3,6 +3,7 @@ import FilterCategories from './filter_categories.js'
 import { ColorViews, ColorOptions } from './colors.js'
 import { FormNumber, FormProductValidation } from './form.js'
 import $ from 'jquery'
+import UIkit from 'uikit'
 import "jquery-validation"
 import "jquery-validation/dist/localization/messages_ru.js"
 
@@ -35,6 +36,15 @@ document.querySelectorAll('.js-filter-categories').forEach(wrap => {
 // form validation
 document.querySelectorAll('.ms2_form').forEach(form => {
     new FormProductValidation(form)
+})
+
+// modal enroll
+document.querySelectorAll('.js-toggle-subscribe').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault()
+        UIkit.modal('#subscribe').show()
+        return false
+    })
 })
 
 // select count

@@ -17,7 +17,7 @@ class App
      */
     function __construct(modX &$modx, array $config = [])
     {
-        $this->modx =& $modx;
+        $this->modx = &$modx;
         $corePath = $this->modx->getOption('app_core_path', $config, $this->modx->getOption('core_path') . 'components/app/');
         $assetsUrl = $this->modx->getOption('app_assets_url', $config, $this->modx->getOption('assets_url') . 'components/app/');
 
@@ -28,7 +28,7 @@ class App
             'assetsUrl' => $assetsUrl,
             'connectorUrl' => $assetsUrl . 'connector.php',
         ], $config);
-        
+
         $this->modx->addPackage('app', $this->config['modelPath']);
         $this->modx->lexicon->load('app:default');
     }
@@ -99,7 +99,15 @@ class App
 
                 if ($this->modx->resource) {
                     $fenom->addAccessorSmart('resource', 'resource', Fenom::ACCESSOR_PROPERTY);
-                    $fenom->resource = $this->modx->resource->toArray();
+                    $resource = $this->modx->resource->toArray();
+                    $resource['content'] = $this->modx->resource->getContent();
+                    // TV parameters
+                    foreach ($resource as $k => $v) {
+                        if (is_array($v) && !empty($v[0]) && $k == $v[0]) {
+                            $resource[$k] = $this->modx->resource->getTVValue($k);
+                        }
+                    }
+                    $fenom->resource = $resource;
                 }
 
                 $fenom->addModifier('uri2id', function ($input) {
@@ -164,7 +172,8 @@ class App
 
                 // Remove .html extension
                 if (preg_match('#\.html$#i', $uri)) {
-                    $this->modx->sendRedirect(preg_replace('#\.html$#i', '', $uri),
+                    $this->modx->sendRedirect(
+                        preg_replace('#\.html$#i', '', $uri),
                         ['responseCode' => 'HTTP/1.1 301 Moved Permanently']
                     );
                 }
@@ -186,7 +195,7 @@ class App
                         }
                     }
                 }
-                */
+                 */
                 break;
             case 'OnLoadWebDocument':
                 break;
@@ -209,8 +218,8 @@ class App
                 $thread = $this->modx->getObject('TicketThread', $commment->get('thread'));
                 $resource = $this->modx->getObject('modResource', $thread->get('resource'));
                 $c_properties = $commment->get('properties');
-                $r_properties = $resource->get('properties');                
-                $fields = ['vote-overall','vote-price','vote-quality','advantages','disadvantages','recommend','city','time'];
+                $r_properties = $resource->get('properties');
+                $fields = ['vote-overall', 'vote-price', 'vote-quality', 'advantages', 'disadvantages', 'recommend', 'city', 'time'];
                 foreach ($fields as $name) {
                     if (isset($_POST[$name])) {
                         $c_properties[$name] = $this->modx->stripTags($_POST[$name]);
@@ -257,18 +266,18 @@ class App
                     $c_properties['counted'] = true;
                     $commment->set('properties', $c_properties);
                 }
-                
+
                 if ($c_properties['counted'] && (!$commment->published || $commment->deleted)) {
                     $value = -1;
                     $c_properties['counted'] = false;
                     $commment->set('properties', $c_properties);
                 }
-                
+
                 if ($value != 0) {
                     // update stars count
                     foreach ($votes as $name) {
                         // create arrays in empty
-                        if(!isset($r_properties[$name])) {
+                        if (!isset($r_properties[$name])) {
                             $r_properties[$name] = [
                                 1 => 0,
                                 2 => 0,
@@ -278,7 +287,7 @@ class App
                             ];
                         }
                         $r_properties[$name][$c_properties[$name]] += $value;
-                        if(!isset($r_properties['vote-total'])) {
+                        if (!isset($r_properties['vote-total'])) {
                             $r_properties['vote-total'] = [
                                 1 => 0,
                                 2 => 0,
@@ -288,16 +297,16 @@ class App
                             ];
                         }
                         $r_properties['vote-total'][$c_properties[$name]] += $value;
-                        if(!isset($r_properties['stars-count'])) {
+                        if (!isset($r_properties['stars-count'])) {
                             $r_properties['stars-count'] = 0;
                         }
                         $r_properties['stars-count'] += $value;
                     }
 
-                    if(!isset($r_properties['recommendations'])) {
+                    if (!isset($r_properties['recommendations'])) {
                         $r_properties['recommendations'] = 0;
                     }
-                    if($c_properties['recommend']) {
+                    if ($c_properties['recommend']) {
                         $r_properties['recommendations'] += $value;
                     }
 
@@ -316,7 +325,7 @@ class App
                 $resource = $this->modx->getObject('modResource', $thread->get('resource'));
                 $c_properties = $commment->get('properties');
                 $r_properties = $resource->get('properties');
-                
+
                 if ($c_properties['counted']) {
                     // update stars count
                     foreach ($votes as $name) {
@@ -324,7 +333,7 @@ class App
                         $r_properties['vote-total'][$c_properties[$name]]--;
                         $r_properties['stars-count']--;
                     }
-                    if($c_properties['recommend']) {
+                    if ($c_properties['recommend']) {
                         $r_properties['recommendations'] += -1;
                     }
 
@@ -365,8 +374,8 @@ class App
             'parent' => $parent,
             'deleted' => false,
             'published' => true,
-        )); 
-        $q->select('id,parent,class_key'); 
+        ));
+        $q->select('id,parent,class_key');
         if ($q->prepare() && $q->stmt->execute()) {
             $resources = $q->stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($resources as $resource) {
@@ -390,25 +399,31 @@ class App
 
     public function getColors($id)
     {
+        $product_color = $this->modx->getObject('AppProductColor', [
+            'product_id' => $id
+        ]);
         $thumbs = [
             'small',
             'medium'
         ];
         $q = $this->modx->newQuery('AppProductColor');
-        $q->innerJoin('AppColor','AppColor', 'AppColor.id = AppProductColor.color_id'); 
-        $q->leftJoin('msProductFile','Image', 'Image.id = AppProductColor.product_file_id'); 
-        foreach ($thumbs as $thumb) {
-            $q->leftJoin('msProductFile', $thumb, $thumb . '.parent = Image.id'); 
-            $q->where(array(
-                $thumb . '.path:LIKE' => '%'. $thumb . '%'
-            ));
-            $q->select($thumb . '.url as ' . $thumb);
+        $q->innerJoin('AppColor', 'AppColor', 'AppColor.id = AppProductColor.color_id');
+        if ($product_color->product_file_id) {
+            $q->leftJoin('msProductFile', 'Image', 'Image.id = AppProductColor.product_file_id');
+            $q->select('Image.id as file,Image.url as image');
+            foreach ($thumbs as $thumb) {
+                $q->leftJoin('msProductFile', $thumb, $thumb . '.parent = Image.id');
+                $q->where(array(
+                    $thumb . '.path:LIKE' => '%' . $thumb . '%'
+                ));
+                $q->select($thumb . '.url as ' . $thumb);
+            }
         }
         $q->where(array(
             'AppProductColor.product_id' => $id
         ));
         $q->groupby('AppProductColor.id');
-        $q->select('AppProductColor.id,Image.id as file,AppColor.label,AppColor.color,Image.url as image');
+        $q->select('AppProductColor.id,AppColor.label,AppColor.color');
         if ($q->prepare() && $q->stmt->execute()) {
             $colors = $q->stmt->fetchAll(PDO::FETCH_ASSOC);
             return $colors;
@@ -426,16 +441,16 @@ class App
             'msProductFile.product_id' => $id,
             'msProductFile.parent' => 0,
             'msProductFile.active' => 1
-        )); 
+        ));
         foreach ($thumbs as $thumb) {
-            $q->leftJoin('msProductFile', $thumb, $thumb . '.parent = msProductFile.id'); 
+            $q->leftJoin('msProductFile', $thumb, $thumb . '.parent = msProductFile.id');
             $q->where(array(
-                $thumb . '.path:LIKE' => '%'. $thumb . '%'
+                $thumb . '.path:LIKE' => '%' . $thumb . '%'
             ));
             $q->select($thumb . '.url as ' . $thumb);
         }
         $q->sortby('rank', 'ASC');
-        $q->select($this->modx->getSelectColumns('msProductFile','msProductFile',''));
+        $q->select($this->modx->getSelectColumns('msProductFile', 'msProductFile', ''));
         if ($q->prepare() && $q->stmt->execute()) {
             return $q->stmt->fetchAll(PDO::FETCH_ASSOC);
         }
@@ -466,7 +481,7 @@ class App
             'id' => $id
         ]);
 
-        if($response['success']) {
+        if ($response['success']) {
             $html = $this->pdoTools->getChunk('@FILE chunks/modals/quickview.tpl', $response['object']);
 
             return array(
@@ -481,7 +496,8 @@ class App
         );
     }
 
-    public function primaryParent($id) {
+    public function primaryParent($id)
+    {
         $resource = $this->modx->getObject('modResource', $id);
 
         if ($resource->parent == 0) {
@@ -491,54 +507,60 @@ class App
         }
     }
 
-    public function addViewedID($id) {
-        if(!isset($_SESSION['viewed'])) {
+    public function addViewedID($id)
+    {
+        if (!isset($_SESSION['viewed'])) {
             $_SESSION['viewed'] = array();
         }
-        if(!in_array($id, $_SESSION['viewed'])) {
+        if (!in_array($id, $_SESSION['viewed'])) {
             $_SESSION['viewed'][] = $id;
         }
     }
 
-    public function getViewedIDs($id) {
+    public function getViewedIDs($id)
+    {
         $ids = $_SESSION['viewed'];
-        if(!empty($ids)) {
+        if (!empty($ids)) {
             $key = array_search($id, $ids);
-            
-            if($key !== false) {
+
+            if ($key !== false) {
                 unset($ids[$key]);
             }
-            
+
             $ids = array_reverse($ids);
-            
-            return implode(',',$ids);
+
+            return implode(',', $ids);
         }
         return false;
     }
 
-    public function units($number, $titles) {
+    public function units($number, $titles)
+    {
         $keys = array(2, 0, 1, 1, 1, 2);
         $mod = $number % 100;
-        $suffix_key = ($mod > 7 && $mod < 20) ? 2: $keys[min($mod % 10, 5)];
+        $suffix_key = ($mod > 7 && $mod < 20) ? 2 : $keys[min($mod % 10, 5)];
         return $titles[$suffix_key];
     }
 
-    public function averageRatingPercent($properties, $number) {
+    public function averageRatingPercent($properties, $number)
+    {
         return $properties['vote-total'][$number] / $properties['stars-count'] * 100;
     }
 
-    public function totalAverageRating($properties) {
+    public function totalAverageRating($properties)
+    {
         $total = 0;
-        foreach($properties['vote-total'] as $num=>$count) {
-            $total += $num*$count;
+        foreach ($properties['vote-total'] as $num => $count) {
+            $total += $num * $count;
         }
         return round($total / $properties['stars-count'], 1);
     }
 
-    public function totalAverageRatingPercent($properties) {
+    public function totalAverageRatingPercent($properties)
+    {
         $total = 0;
-        foreach($properties['vote-total'] as $num=>$count) {
-            $total += $num*$count;
+        foreach ($properties['vote-total'] as $num => $count) {
+            $total += $num * $count;
         }
         return round($total / $properties['stars-count'] / 5 * 100, 0);
     }

@@ -23,3 +23,18 @@ window.addEventListener('scroll', (e) => {
     else
         button.classList.remove('scrolltop--visible')
 })
+
+let $slideshow = document.querySelector('.js-slideshow')
+if ($slideshow) {
+    let slideshow = UIkit.slideshow($slideshow, {
+        ratio: '7:3',
+        animation: 'push'
+    })
+    let items = $slideshow.querySelectorAll('.js-slideshow-item')
+    $slideshow.addEventListener('beforeitemshow', e => {
+        for (let i = 0; i < items.length; i++) {
+            items[i].style.display = 'none'
+        }
+        items[slideshow.index].style.display = 'block'
+    })
+}

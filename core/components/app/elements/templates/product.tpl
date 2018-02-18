@@ -216,8 +216,9 @@
                                 'parents' => $.resource.id | primaryParent,
                                 'limit' => 10,
                                 'includeThumbs' => 'medium',
-                                'sortby' => [
-                                    'Data.favorite' => 'ASC'
+                                'sortby' => 'RAND()',
+                                'where' => [
+                                    'Data.favorite' => true
                                 ]
                             ]}
                         </ul>

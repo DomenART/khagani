@@ -1,6 +1,10 @@
 {extends 'file:templates/base.tpl'}
 
 {block 'content'}
+{var $labels = []}
+{foreach ($.resource.parent | resource : 'labels' | fromJSON) as $label}
+    {var $labels[$label['key']] = $label['value']}
+{/foreach}
 
 <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
 <script src="//yastatic.net/share2/share.js"></script>
@@ -24,7 +28,7 @@
                         <svg width="8" height="10">
                             <use href="{$.assets_url}web/img/svg-sprite.svg#slider-left" />
                         </svg>
-                        Назад к статьям
+                        {$labels['back'] ?: 'Назад к статьям'}
                     </a>
                     {/if}
                 </div>
@@ -40,7 +44,7 @@
                                     Опубликовано:<br>
                                     {$.resource.publishedon | date_format : '%d.%m.%Y'}
                                 </div>
-                                <div class="article-stats__type">{$.resource.article_type[1]}</div>
+                                <div class="article-stats__type">{$.resource.article_type}</div>
                                 <div class="article-stats__counts">
                                     <div class="article-count">
                                         <div class="article-count__icon">
@@ -69,9 +73,9 @@
                         </div>
                         <div class="uk-width-expand">
                             <div class="article-body">
-                                {if $.resource.image[1]?}
+                                {if $.resource.image?}
                                 <div class="article-body__image">
-                                    <img src="{$.resource.image[1]}" alt="">
+                                    <img src="{$.resource.image}" alt="">
                                 </div>
                                 {/if}
                                 {if $.resource.description?}
@@ -95,7 +99,7 @@
                         </div>
                     </div>
                 </div>
-                {if $.resource.article_products[1]}
+                {if $.resource.article_products}
                 <div class="article__right">
                     <div class="article-products">
                         <div class="article-products__title">
@@ -105,7 +109,7 @@
                             {'msProducts' | snippet : [
                                 'parents' => 0,
                                 'includeThumbs' => 'medium',
-                                'resources' => $.resource.article_products[1],
+                                'resources' => $.resource.article_products,
                                 'tpl' => '@FILE chunks/resources/products.article.tpl'
                             ]}
                         </div>
@@ -116,19 +120,22 @@
         </div>
 
         {if $.resource.class_key == 'Ticket'}
-        <div class="see-also">
-            <div class="see-also__title">Вам может быть интересно:</div>
-            <div class="see-also__grid">
-                {'pdoResources' | snippet : [
-                    'parents' => $.resource.parent,
-                    'resources' => '-'~$.resource.id,
-                    'limit' => 4,
-                    'includeTVs' => 'article_format,article_type,image,rating',
-                    'tvPrefix' => '',
-                    'tpl' => '@FILE chunks/resources/seealso.tile.tpl'
-                ]}
+            {var $seealso = 'pdoResources' | snippet : [
+                'parents' => $.resource.parent,
+                'resources' => '-'~$.resource.id,
+                'limit' => 4,
+                'includeTVs' => 'article_format,article_type,image,rating',
+                'tvPrefix' => '',
+                'tpl' => '@FILE chunks/resources/seealso.tile.tpl'
+            ]}
+            {if $seealso?}
+            <div class="see-also">
+                <div class="see-also__title">Вам может быть интересно:</div>
+                <div class="see-also__grid">
+                    {$seealso}
+                </div>
             </div>
-        </div>
+            {/if}
         {/if}
         
         <h3 class="socials-title">Следите за рекомендациями Khagani-man в социальных сетях</h3>

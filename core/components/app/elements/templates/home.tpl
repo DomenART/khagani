@@ -3,15 +3,14 @@
 {block 'content'}
 <div class="home-slideshow">
     <div class="uk-container">
-        <div class="slideshow" uk-slideshow="ratio: 7:3; animation: push">
+        <div class="slideshow js-slideshow">
 
             <ul class="uk-slideshow-items">
-                <li>
-                    <img src="{$.assets_url}web/img/slide-3.jpg" alt="" uk-cover>
-                </li>
-                <li>
-                    <img src="{$.assets_url}web/img/slide-1.jpg" alt="" uk-cover>
-                </li>
+                {foreach $.resource.slideshow | fromJSON as $slide}
+                    <li>
+                        <img src="{$slide['image']}" alt="" uk-cover>
+                    </li>
+                {/foreach}
             </ul>
 
             <button class="slideshow__prev" uk-slideshow-item="previous">
@@ -23,16 +22,17 @@
 
             <div class="slideshow-info">
                 <ul class="slideshow-info__list" uk-height-match="target: .slideshow-info__flex">
-                    <li uk-slideshow-item="0">
+                    {foreach $.resource.slideshow | fromJSON as $slide}
+                    <li class="js-slideshow-item">
                         <div class="slideshow-info__flex">
-                            <div class="slideshow-info__title">Любой костюм</div>
-                            <div class="slideshow-info__desc">за 10 000 руб.</div>
+                            <div class="slideshow-info__title">{$slide['label_1']}</div>
+                            <div class="slideshow-info__desc">{$slide['label_2']}</div>
                             <div class="slideshow-info__city">
-                                <span>только в феврале</span>
+                                <span>{$slide['label_3']}</span>
                             </div>
                         </div>
                         <div class="slideshow-info__more">
-                            <a href="{'page.costumes' | config | url}" class="uk-button button-blue">
+                            <a href="{$slide['url']}" class="uk-button button-blue">
                                 Узнать больше
                                 <svg width="8" height="10">
                                     <use href="{$.assets_url}web/img/svg-sprite.svg#slider-right" />
@@ -40,23 +40,7 @@
                             </a>
                         </div>
                     </li>
-                    <li uk-slideshow-item="1">
-                        <div class="slideshow-info__flex">
-                            <div class="slideshow-info__title">Ателье - магазин</div>
-                            <div class="slideshow-info__desc">модной мужской одежды из Турции</div>
-                            <div class="slideshow-info__city">
-                                <span>В Москве</span>
-                            </div>
-                        </div>
-                        <div class="slideshow-info__more">
-                            <a href="{'page.showroom' | config | url}" class="uk-button button-blue">
-                                Узнать больше
-                                <svg width="8" height="10">
-                                    <use href="{$.assets_url}web/img/svg-sprite.svg#slider-right" />
-                                </svg>
-                            </a>
-                        </div>
-                    </li>
+                    {/foreach}
                 </ul>
                 <ul class="uk-slideshow-nav slideshow-info__nav"></ul>
             </div>
@@ -69,16 +53,16 @@
     <div class="uk-container">
         <div class="uk-grid uk-grid-medium uk-grid-match" uk-grid>
             <div class="uk-width-1-2@s uk-width-2-3@m">
-                <div class="home-opening">
+                <div class="home-opening" style="background-image:url('{$.resource.banner_image}')">
                     <div class="home-opening__info">
                         <div class="home-opening__desc">
-                            Поступление новой
+                            {$.resource.banner_title}
                         </div>
                         <div class="home-opening__title">
-                            коллекции одежды
+                            {$.resource.banner_desc}
                         </div>
-                        <a href="{'page.showroom' | config | url}" class="home-opening__more uk-button button-blue">
-                            Узнать больше
+                        <a href="{$.resource.banner_link}" class="home-opening__more uk-button button-blue">
+                            {$.resource.banner_button}
                             <svg width="8" height="10">
                                 <use href="{$.assets_url}web/img/svg-sprite.svg#slider-right" />
                             </svg>
@@ -144,7 +128,7 @@
 {if $popular?}
 <section class="section-home">
     <div class="uk-container">
-        <h2 class="section-home__title">Популярное</h2>
+        <h2 class="section-home__title">Тренд</h2>
         <div class="offers">
             {$popular}
         </div>
@@ -152,22 +136,24 @@
 </section>
 {/if}
 
+{if $.resource.catalog?}
 <section class="section-home">
     <div class="uk-container">
         <h2 class="section-home__title">Каталог</h2>
         <div class="catalog">
+            {foreach $.resource.catalog | fromJSON as $category}
             <div class="catalog-item">
-                <a href="{'page.costumes' | config | url}">
-                    <img src="{$.assets_url}web/img/stylishly.jpg" alt="" class="catalog-item__image">
+                <a href="{$category['url']}">
+                    <img src="{$category['image']}" alt="" class="catalog-item__image">
                 </a>
                 <div class="catalog-item__info">
                     <div class="catalog-item__title">
-                        Стильные костюмы
+                        {$category['title']}
                     </div>
                     <div class="catalog-item__desc">
-                        для торжества и на каждый день
+                        {$category['desc']}
                     </div>
-                    <a href="{'page.costumes' | config | url}" class="catalog-item__more uk-button button-blue">
+                    <a href="{$category['url']}" class="catalog-item__more uk-button button-blue">
                         В раздел
                         <svg width="6" height="7">
                             <use href="{$.assets_url}web/img/svg-sprite.svg#slider-right" />
@@ -175,85 +161,11 @@
                     </a>
                 </div>
             </div>
-            <div class="catalog-item">
-                <a href="{'page.costumes' | config | url}">
-                    <img src="{$.assets_url}web/img/trend.jpg" alt="" class="catalog-item__image">
-                </a>
-                <div class="catalog-item__info">
-                    <div class="catalog-item__title">
-                        Тренд сезона
-                    </div>
-                    <div class="catalog-item__desc">
-                        Самое актуальное и модное
-                    </div>
-                    <a href="{'page.costumes' | config | url}" class="catalog-item__more uk-button button-blue">
-                        В раздел
-                        <svg width="6" height="7">
-                            <use href="{$.assets_url}web/img/svg-sprite.svg#slider-right" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="catalog-item">
-                <a href="{'page.accessories' | config | url}">
-                    <img src="{$.assets_url}web/img/accessories.jpg" alt="" class="catalog-item__image">
-                </a>
-                <div class="catalog-item__info">
-                    <div class="catalog-item__title">
-                        Аксессуары
-                    </div>
-                    <div class="catalog-item__desc">
-                        Описание раздела
-                    </div>
-                    <a href="{'page.accessories' | config | url}" class="catalog-item__more uk-button button-blue">
-                        В раздел
-                        <svg width="6" height="7">
-                            <use href="{$.assets_url}web/img/svg-sprite.svg#slider-right" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="catalog-item">
-                <a href="{'page.outerwear' | config | url}">
-                    <img src="{$.assets_url}web/img/outerwear.jpg" alt="" class="catalog-item__image">
-                </a>
-                <div class="catalog-item__info">
-                    <div class="catalog-item__title">
-                        Верхняя одежда
-                    </div>
-                    <div class="catalog-item__desc">
-                        Описание раздела
-                    </div>
-                    <a href="{'page.outerwear' | config | url}" class="catalog-item__more uk-button button-blue">
-                        В раздел
-                        <svg width="6" height="7">
-                            <use href="{$.assets_url}web/img/svg-sprite.svg#slider-right" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="catalog-item">
-                <a href="{'page.shoes' | config | url}">
-                    <img src="{$.assets_url}web/img/shoes.jpg" alt="" class="catalog-item__image">
-                </a>
-                <div class="catalog-item__info">
-                    <div class="catalog-item__title">
-                        Туфли
-                    </div>
-                    <div class="catalog-item__desc">
-                        Описание раздела
-                    </div>
-                    <a href="{'page.shoes' | config | url}" class="catalog-item__more uk-button button-blue">
-                        В раздел
-                        <svg width="6" height="7">
-                            <use href="{$.assets_url}web/img/svg-sprite.svg#slider-right" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
+            {/foreach}
         </div>
     </div>
 </section>
+{/if}
 
 <section class="section-content">
     <div class="uk-container">
@@ -289,39 +201,14 @@
                         </div>
                         <div class="module-slider__body uk-slider-container">
                             <ul class="uk-grid uk-slider-items uk-child-width-1-1">
-                                <li>
-                                    <div class="module-slider__video">
-                                        <video controls>
-                                            <source src="{$.assets_url}web/img/review-1.mp4" type="video/mp4">
-                                            <source src="{$.assets_url}web/img/review-1.webm" type="video/webm">
-                                            <source src="{$.assets_url}web/img/review-1.ogg" type="video/ogg"> Sorry, your browser doesn't support embedded videos, but don't worry, you can
-                                            <a href="{$.assets_url}web/img/review-1.mp4">download it</a>
-                                            and watch it with your favorite video player!
-                                        </video>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="module-slider__video">
-                                        <video controls>
-                                            <source src="{$.assets_url}web/img/review-2.mp4" type="video/mp4">
-                                            <source src="{$.assets_url}web/img/review-2.webm" type="video/webm">
-                                            <source src="{$.assets_url}web/img/review-2.ogg" type="video/ogg"> Sorry, your browser doesn't support embedded videos, but don't worry, you can
-                                            <a href="{$.assets_url}web/img/review-1.mp4">download it</a>
-                                            and watch it with your favorite video player!
-                                        </video>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="module-slider__video">
-                                        <video controls>
-                                            <source src="{$.assets_url}web/img/review-3.mp4" type="video/mp4">
-                                            <source src="{$.assets_url}web/img/review-3.webm" type="video/webm">
-                                            <source src="{$.assets_url}web/img/review-3.ogg" type="video/ogg"> Sorry, your browser doesn't support embedded videos, but don't worry, you can
-                                            <a href="{$.assets_url}web/img/review-1.mp4">download it</a>
-                                            and watch it with your favorite video player!
-                                        </video>
-                                    </div>
-                                </li>
+                                {foreach ($.resource.reviews | fromJSON) as $review}
+                                    <li>
+                                        <div class="module-slider__video">
+                                            <iframe width="100%" height="400" src="https://www.youtube.com/embed/{$review['youtube']}?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                    </li>
+                                {/foreach}
                             </ul>
                         </div>
                     </div>

@@ -18,11 +18,15 @@ h2 {
     margin: 0 0 24px;
 }
 
-h4 {
+h3 {
     font-size: 24px;
     font-weight: 600;
     line-height: 1;
     margin: 0 0 24px;
+}
+
+h4 {
+    margin: 0 0 20px;
 }
 
 svg {
@@ -1172,7 +1176,8 @@ ul.content-list {
 }
 
 .home-opening {
-    background: url('../img/bg-showroom.jpg') no-repeat 50% 50%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
     background-size: cover;
     padding: 40px 10px;
     position: relative;
@@ -1324,12 +1329,6 @@ ul.content-list {
     position: relative;
     li {
         list-style: none;
-        visibility: hidden;
-        position: absolute;
-        &.uk-active {
-            visibility: visible;
-            position: relative;
-        }
     }
 }
 
@@ -1551,6 +1550,10 @@ ul.content-list {
     @media (max-width: @breakpoint-xsmall-max) {
         display: none;
     }
+}
+
+.toolbar-menu__higlight {
+    background: #fffed4;
 }
 
 .header {

@@ -74,7 +74,7 @@
                                 <use href="/assets/components/app/web/img/svg-sprite.svg#facebook-letter" />
                             </svg>
                         </a>
-                        <a href="https://www.instagram.com/khagani_man/" class="social-groups__item social-groups__item--instagram">
+                        <a href="https://www.instagram.com/khagani_man/" class="social-groups__item social-groups__item--instagram" target="_blank">
                             <svg width="24" height="24">
                                 <use href="/assets/components/app/web/img/svg-sprite.svg#instagram" />
                             </svg>
