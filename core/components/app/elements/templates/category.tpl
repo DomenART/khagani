@@ -3,11 +3,14 @@
 {block 'content'}
 <div class="section-twilight">
     <div class="uk-container">
-        {'pdoCrumbs' | snippet : [
-            'showHome' => true,
-            'tplWrapper' => '@INLINE <div class="page-breadcrumb"><ul class="breadcrumb">{$output}</ul></div>',
-            'tplCurrent' => '@INLINE <li><span>{$menutitle}</span></li>'
-        ]}
+        <div class="page-breadcrumb">
+            {'pdoCrumbs' | snippet : [
+                'showHome' => true,
+                'tpl' => '@FILE chunks/crumbs/link.tpl',
+                'tplWrapper' => '@FILE chunks/crumbs/wrapper.tpl',
+                'tplCurrent' => '@FILE chunks/crumbs/current.tpl'
+            ]}
+        </div>
 
         <h1>{$_modx->resource.longtitle ?: $_modx->resource.pagetitle}</h1>
         
@@ -24,6 +27,9 @@
                 ms|price:number,
                 mscolor|color_id:color
             ',
+
+            'sortby' => 'publishedon',
+            'sortdir' => 'DESC',
 
             'tplFilter.outer.msoption|size' => '@FILE chunks/filter/filter.size.tpl',
             'tplFilter.row.msoption|size' => '@FILE chunks/filter/filter.checkbox.tpl',
@@ -42,7 +48,6 @@
             'tplPageLastEmpty' => '@INLINE <li class="control"><span>[[%pdopage_last]]<i uk-icon="icon: chevron-right; ratio: .6"></i></span></li>',
             'tpls' => '
                 @FILE chunks/resources/products.tile.tpl,
-                @FILE chunks/resources/products.short.tpl,
                 @FILE chunks/resources/products.row.tpl
             '
         ]}

@@ -14,7 +14,7 @@
     </div>
 </section>
 
-<footer class="footer">
+<footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
     <div class="uk-container">
         <div class="footer__first">
             <div class="footer__info">
@@ -71,16 +71,40 @@
                     <div class="social-groups">
                         <a href="https://www.facebook.com/magazinkostumov/" class="social-groups__item social-groups__item--facebook" target="_blank">
                             <svg width="24" height="24">
-                                <use href="/assets/components/app/web/img/svg-sprite.svg#facebook-letter" />
+                                <use href="{$.assets_url}web/img/svg-sprite.svg#facebook-letter" />
                             </svg>
                         </a>
                         <a href="https://www.instagram.com/khagani_man/" class="social-groups__item social-groups__item--instagram" target="_blank">
                             <svg width="24" height="24">
-                                <use href="/assets/components/app/web/img/svg-sprite.svg#instagram" />
+                                <use href="{$.assets_url}web/img/svg-sprite.svg#instagram" />
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCA0lVs1ikQNhdvE9kVbN8Dw" class="social-groups__item social-groups__item--youtube" target="_blank">
+                            <svg width="24" height="24">
+                                <use href="{$.assets_url}web/img/svg-sprite.svg#youtube" />
+                            </svg>
+                        </a>
+                        <a href="https://ru.pinterest.com/khaganiman/" class="social-groups__item social-groups__item--pinterest" target="_blank">
+                            <svg width="24" height="24">
+                                <use href="{$.assets_url}web/img/svg-sprite.svg#pinterest" />
+                            </svg>
+                        </a>
+                        <a href="https://ok.ru/group/53902208073924" class="social-groups__item social-groups__item--odnoklassniki" target="_blank">
+                            <svg width="24" height="24">
+                                <use href="{$.assets_url}web/img/svg-sprite.svg#odnoklassniki" />
+                            </svg>
+                        </a>
+                        <a href="https://vk.com/khaganiman" class="social-groups__item social-groups__item--vk" target="_blank">
+                            <svg width="24" height="24">
+                                <use href="{$.assets_url}web/img/svg-sprite.svg#vk" />
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com/Khagani_man" class="social-groups__item social-groups__item--twitter" target="_blank">
+                            <svg width="24" height="24">
+                                <use href="{$.assets_url}web/img/svg-sprite.svg#twitter" />
                             </svg>
                         </a>
                     </div>
-                    <a href="{'page.sitemap' | config | url}" class="footer__sitemap">Карта сайта</a>
                 </div>
             </div>
         </div>
@@ -92,6 +116,7 @@
             
             <div class="footer__counters">
                 {'app_counters' | config}
+                <a href="{'page.sitemap' | config | url}" class="footer__sitemap">Карта сайта</a>
             </div>
             
             <div class="footer__creator">

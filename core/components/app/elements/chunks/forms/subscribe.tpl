@@ -3,14 +3,17 @@
     <div class="form-record__row">
         <input type="text" placeholder="Имя:" name="name" class="input" value="{$_pls['fi.name']}">
     </div>
-    <div class="form-record__row">
+    <div class="form-record__row validation-error-right">
         <input type="tel" placeholder="Телефон*:" name="phone" class="input" value="{$_pls['fi.phone']}" required>
+    </div>
+    <div class="form-record__row validation-error-right">
+        <input type="email" placeholder="E-mail*:" name="email" class="input" value="{$_pls['fi.email']}" required>
     </div>
     <div class="form-record__row">
         <textarea rows="3" name="message" class="textarea" placeholder="Сообщение:">{$_pls['fi.message']}</textarea>
     </div>
     <div class="form-record__note">
-        <span>Обязательно заполните поле ТЕЛЕФОН, чтобы мы могли связаться с вами для уточнения времени.</span>
+        <span>Обязательно заполните поле <b>ТЕЛЕФОН</b>, чтобы мы могли связаться с вами для уточнения времени.</span>
     </div>
     <div class="form-record__rules">
         <label>
@@ -22,9 +25,8 @@
         </label>
     </div>
     <div class="form-record__submit">
-        <button type="submit" class="uk-button button-blue">Хочу Записаться</button>
+        <button type="submit" class="uk-button button-bordered button-bordered--large button-bordered--saturated">Хочу Записаться</button>
     </div>
-
     <div class="form-success">
         <div class="form-success__title">
             Благодарим за обращение.<br>Ваша заявка принята.

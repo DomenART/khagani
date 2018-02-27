@@ -1,12 +1,12 @@
 <div id="add-review" class="modal-review" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
-        <button class="uk-modal-close-default" type="button" uk-close></button>
         <div class="uk-modal-title">
             Новый отзыв
             <span class="modal-review__product">о товаре
                 <b>{$.resource.pagetitle}</b>
             </span>
         </div>
+        <button class="uk-modal-close-default" type="button" uk-close></button>
 
         <form id="comment-form" action="" method="post" class="review-form" enctype="multipart/form-data">
             <div class="review-form-controls">

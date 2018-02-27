@@ -8,7 +8,7 @@
             <ul class="uk-slideshow-items">
                 {foreach $.resource.slideshow | fromJSON as $slide}
                     <li>
-                        <img src="{$slide['image']}" alt="" uk-cover>
+                        <img src="{$slide['image']}" alt="" uk-cover{$slide['images'] | srcset : $slide['image']}>
                     </li>
                 {/foreach}
             </ul>

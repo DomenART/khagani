@@ -25,8 +25,8 @@
                         <div class="rating-stars__fill" style="width: {$properties | totalAverageRatingPercent}%"></div>
                     </div>
                 </div>
-                <div class="reviews-summary__text">
-                    {$total} {$total | units : ['отзыв', 'отзыва', 'отзывов']} | {$properties | totalAverageRating} из 5
+                <div class="reviews-summary__text" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                    <span itemprop="reviewCount">{$total}</span> {$total | units : ['отзыв', 'отзыва', 'отзывов']} | <span itemprop="ratingValue">{$properties | totalAverageRating}</span> из 5
                 </div>
                 <div class="reviews-summary__scale" style="background: linear-gradient(90deg, #ebdf25 {$recommendationsPercentage}%, #f1f1f1 {$recommendationsPercentage}%)">
                     {$recommendationsPercentage}%

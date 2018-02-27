@@ -67,17 +67,17 @@
                 {if $tpls?}
                 <div class="filterBar__view">
                     <div class="products-view" id="mse2_tpl">
-                        <a href="#" data-tpl="1" class="{$tpl1} products-view__button">
+                        <!-- <a href="#" data-tpl="1" class="{$tpl1} products-view__button">
                             <svg width="11" height="11">
                                 <use href="{$.assets_url}web/img/svg-sprite.svg#tiles-small" />
                             </svg>
-                        </a>
+                        </a> -->
                         <a href="#" data-tpl="0" class="{$tpl0} products-view__button">
                             <svg width="18" height="18">
                                 <use href="{$.assets_url}web/img/svg-sprite.svg#tiles" />
                             </svg>
                         </a>
-                        <a href="#" data-tpl="2" class="{$tpl2} products-view__button">
+                        <a href="#" data-tpl="1" class="{$tpl1} products-view__button">
                             <svg width="18" height="13">
                                 <use href="{$.assets_url}web/img/svg-sprite.svg#rows" />
                             </svg>

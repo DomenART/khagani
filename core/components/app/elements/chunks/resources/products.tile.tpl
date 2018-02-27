@@ -17,11 +17,21 @@
     <div class="products-item__name">
         <a href="{$uri}">{$pagetitle}</a>
     </div>
-    <div class="products-item__price">
-        {$price}
-        <svg width="10" height="10">
-            <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
-        </svg>
+    <div class="products-item__prices">
+        {if $old_price?}
+        <div class="products-item__price-old">
+            {$old_price}
+            <svg width="8" height="10">
+                <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
+            </svg>
+        </div>
+        {/if}
+        <div class="products-item__price">
+            {$price}
+            <svg width="10" height="12">
+                <use href="{$.assets_url}web/img/svg-sprite.svg#ruble" />
+            </svg>
+        </div>
     </div>
     <div class="products-item__colors">
         {foreach $id | getColors as $color}

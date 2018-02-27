@@ -3,7 +3,7 @@
     <ul class="product-gallery__thumbs">
         {foreach $files as $key=>$file}
             <li uk-slideshow-item="{$key}">
-                <img src="{$file['small']}" alt="" title="">
+                <img src="{$file['small']}" alt="" title="" itemprop="image">
             </li>
         {/foreach}
     </ul>

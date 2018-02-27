@@ -1,5 +1,13 @@
 {extends 'file:templates/base.tpl'}
 
+{block 'ogmeta'}
+<meta property="og:type" content="article" />
+<meta property="og:image" content="{'site_url' | config}{$.resource.image}">
+<meta property="og:title" content="{$.resource.pagetitle}">
+<meta property="og:url" content="{$.resource.id | url : ['scheme' => 'full']}">
+<meta property="og:description" content="{$.resource.introtext}">
+{/block}
+
 {block 'content'}
 {var $labels = []}
 {foreach ($.resource.parent | resource : 'labels' | fromJSON) as $label}
@@ -11,11 +19,14 @@
 
 <div class="section-twilight">
     <div class="uk-container">
-        {'pdoCrumbs' | snippet : [
-            'showHome' => true,
-            'tplWrapper' => '@INLINE <div class="page-breadcrumb"><ul class="breadcrumb">{$output}</ul></div>',
-            'tplCurrent' => '@INLINE <li><span>{$menutitle}</span></li>'
-        ]}
+        <div class="page-breadcrumb">
+            {'pdoCrumbs' | snippet : [
+                'showHome' => true,
+                'tpl' => '@FILE chunks/crumbs/link.tpl',
+                'tplWrapper' => '@FILE chunks/crumbs/wrapper.tpl',
+                'tplCurrent' => '@FILE chunks/crumbs/current.tpl'
+            ]}
+        </div>
 
         <div class="article">
             <div class="uk-grid uk-grid-small" uk-grid>

@@ -23,11 +23,11 @@
             </label>
         </div>
         <div class="modal-form__submit">
-            <button type="submit" class="uk-button button-bordered button-bordered--large button-bordered--saturated">Отправить</button>
+            <button type="submit" class="uk-button button-bordered button-bordered--large button-bordered--saturated">Хочу Записаться</button>
         </div>
     </div>
     <div class="modal-form__note">
-        <span>Обязательно заполните поле <b>ТЕЛЕФОН</b>, чтобы мы могли связаться с вами для уточнения деталей.</span>
+        <span>Обязательно заполните поле <b>ТЕЛЕФОН</b>, чтобы мы могли связаться с вами для уточнения времени.</span>
     </div>
 
     <div class="form-success">

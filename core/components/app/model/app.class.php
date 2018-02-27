@@ -150,6 +150,10 @@ class App
                     return $this->getColors($input);
                 });
 
+                $fenom->addModifier('srcset', function ($input, $options) {
+                    return $this->srcset($input, $options);
+                });
+
                 $fenom->addModifier('getImages', function ($input) {
                     return $this->getImages($input);
                 });
@@ -382,7 +386,7 @@ class App
         ];
         $this->pdoTools->setConfig($params, false);
         $rows = $this->pdoTools->run();
-        
+
         return count($rows);
     }
 
@@ -552,5 +556,22 @@ class App
             $total += $num * $count;
         }
         return round($total / $properties['stars-count'] / 5 * 100, 0);
+    }
+
+    public function srcset($images, $main)
+    {
+        if (empty($images)) return false;
+
+        $images = $this->modx->fromJSON($images);
+        $images[] = [
+            'image' => $main
+        ];
+
+        $output = [];
+        foreach ($images as $image) {
+            $size = getimagesize($image['image']);
+            $output[] = $image['image'] . ' ' . $size[0] . 'w';
+        }
+        return ' srcset="' . implode(', ', $output) . '"';
     }
 }

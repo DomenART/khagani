@@ -1,7 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html itemscope itemtype="http://schema.org/WebPage" lang="ru">
 <head>
     {include 'file:chunks/_head.tpl'}
+    {block 'ogmeta'}{/block}
 </head>
 
 <body>
@@ -11,11 +12,14 @@
         {block 'content'}
             <div class="section-twilight">
                 <div class="uk-container">
-                    {'pdoCrumbs' | snippet : [
-                        'showHome' => true,
-                        'tplWrapper' => '@INLINE <div class="page-breadcrumb"><ul class="breadcrumb">{$output}</ul></div>',
-                        'tplCurrent' => '@INLINE <li><span>{$menutitle}</span></li>'
-                    ]}
+                    <div class="page-breadcrumb">
+                        {'pdoCrumbs' | snippet : [
+                            'showHome' => true,
+                            'tpl' => '@FILE chunks/crumbs/link.tpl',
+                            'tplWrapper' => '@FILE chunks/crumbs/wrapper.tpl',
+                            'tplCurrent' => '@FILE chunks/crumbs/current.tpl'
+                        ]}
+                    </div>
             
                     <h1>{$_modx->resource.longtitle ?: $_modx->resource.pagetitle}</h1>
                     

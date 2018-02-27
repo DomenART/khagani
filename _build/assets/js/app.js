@@ -27,7 +27,8 @@ window.addEventListener('scroll', (e) => {
 let $slideshow = document.querySelector('.js-slideshow')
 if ($slideshow) {
     let slideshow = UIkit.slideshow($slideshow, {
-        ratio: '7:3',
+        "min-height": 268,
+        "max-height": 500,
         animation: 'push'
     })
     let items = $slideshow.querySelectorAll('.js-slideshow-item')
