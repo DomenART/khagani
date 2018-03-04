@@ -42,10 +42,10 @@
 
             'tplOuter' => '@FILE chunks/filter/products.tpl',
             'tplPageWrapper' => '@INLINE <div class="products-pagination"><ul class="pagination">[[+first]][[+pages]][[+last]]</ul></div>',
-            'tplPageFirst' => '@INLINE <li class="control"><a href="[[+href]]"><i uk-icon="icon: chevron-left; ratio: .6"></i>[[%pdopage_first]]</a></li>',
-            'tplPageLast' => '@INLINE <li class="control"><a href="[[+href]]">[[%pdopage_last]]<i uk-icon="icon: chevron-right; ratio: .6"></i></a></li>',
-            'tplPageFirstEmpty' => '@INLINE <li class="control"><span><i uk-icon="icon: chevron-left; ratio: .6"></i>[[%pdopage_first]]</span></li>',
-            'tplPageLastEmpty' => '@INLINE <li class="control"><span>[[%pdopage_last]]<i uk-icon="icon: chevron-right; ratio: .6"></i></span></li>',
+            'tplPageFirst' => '@INLINE <li class="control"><a href="[[+href]]"><i uk-icon="icon: chevron-left; ratio: .6"></i><span>[[%pdopage_first]]</span></a></li>',
+            'tplPageLast' => '@INLINE <li class="control"><a href="[[+href]]"><span>[[%pdopage_last]]</span><i uk-icon="icon: chevron-right; ratio: .6"></i></a></li>',
+            'tplPageFirstEmpty' => '@INLINE <li class="control"><span><i uk-icon="icon: chevron-left; ratio: .6"></i><span>[[%pdopage_first]]</span></span></li>',
+            'tplPageLastEmpty' => '@INLINE <li class="control"><span><span>[[%pdopage_last]]</span><i uk-icon="icon: chevron-right; ratio: .6"></i></span></li>',
             'tpls' => '
                 @FILE chunks/resources/products.tile.tpl,
                 @FILE chunks/resources/products.row.tpl

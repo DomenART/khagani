@@ -48,6 +48,11 @@ window.AjaxForm = {
                             return true;
                         }
                         , success: function (response, status, xhr, form) {
+                            let yatarget = form.data('yatarget') || false
+                            if (yatarget) {
+                                console.log('target', yatarget)
+                                yaCounter47222415.reachGoal(yatarget)
+                            }
                             form.find('input,textarea,select,button').attr('disabled', false);
                             response.form = form;
                             $(document).trigger('af_complete', response);

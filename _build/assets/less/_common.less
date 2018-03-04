@@ -514,8 +514,8 @@ ul.content-list {
 }
 
 .footer__social {
-    display: flex;
-    align-items: center;
+    // display: flex;
+    // align-items: center;
     margin-top: 14px;
 }
 
@@ -616,7 +616,8 @@ ul.content-list {
 }
 
 .social-groups {
-    display: flex;
+    .uk-flex;
+    .uk-flex-between;
     line-height: 1;
 }
 
@@ -663,6 +664,11 @@ ul.content-list {
     }
     &--twitter {
         background: #1da1f2;
+    }
+    @media (max-width: @breakpoint-xsmall-max) {
+        width: 40px;
+        height: 40px;
+        margin: 0;
     }
 }
 
@@ -1429,13 +1435,13 @@ ul.content-list {
     padding-bottom: 16px;
     padding-top: 22px;
     @media (max-width: @breakpoint-xsmall-max) {
-        // position: relative;
-        // left: auto;
-        // bottom: auto;
-        // transform: initial;
+        position: relative;
+        left: auto;
+        bottom: auto;
+        transform: initial;
     }
     @media (max-width: @breakpoint-xsmall-max) {
-        // padding: 14px 0;
+        padding: 14px 0;
     }
 }
 
@@ -2625,18 +2631,20 @@ ul.pagination {
     text-align: center;
     padding: 0;
     margin: 0;
-    li {
+    > li {
         display: inline-block;
         list-style: none;
         margin: 0 3px;
-        &:first-child {
-            margin-right: 100px;
+        @media (min-width: @breakpoint-small) {
+            &:first-child {
+                margin-right: 100px;
+            }
+            &:last-child {
+                margin-left: 100px;
+            }
         }
-        &:last-child {
-            margin-left: 100px;
-        }
-        span,
-        a {
+        > span,
+        > a {
             color: #333333;
             font-size: 16px;
             display: inline-block;
@@ -2647,12 +2655,12 @@ ul.pagination {
             text-decoration: none;
             border: 2px solid transparent;
         }
-        a:hover {
+        > a:hover {
             text-decoration: none;
             border-color: #aacaea;
         }
         &.active {
-            a {
+            > a {
                 color: #fff;
                 background-color: #6699cc;
                 border-color: #6699cc;
@@ -2660,10 +2668,15 @@ ul.pagination {
             }
         }
         &.control {
-            span,
-            a {
+            > span,
+            > a {
                 color: #999999;
                 font-size: 14px;
+                span {
+                    @media (max-width: @breakpoint-xsmall-max) {
+                        display: none;
+                    }
+                }
             }
         }
     }
@@ -2799,6 +2812,7 @@ ul.pagination {
 .products-item__colors {
     float: right;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .products-item__color {

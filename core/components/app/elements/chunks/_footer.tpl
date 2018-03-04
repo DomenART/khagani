@@ -127,3 +127,4 @@
 </footer>
 
 <div class="scrolltop" uk-scroll uk-icon="icon: arrow-up; ratio: 1.5"></div>
+<script src="{$.assets_url ~ 'web/main.js?v=' ~ $.assets_version}"></script>

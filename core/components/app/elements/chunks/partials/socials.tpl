@@ -25,15 +25,7 @@
             <a href="https://www.facebook.com/magazinkostumov/" class="social-item__subscribe" target="_blank">Подписаться</a>
         </div>
         <div class="social-item__body">
-            <div id="fb-root"></div>
-            <script>(function(d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return;
-              js = d.createElement(s); js.id = id;
-              js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.12&appId=117458959077438&autoLogAppEvents=1';
-              fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
-            <div class="fb-page" data-href="https://www.facebook.com/magazinkostumov/" data-tabs="timeline" data-height="355" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false"><blockquote cite="https://www.facebook.com/magazinkostumov/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/magazinkostumov/">Khagani-MAN</a></blockquote></div>
+            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmagazinkostumov%2F&tabs=timeline&width=340&height=355&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false&appId=117458959077438" width="340" height="355" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
         </div>
     </div>
     <div class="social-item">
@@ -59,7 +51,7 @@
                     <b>21:00</b>
                 </div>
                 <div class="contacts-info__row">
-                    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A21bf5b9262ef7176c2a2952cf137bc1a01475bdf37c792903bcdcb3c328edcb4&amp;width=100%25&amp;height=240&amp;lang=ru_RU&amp;scroll=true"></script>
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A21bf5b9262ef7176c2a2952cf137bc1a01475bdf37c792903bcdcb3c328edcb4&amp;source=constructor" width="100%" height="240" frameborder="0"></iframe>
                 </div>
             </div>
         </div>

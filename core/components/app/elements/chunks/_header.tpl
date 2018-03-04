@@ -43,7 +43,7 @@
                     'tplForm' => '@FILE chunks/partials/searchform.tpl'
                 ]}
                 <div class="header__phone" itemprop="telephone">
-                    +7 (926) 26-910-49
+                    +7 (499) 34-666-14
                 </div>
                 {'!msMiniCart' | snippet : [
                     'tpl' => '@FILE chunks/partials/minicart.tpl'

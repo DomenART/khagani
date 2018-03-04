@@ -14,7 +14,7 @@ class AppPackage
 
     const name = 'App';
     const name_lower = 'app';
-    const version = '1.0.30';
+    const version = '1.0.36';
     const release = 'pl';
 
 
@@ -271,7 +271,7 @@ class AppPackage
                 );
             }
         }
-        
+
         $output = [];
         /** @var modResource $resource */
         foreach ($objects as $resource) {
@@ -454,7 +454,7 @@ class AppPackage
             $tv->fromArray(array_merge([
                 'name' => $name
             ], $data), '', true, true);
-            
+
             if (
                 $tv->_category &&
                 $category = $this->_elements['categories'][$tv->_category]['object']
@@ -539,7 +539,7 @@ class AppPackage
         // set resource templates
         foreach ($this->_resources as $resource) {
             if(
-                $resource->_template && 
+                $resource->_template &&
                 $object = $this->_elements['templates'][$resource->_template]['object']
             ) {
                 $resource->addOne($object);
@@ -578,7 +578,7 @@ class AppPackage
                     ],
                 ],
             ];
-            
+
             foreach ($template['object']->_tmplvars as $tmplvar) {
                 if(empty($this->_elements['tmplvars'][$tmplvar]['object'])) continue;
 

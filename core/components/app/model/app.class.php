@@ -129,6 +129,10 @@ class App
                 $fenom->addModifier('totalAverageRatingPercent', function ($input) {
                     return $this->totalAverageRatingPercent($input);
                 });
+                
+                $fenom->addModifier('addUrlToImages', function ($input) {
+                    return $this->addUrlToImages($input);
+                });
 
                 $fenom->addModifier('round', function (...$args) {
                     return round(...$args);
@@ -348,10 +352,11 @@ class App
                     unlink(MODX_ASSETS_PATH . $c_properties['file']['path'] . $c_properties['file']['file']);
                 }
                 break;
-            case 'OnDocFormPrerender':
+            case 'OnWebPagePrerender':
                 // Compress output html for Google
-                $this->modx->resource->_output = preg_replace('#\s+#', ' ', $this->modx->resource->_output);
-
+                // $this->modx->resource->_output = preg_replace('#\s+#', ' ', $this->modx->resource->_output);
+                break;
+            case 'OnDocFormPrerender':
                 $data_js = preg_replace(array('/^\n/', '/\t{6}/'), '', '
                     App.config.connector_url = "' . $this->config['connectorUrl'] . '";
                     App.product_id = ' . $id . ';
@@ -573,5 +578,12 @@ class App
             $output[] = $image['image'] . ' ' . $size[0] . 'w';
         }
         return ' srcset="' . implode(', ', $output) . '"';
+    }
+    
+    public function addUrlToImages($content)
+    {
+        $site_url = $this->modx->getOption('site_url');
+        $content = str_replace('img src="', 'img src="' . $site_url, $content);
+        return $content;
     }
 }

@@ -1,4 +1,4 @@
-<form action="" method="post" class="modal-form ajax_form uk-position-relative">
+<form action="" method="post" class="modal-form ajax_form uk-position-relative" data-yatarget="RECORD">
     <div class="modal-form__controls">
         <input type="hidden" name="anomaly" value="anomaly">
         <div class="modal-form__row">

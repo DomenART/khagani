@@ -7,9 +7,11 @@
 
             <ul class="uk-slideshow-items">
                 {foreach $.resource.slideshow | fromJSON as $slide}
+                    {if $slide['active']?}
                     <li>
-                        <img src="{$slide['image']}" alt="" uk-cover{$slide['images'] | srcset : $slide['image']}>
+                        <img class="lozad" src="{$slide['image']}" alt="" uk-cover{$slide['images'] | srcset : $slide['image']}>
                     </li>
+                    {/if}
                 {/foreach}
             </ul>
 
@@ -23,6 +25,7 @@
             <div class="slideshow-info">
                 <ul class="slideshow-info__list" uk-height-match="target: .slideshow-info__flex">
                     {foreach $.resource.slideshow | fromJSON as $slide}
+                    {if $slide['active']?}
                     <li class="js-slideshow-item">
                         <div class="slideshow-info__flex">
                             <div class="slideshow-info__title">{$slide['label_1']}</div>
@@ -40,6 +43,7 @@
                             </a>
                         </div>
                     </li>
+                    {/if}
                     {/foreach}
                 </ul>
                 <ul class="uk-slideshow-nav slideshow-info__nav"></ul>
@@ -92,6 +96,8 @@
     'tpl' => '@FILE chunks/resources/offers.item.slider.tpl', 
     'includeThumbs' => 'medium',
     'parents' => ('page.clothes' | config),
+    'sortby' => 'publishedon',
+    'sortdir' => 'DESC',
     'where' => [
         'Data.new' => true
     ]
@@ -120,7 +126,10 @@
 {var $popular = 'msProducts' | snippet : [
     'tpl' => '@FILE chunks/resources/offers.item.tpl',
     'parents' => ('page.clothes' | config),
+    'limit' => 6,
     'includeThumbs' => 'medium',
+    'sortby' => 'publishedon',
+    'sortdir' => 'DESC',
     'where' => [
         'Data.favorite' => true
     ]
@@ -204,8 +213,7 @@
                                 {foreach ($.resource.reviews | fromJSON) as $review}
                                     <li>
                                         <div class="module-slider__video">
-                                            <iframe width="100%" height="400" src="https://www.youtube.com/embed/{$review['youtube']}?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media"
-                                                allowfullscreen></iframe>
+                                            <iframe width="100%" height="400" src="https://www.youtube.com/embed/{$review['youtube']}?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                         </div>
                                     </li>
                                 {/foreach}

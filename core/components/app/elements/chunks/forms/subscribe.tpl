@@ -1,4 +1,4 @@
-<form action="" method="post" class="form-record ajax_form uk-position-relative">
+<form action="" method="post" class="form-record ajax_form uk-position-relative" data-yatarget="RECORD">
     <input type="hidden" name="anomaly" value="anomaly">
     <div class="form-record__row">
         <input type="text" placeholder="Имя:" name="name" class="input" value="{$_pls['fi.name']}">

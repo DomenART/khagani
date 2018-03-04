@@ -1,7 +1,7 @@
 <h3>Ваша корзина</h3>
 <div class="js-order-cart"></div>
 <h3>Ваши данные</h3>
-<form action="" method="post" class="form-record ajax_form uk-position-relative">
+<form action="" method="post" class="form-record ajax_form uk-position-relative" data-yatarget="ORDER">
     <input type="hidden" name="anomaly" value="anomaly">
     <div class="form-record__row">
         <input type="text" placeholder="Имя:" name="name" class="input" value="{$_pls['fi.name']}">
